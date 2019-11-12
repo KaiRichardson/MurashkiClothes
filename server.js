@@ -1,10 +1,17 @@
 const dbConn = require('./db');
 const express = require('express');
 const app = express();
+//TODO Refactor into one router
+const authRoutes = require('./routes/authRoutes');
+const morgan = require('morgan');
 
 const PORT = process.env.PORT || 6969;
+app.use(morgan('dev'));
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 
 
+app.use('/', authRoutes);
 
 dbConn()
 .then(() => {
