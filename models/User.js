@@ -9,4 +9,6 @@ const userSchema = new Schema({
     orders: [String]
 })
 
-mongoose.model('User', userSchema);
+const Users = mongoose.model('User', userSchema);
+
+module.exports = Users;
