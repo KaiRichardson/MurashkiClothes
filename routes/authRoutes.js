@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const Users = require('../models/User');
+const registerUser = require('../utils/registerUser');
 
 router.post('/register', async (req, res) => {
     const { username, email, password } = req.body;
@@ -8,19 +8,8 @@ router.post('/register', async (req, res) => {
         res.status(400).send('Request is missing user info.');
     }
 
-    const user = await Users.findOne({username});
+    return registerUser(res, username, email, password);
 
-    if (user) {
-        res.status(400).send('Username already exists.');
-    }
-    
-    const newUser = await Users.create({
-        username,
-        email,
-        password 
-    })
-
-    res.status(200).json(newUser);
 })
 
 module.exports = router;
