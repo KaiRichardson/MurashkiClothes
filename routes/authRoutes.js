@@ -24,3 +24,5 @@ router.post('/register', async (req, res) => {
 
     res.status(200).send('User created');
 })
+
+module.exports = router;

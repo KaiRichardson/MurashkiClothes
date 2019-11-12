@@ -1,10 +1,14 @@
 const dbConn = require('./db');
 const express = require('express');
 const app = express();
+const authRoutes = require('./routes/authRoutes');
 
 const PORT = process.env.PORT || 6969;
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 
 
+app.use('/', authRoutes);
 
 dbConn()
 .then(() => {
