@@ -3,7 +3,7 @@ const Users = require('../models/User');
 
 router.post('/register', async (req, res) => {
     const { username, email, password } = req.body;
-
+    //TODO Integrate Bcrypt, likely in a helper function
     if (!username || !email || !password) {
         res.status(400).send('Request is missing user info.');
     }
@@ -20,9 +20,7 @@ router.post('/register', async (req, res) => {
         password 
     })
 
-    console.log(newUser);
-
-    res.status(200).send('User created');
+    res.status(200).json(newUser);
 })
 
 module.exports = router;
