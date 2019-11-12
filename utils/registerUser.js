@@ -12,7 +12,7 @@ module.exports = async (res, username, email, password) => {
     
         const hashed = await bcrypt.hash(password, 10);
         
-        const newUser = await Users.create({ username, email, password: hashed }).save();
+        const newUser = await Users.create({ username, email, password: hashed });
     
         return res.status(200).json(newUser);
     } catch (error) {
