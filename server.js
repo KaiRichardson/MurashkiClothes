@@ -2,7 +2,7 @@ const dbConn = require('./database/db');
 const express = require('express');
 const app = express();
 //TODO Refactor into one router
-const authRoutes = require('./routes/authRoutes');
+const routes = require('./routes');
 const morgan = require('morgan');
 
 const PORT = process.env.PORT || 6969;
@@ -15,9 +15,8 @@ app.use(express.json());
 // Serve up static assets 
 app.use(express.static("client"));
 
-
 // Add routes, both API and view
-app.use('/', authRoutes);
+app.use('/', routes);
 
 // Start the API server
 dbConn()
