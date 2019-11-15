@@ -8,17 +8,17 @@ const userSchema = new Schema({
     stripeToken: String,
     orders: [String],
     address: {
-        name,
-        company,
-        address1,
-        address2,
-        city,
-        state_code,
-        state_name,
-        country_code,
-        country_name,
-        zip,
-        phone
+        name: String,
+        company: String,
+        address1: String,
+        address2: String,
+        city: String,
+        state_code: String,
+        state_name: String,
+        country_code: String,
+        country_name: String,
+        zip: String,
+        phone: String
     }
 })
 
