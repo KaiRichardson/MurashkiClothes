@@ -4,10 +4,12 @@ const authRoutes = require("./authRoutes");
 const apiRoutes = require('./apiRoutes');
 
 // HTML routes
+router.use('/api', apiRoutes);
+router.use("/auth", authRoutes);
 router.use("/", htmlRoutes);
 
 // Auth routes
-router.use("/auth", authRoutes);
-router.use('/api', apiRoutes);
+
+
 
 module.exports = router;
