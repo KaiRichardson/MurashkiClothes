@@ -36,6 +36,11 @@ router.get("/contact", function(req, res) {
     res.sendFile(path.join(__dirname, "../client/contact.html"));
 });
 
+// Load about us page
+router.get("/about", function(req, res) {
+    res.sendFile(path.join(__dirname, "../client/about.html"));
+});
+
 // Load cart page
 router.get("/cart", function(req, res) {
     res.sendFile(path.join(__dirname, "../client/checkout.html"));
