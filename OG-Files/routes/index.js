@@ -2,7 +2,7 @@ const router = require("express").Router();
 const htmlRoutes = require("./htmlRoutes");
 const authRoutes = require("./authRoutes");
 
-// View routes
+// HTML routes
 router.use("/", htmlRoutes);
 
 // Auth routes
