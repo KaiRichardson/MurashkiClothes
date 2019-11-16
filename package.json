@@ -13,14 +13,13 @@
 	},
 	"homepage": "https://murashki.herokuapp.com/",
 	"scripts": {
-		"start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
+		"start": "if-env NODE_ENV=production && yarn run start:prod || yarn run start:dev",
 		"start:prod": "node server.js",
-		"start:dev": "concurrently \"nodemon --ignore 'client/*'\" \"npm run client\"",
-		"client": "cd client && npm run start",
-		"seed": "node scripts/seedDB.js",
-		"install": "cd client && npm install",
-		"build": "cd client && npm run build",
-		"heroku-postbuild": "npm run build",
+		"start:dev": "concurrently \"nodemon --ignore 'client/*'\" \"yarn run client\"",
+		"client": "cd client && yarn run start",
+		"install": "cd client && yarn install",
+		"build": "cd client && yarn run build",
+		"heroku-postbuild": "yarn run build",
 		"test": "react-scripts test",
 		"eject": "react-scripts eject"
 	},
@@ -39,14 +38,18 @@
 			"last 1 safari version"
 		]
 	},
+	"publishConfig": {
+		"registry": "https://yarn.pkg.github.com/"
+	},
 	"dependencies": {
 		"axios": "^0.19.0",
 		"bcrypt": "^3.0.6",
 		"dotenv": "^8.2.0",
+		"eslint": "^6.6.0",
 		"express": "^4.17.1",
 		"jsonwebtoken": "^8.5.1",
 		"mongoose": "^5.7.10",
-		"morgan": "^1.9.1"
+		"redux": "^4.0.4"
 	},
 	"devDependencies": {
 		"morgan": "^1.9.1",
