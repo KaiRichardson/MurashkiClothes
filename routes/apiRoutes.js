@@ -53,9 +53,19 @@ router
 .post('/payment/guest', (req, res) => {
     //TODO add String, take payment, contruct printful order
 
+
+})
+.get('/printful/:order', (req, res) => {
+    //TODO make request to get printful order
     
 })
+.put('/printful/:order', (req, res) => {
+    //TODO make request to printful to modify existing order
 
+})
+.delete('/printful/:order', (req, res) => {
+    //TODO cancel order
+})
 
 
 module.exports = router;
