@@ -8,11 +8,16 @@ import './Button.scss';
         Add .dark for dark button, default is light.
 */
 
-const Button = ({ children, className }) => <button className={`btn ${className}`}>{children}</button>;
+const Button = ({ children, dark, ...rest }) => (
+  <button className={`btn${dark ? '--dark' : ''}`} {...rest}>
+    {children}
+  </button>
+);
 
 export default Button;
 
 Button.propTypes = {
   children: PropTypes.any.isRequired,
-  className: PropTypes.string
+  dark: PropTypes.bool,
+  rest: PropTypes.any
 };

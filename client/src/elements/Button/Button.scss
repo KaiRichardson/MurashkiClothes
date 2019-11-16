@@ -1,4 +1,27 @@
+@import '../../assets/sass/main.scss';
+
 .btn {
-  &.dark {
+  --bg: var(--clr-white);
+  --txtColor: var(--clr-black);
+
+  padding: $spacing(sm) $spacing(md);
+
+  /* Default Button */
+  background: var(--bg);
+  color: var(--txtColor);
+
+  &:hover {
+    --bg: var(--clr-black);
+    --txtColor: var(--clr-white);
+  }
+
+  /* Dark Button */
+  &--dark {
+    --bg: var(--clr-black);
+    --txtColor: var(--clr-white);
+
+    &:hover {
+      --bg: var(--clr-grey);
+    }
   }
 }
