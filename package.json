@@ -48,7 +48,6 @@
 		"if-env": "^1.0.4"
 	},
 	"devDependencies": {
-		"@fortawesome/fontawesome-free": "^5.10.1",
 		"concurrently": "^4.1.0",
 		"morgan": "^1.9.1",
 		"nodemon": "^1.19.4",
