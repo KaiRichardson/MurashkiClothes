@@ -5,7 +5,7 @@ import './Button.scss';
 
 /*
     @desc Button component.
-        Add .dark for dark button, default is light.
+        Add optional dark prop for dark button, default is light.
 */
 
 const Button = ({ children, dark, ...rest }) => (
