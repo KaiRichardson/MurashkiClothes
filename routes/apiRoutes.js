@@ -46,6 +46,15 @@ router
         res.status(500).send(`Could not process request. Error: ${err}`);
     })
 })
+.post('/payment/user', (req, res) => {
+    //TODO add Stripe, take payment, construct printful order
+
+})
+.post('/payment/guest', (req, res) => {
+    //TODO add String, take payment, contruct printful order
+
+    
+})
 
 
 
