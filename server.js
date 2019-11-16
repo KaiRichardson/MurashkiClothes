@@ -1,6 +1,5 @@
 require("dotenv").config();
 
-const dbConn = require("./database/db");
 const express = require("express");
 const app = express();
 const dbConn = require("./database/db");
@@ -8,7 +7,7 @@ const dbConn = require("./database/db");
 const routes = require("./routes");
 const morgan = require("morgan");
 
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || 6969;
 
 // Define middleware here
 app.use(morgan("dev"));

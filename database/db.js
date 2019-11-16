@@ -1,7 +1,8 @@
 const mongoose = require("mongoose");
 
 // Connect to the Mongo DB
-DB_URI = process.env.MONGODB_URI || process.env.MONGODB_URI;
+const DB_URI =
+	process.env.MONGODB_URI || "mongodb://localhost:27017/murashkitest";
 
 module.exports = () => {
 	return mongoose

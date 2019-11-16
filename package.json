@@ -13,9 +13,8 @@
 	},
 	"homepage": "https://murashki.herokuapp.com/",
 	"scripts": {
-		"start": "if-env NODE_ENV=production && yarn run start:prod || yarn run start:dev",
-		"start:prod": "node server.js",
-		"start:dev": "concurrently \"nodemon --ignore 'client/*'\" \"yarn run client\"",
+		"start": "node server.js",
+		"dev": "concurrently \"nodemon server.js'\" \"yarn run client\"",
 		"client": "cd client && yarn run start",
 		"seed": "node scripts/seedDB.js",
 		"install": "cd client && yarn install",
