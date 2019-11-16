@@ -85,6 +85,27 @@ router
 })
 .delete('/printful/:order', (req, res) => {
     //TODO cancel order
+    const { order } = req.params;
+    axios.delete(`https://api.printful.com/orders/${order}`, {
+        headers: {
+            Authorization: `Basic ${PRINTFUL_64}`
+        }
+    })
+    .then(apiRes => {
+
+        if(!apiRes.data.result) {
+            res.status(404).send(`Order ${order} does not exist`);
+        }
+
+        const order = new Order(apiRes.data.result);
+
+        res.status(200).json(order);
+
+    })
+    .catch(err => {
+        res.status(500).send(`Error canceling this order: ${err}`);
+    })
+
 })
 
 
