@@ -1,6 +1,5 @@
 require("dotenv").config();
 
-const dbConn = require("./database/db");
 const express = require("express");
 const app = express();
 const dbConn = require("./database/db");
@@ -9,7 +8,7 @@ const mongoose = require("mongoose");
 const routes = require("./routes");
 const morgan = require("morgan");
 
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || 6969;
 
 // Define middleware here
 app.use(morgan("dev"));
@@ -23,14 +22,6 @@ if (process.env.NODE_ENV === "production") {
 
 // Add routes, both API and view
 app.use("/", routes);
-
-mongoose
-  .connect(
-    process.env.MONGODB_URI ||
-      `mongodb://${process.env.MDB_USERNAME}:${process.env.MDB_PASSWORD}@ds063449.mlab.com:63449/heroku_m45vkrg9`,
-    { useNewUrlParser: true, useFindAndModify: false }
-  )
-  .catch(err => console.log(err));
 
 // Start the API server
 dbConn()
