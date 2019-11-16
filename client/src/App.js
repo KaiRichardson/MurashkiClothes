@@ -1,7 +1,7 @@
-import React from "react";
-import Normalize from "react-normalize";
+import React from 'react';
+import Normalize from 'react-normalize';
 
-import { Container } from "layout";
+import { Container } from 'layout';
 
 const App = () => {
   return (

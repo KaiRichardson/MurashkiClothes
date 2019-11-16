@@ -1,6 +1,6 @@
 {
-  "extends": ["eslint:recommended", "plugin:react/recommended"],
-  "plugins": ["react"],
+  "extends": ["eslint:recommended", "react-app", "plugin:react/recommended", "plugin:prettier/recommended"],
+  "plugins": ["react", "prettier"],
   "env": { "browser": true, "jest": true },
   "rules": {
     "jsx-quotes": ["error", "prefer-single"],
