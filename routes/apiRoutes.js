@@ -4,7 +4,8 @@ const Product = require('../utils/productContructor');
 const PRINTFUL_64 = process.env.PRINTFUL_64;
 
 
-router.get('/printful', (req, res) => {
+router
+.get('/printful', (req, res) => {
 
     //get all of our stores products
     axios.get('https://api.printful.com/store/products', {
