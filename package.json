@@ -43,7 +43,8 @@
 		"express": "^4.17.1",
 		"jsonwebtoken": "^8.5.1",
 		"mongoose": "^5.7.10",
-		"morgan": "^1.9.1"
+		"morgan": "^1.9.1",
+		"if-env": "^1.0.4"
 	},
 	"devDependencies": {
 		"@fortawesome/fontawesome-free": "^5.10.1",

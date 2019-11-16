@@ -1,7 +1,8 @@
 import React from "react";
+import { Container } from "layout";
 
 function App() {
-  return <div>yo</div>;
+  return <Container>yo</Container>;
 }
 
 export default App;
