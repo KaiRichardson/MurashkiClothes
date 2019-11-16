@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const axios = require('axios');
+const Product = require('../utils/productContructor');
 const PRINTFUL_64 = process.env.PRINTFUL_64;
 
 
@@ -22,48 +23,29 @@ router.get('/printful', (req, res) => {
     })
 
 })
-.get('/printful/variants', (req, res) => {
-    axios.get('https://api.printful.com/store/products/142621663', {
+.get('/printful/variants/:id', (req, res) => {
+    const { id } = req.params;
+    axios.get(`https://api.printful.com/store/products/${id}`, {
         headers: {
             Authorization: `Basic ${PRINTFUL_64}`
         }
     }).then(apiRes => {
-        // console.log(apiRes.data.result.sync_variants[0]);
-        console.log(apiRes.data.result.sync_variants[12].variant_id);
-        console.log(' \n\n -------------------------- \n\n')
-        console.log(apiRes.data.result.sync_variants[12].retail_price);
-        console.log(' \n\n -------------------------- \n\n')
-        console.log(apiRes.data.result.sync_variants[12].name);
-        console.log(' \n\n -------------------------- \n\n')
-        console.log('FILES', apiRes.data.result.sync_variants[12].files); //previews are stored here 151086221
-        console.log(' \n\n -------------------------- \n\n')
-        console.log('PRODUCT', apiRes.data.result.sync_variants[12].product);
-        // str.split('-')[1].split('/') split color and size into array in the following format ["Color", "Size"]
 
-        res.sendStatus(200);
-    })
-    .catch(err => {
-        console.log(err);
-
-        res.sendStatus(500);
-    })
-})
-.get('/printful/files', (req, res) => {
-    axios.get('https://api.printful.com/files', {
-        headers: {
-            Authorization: `Basic ${PRINTFUL_64}`
+        if (!apiRes.data.result.sync_variants) {
+            res.status(404).send('Product not found!');
         }
-    }).then(apiRes => {
-        console.log(apiRes.data);
 
-        res.sendStatus(200);
+        const data = apiRes.data.result.sync_variants.map(p => new Product(p));
+
+        res.status(200).json(data);
     })
     .catch(err => {
         console.log(err);
 
-        res.sendStatus(500);
+        res.status(500).send(`Could not process request. Error: ${err}`);
     })
 })
+
 
 
 module.exports = router;
