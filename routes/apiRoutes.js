@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const axios = require('axios');
 const Product = require('../utils/productContructor');
+const Order = require('../utils/orderConstructor');
 const PRINTFUL_64 = process.env.PRINTFUL_64;
 
 
@@ -51,13 +52,32 @@ router
 
 })
 .post('/payment/guest', (req, res) => {
-    //TODO add String, take payment, contruct printful order
+    //TODO add Stripe, take payment, contruct printful order
 
 
 })
 .get('/printful/:order', (req, res) => {
-    //TODO make request to get printful order
-    
+    const { order } = req.params;
+
+    axios.get(`https://api.printful.com/orders/${order}`, {
+        headers: {
+            Authorization: `Basic ${PRINTFUL_64}`
+        }
+    })
+    .then(apiRes => {
+
+        if(!apiRes.data.result) {
+            res.status(404).send(`Order number ${order} does not exist!`)
+        }
+
+        const order = new Order(apiRes.data.result);
+
+        res.status(200).json(order);
+    })
+    .catch(err => {
+        res.status(500).send(`Could not get order information: ${err}`);
+    })
+
 })
 .put('/printful/:order', (req, res) => {
     //TODO make request to printful to modify existing order
