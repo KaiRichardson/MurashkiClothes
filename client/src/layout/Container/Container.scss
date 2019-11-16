@@ -1,3 +1,5 @@
+@import '../../assets/sass/main.scss';
+
 .container {
   width: 100%;
   padding-right: 15px;
@@ -5,19 +7,19 @@
   margin-right: auto;
   margin-left: auto;
 
-  @media (min-width: 576px) {
+  @include mq(sm) {
     max-width: 540px;
   }
 
-  @media (min-width: 768px) {
+  @include mq(md) {
     max-width: 720px;
   }
 
-  @media (min-width: 992px) {
+  @include mq(lg) {
     max-width: 960px;
   }
 
-  @media (min-width: 1200px) {
+  @include mq(xl) {
     max-width: 1140px;
   }
 }
