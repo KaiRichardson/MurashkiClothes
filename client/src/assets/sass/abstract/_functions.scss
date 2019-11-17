@@ -1,7 +1,0 @@
-@function bp($size) {
-  @return map-get($breakpoints, $size);
-}
-
-@function sp($size) {
-  @return map-get($spacing, $size);
-}

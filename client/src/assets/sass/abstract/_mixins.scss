@@ -1,9 +1,0 @@
-@mixin mq($size) {
-  @media only screen and (min-width: bp($size)) {
-    @content;
-  }
-}
-
-@mixin transition($prop: all, $speed: 250ms, $easing: ease-in) {
-  transition: $prop $speed $easing;
-}
