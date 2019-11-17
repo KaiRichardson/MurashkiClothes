@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components';
 import PropTypes from 'prop-types';
 
-import { spacing, transition, white, black, grey } from 'utils';
+import { spacing, transition, white, black, grey } from './node_modules/utils';
 
 /*
     @desc Button component.

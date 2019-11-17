@@ -1,12 +1,25 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import styled from 'styled-components';
 
-import './Container.scss';
+export const Container = styled.div`
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
 
-const Container = ({ children }) => <div className='container'>{children}</div>;
+  @media screen and (min-width: 576px) {
+    max-width: 540px;
+  }
 
-export default Container;
+  @media screen and (min-width: 768px) {
+    max-width: 720px;
+  }
 
-Container.propTypes = {
-  children: PropTypes.any.isRequired
-};
+  @media screen and (min-width: 992px) {
+    max-width: 960px;
+  }
+
+  @media screen and (min-width: 1200px) {
+    max-width: 1140px;
+  }
+`;

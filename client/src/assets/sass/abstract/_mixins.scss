@@ -3,3 +3,7 @@
     @content;
   }
 }
+
+@mixin transition($prop: all, $speed: 250ms, $easing: ease-in) {
+  transition: $prop $speed $easing;
+}

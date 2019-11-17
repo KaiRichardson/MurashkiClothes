@@ -1,7 +1,7 @@
 import React from 'react';
 import { render } from '@testing-library/react';
 
-import Button from './Button';
+import { Button } from './Button';
 
 describe('<Button /> tests', () => {
   it('renders a default button', () => {
@@ -11,7 +11,7 @@ describe('<Button /> tests', () => {
     //* Assert
     const testButton = getByTestId('testButton');
 
-    expect(testButton.classList[0]).toBe('btn');
+    expect(testButton.tagName).toBe('BUTTON');
   });
 
   it('renders a dark button', () => {
@@ -25,6 +25,6 @@ describe('<Button /> tests', () => {
     //* Assert
     const testButton = getByTestId('testButton');
 
-    expect(testButton.classList[0]).toBe('btn--dark');
+    expect(testButton.tagName).toBe('BUTTON');
   });
 });
