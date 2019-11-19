@@ -1,0 +1,59 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Button /> tests renders a dark button 1`] = `
+.c0 {
+  --bg: #fff;
+  --txtColor: #000;
+  cursor: pointer;
+  padding: 0.5rem 1rem;
+  background: var(--bg);
+  color: var(--txtColor);
+  border: none;
+  -webkit-transition: all 250ms ease-in;
+  transition: all 250ms ease-in;
+  --bg: #000;
+  --txtColor: #fff;
+}
+
+.c0:hover {
+  --bg: #000;
+  --txtColor: #fff;
+}
+
+.c0:hover {
+  --bg: #333;
+}
+
+<button
+  class="c0"
+  data-testid="testButton"
+>
+  Test Button
+</button>
+`;
+
+exports[`<Button /> tests renders a default button 1`] = `
+.c0 {
+  --bg: #fff;
+  --txtColor: #000;
+  cursor: pointer;
+  padding: 0.5rem 1rem;
+  background: var(--bg);
+  color: var(--txtColor);
+  border: none;
+  -webkit-transition: all 250ms ease-in;
+  transition: all 250ms ease-in;
+}
+
+.c0:hover {
+  --bg: #000;
+  --txtColor: #fff;
+}
+
+<button
+  class="c0"
+  data-testid="testButton"
+>
+  Test Button
+</button>
+`;
