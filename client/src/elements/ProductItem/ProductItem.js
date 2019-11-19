@@ -1,17 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import Price from './Price';
+
 const ProductItem = ({ product }) => (
   <article data-testid={`product-${product.id}`}>
     <h3 data-testid={`title-${product.id}`}>{product.title}</h3>
-    <p data-testid={`price-${product.id}`}>
-      {product.discount ? (
-        <del data-testid={`price--default-${product.id}`}>{product.price}</del>
-      ) : (
-        <span data-testid={`price--default-${product.id}`}>{product.price}</span>
-      )}
-      {product.discount && <span data-testid={`price--discount-${product.id}`}>{product.discount}</span>}
-    </p>
+
+    <Price id={product.id} price={product.price} discount={product.discount} />
+
     <img src={product.img} alt={product.title} data-testid={`img-${product.id}`} />
   </article>
 );
