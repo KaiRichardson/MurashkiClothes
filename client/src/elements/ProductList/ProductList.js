@@ -5,5 +5,5 @@ import { spacing } from 'utils';
 export const ProductList = styled.section`
   display: flex;
   flex-wrap: wrap;
-  padding: ${spacing.lg};
+  padding: 0 ${spacing.lg};
 `;

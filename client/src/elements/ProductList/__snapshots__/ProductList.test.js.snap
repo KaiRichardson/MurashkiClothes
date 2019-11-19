@@ -9,7 +9,7 @@ exports[`<ProductList /> tests matches the snapshot 1`] = `
   -webkit-flex-wrap: wrap;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
-  padding: 1.5rem;
+  padding: 0 1.5rem;
 }
 
 <section
