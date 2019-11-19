@@ -62,13 +62,15 @@ exports[`<ButtonLink /> tests renders a dark button link 1`] = `
 .c0 {
   --bg: #fff;
   --txtColor: #000;
-  cursor: pointer;
-  padding: 0.5rem 1rem;
   background: var(--bg);
   color: var(--txtColor);
   border: none;
+  -webkit-text-decoration: none;
+  text-decoration: none;
   -webkit-transition: all 250ms ease-in;
   transition: all 250ms ease-in;
+  cursor: pointer;
+  padding: 0.5rem 1rem;
   --bg: #000;
   --txtColor: #fff;
 }
@@ -95,13 +97,15 @@ exports[`<ButtonLink /> tests renders a default button link 1`] = `
 .c0 {
   --bg: #fff;
   --txtColor: #000;
-  cursor: pointer;
-  padding: 0.5rem 1rem;
   background: var(--bg);
   color: var(--txtColor);
   border: none;
+  -webkit-text-decoration: none;
+  text-decoration: none;
   -webkit-transition: all 250ms ease-in;
   transition: all 250ms ease-in;
+  cursor: pointer;
+  padding: 0.5rem 1rem;
 }
 
 .c0:hover {

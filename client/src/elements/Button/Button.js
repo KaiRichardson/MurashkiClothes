@@ -42,18 +42,18 @@ export const Button = styled.button`
 `;
 
 export const ButtonLink = styled(({ dark, ...rest }) => <Link {...rest} />)`
+  /* Default Button */
   --bg: ${white};
   --txtColor: ${black};
 
-  cursor: pointer;
-  padding: ${spacing.sm} ${spacing.md};
-
-  /* Default Button */
   background: var(--bg);
   color: var(--txtColor);
+
   border: none;
   text-decoration: none;
   ${transition({})};
+  cursor: pointer;
+  padding: ${spacing.sm} ${spacing.md};
 
   &:hover {
     --bg: ${black};

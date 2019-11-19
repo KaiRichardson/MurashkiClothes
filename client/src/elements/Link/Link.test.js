@@ -3,9 +3,9 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import { render } from '@testing-library/react';
 import 'jest-styled-components';
 
-import { Link, LinkDark } from './Link';
+import { Link } from './Link';
 
-describe('<Link /> and <LinkDark /> tests', () => {
+describe('<Link /> tests', () => {
   it('renders a default link', () => {
     //* Act
     const { getByTestId } = render(
@@ -38,9 +38,9 @@ describe('<Link /> and <LinkDark /> tests', () => {
     //* Act
     const { getByTestId } = render(
       <Router>
-        <LinkDark data-testid='test-link' to='/test'>
+        <Link dark data-testid='test-link' to='/test'>
           test link
-        </LinkDark>
+        </Link>
       </Router>
     );
 

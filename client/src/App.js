@@ -3,7 +3,7 @@ import { BrowserRouter } from 'react-router-dom';
 import Normalize from 'react-normalize';
 
 import { Container } from 'layout';
-import { Button, Link, LinkDark, ButtonLink } from 'elements';
+import { Button, Link, ButtonLink } from 'elements';
 
 const App = () => {
   return (
@@ -14,7 +14,9 @@ const App = () => {
         <Button dark>I am a dark button</Button>
         <BrowserRouter>
           <Link to='/cart'>I am a link</Link>
-          <LinkDark to='/cart'>I am a dark link</LinkDark>
+          <Link dark to='/cart'>
+            I am a dark link
+          </Link>
           <ButtonLink to='/cart'>I am a button link</ButtonLink>
           <ButtonLink dark to='/cart'>
             I am a dark button link
