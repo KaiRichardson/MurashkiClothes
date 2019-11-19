@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import Price from './Price';
-import StarRating from './StarRating';
+import StarRating from '../StarRating';
 
 const ProductItem = ({ product }) => (
   <article data-testid={`product-${product.id}`}>
