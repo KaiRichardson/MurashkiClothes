@@ -1,5 +1,9 @@
-import React from 'react';
+import styled from 'styled-components';
 
-const ProductList = () => <section></section>;
+import { spacing } from 'utils';
 
-export default ProductList;
+export const ProductList = styled.section`
+  display: flex;
+  flex-wrap: wrap;
+  padding: ${spacing.lg};
+`;
