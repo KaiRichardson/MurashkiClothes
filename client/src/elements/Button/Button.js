@@ -1,4 +1,6 @@
+import React from 'react';
 import styled, { css } from 'styled-components';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 import { spacing, transition, white, black, grey } from 'utils';
@@ -39,6 +41,42 @@ export const Button = styled.button`
     `}
 `;
 
+export const ButtonLink = styled(({ dark, ...rest }) => <Link {...rest} />)`
+  --bg: ${white};
+  --txtColor: ${black};
+
+  cursor: pointer;
+  padding: ${spacing.sm} ${spacing.md};
+
+  /* Default Button */
+  background: var(--bg);
+  color: var(--txtColor);
+  border: none;
+  text-decoration: none;
+  ${transition({})};
+
+  &:hover {
+    --bg: ${black};
+    --txtColor: ${white};
+  }
+
+  /* Dark Button */
+  ${props =>
+    props.dark &&
+    css`
+      --bg: ${black};
+      --txtColor: ${white};
+
+      &:hover {
+        --bg: ${grey};
+      }
+    `}
+`;
+
 Button.propTypes = {
+  dark: PropTypes.bool
+};
+
+ButtonLink.propTypes = {
   dark: PropTypes.bool
 };
