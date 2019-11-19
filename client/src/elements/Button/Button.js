@@ -12,6 +12,7 @@ export const Button = styled.button`
   --bg: ${white};
   --txtColor: ${black};
 
+  cursor: pointer;
   padding: ${spacing.sm} ${spacing.md};
 
   /* Default Button */
