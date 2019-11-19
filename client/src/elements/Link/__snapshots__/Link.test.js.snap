@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Link /> tests renders a link 1`] = `
+.c0 {
+  --txtColor: #000;
+  color: var(--txtColor);
+}
+
+.c0:hover {
+  --txtColor: #ee4266;
+}
+
+<a
+  class="c0"
+  data-testid="test-link"
+  href="/test"
+>
+  test link
+</a>
+`;
