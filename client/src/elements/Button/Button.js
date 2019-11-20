@@ -62,6 +62,7 @@ export const ButtonLink = styled(({ dark, trans, ...rest }) => <Link {...rest} /
   background: var(--bg);
   color: var(--txtColor);
 
+  display: inline-block;
   border: none;
   text-decoration: none;
   ${transition({})};
