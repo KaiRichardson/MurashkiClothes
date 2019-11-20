@@ -19,20 +19,6 @@ const Price = ({ id, price, discount }) => (
 
 export default Price;
 
-const Wrapper = styled.p`
-  grid-area: price;
-
-  font-weight: bolder;
-
-  > span,
-  > del {
-    &::before {
-      content: '$';
-      margin-right: ${spacing.xxs};
-    }
-  }
-`;
-
 const DefaultPrice = styled.span``;
 
 const OldPrice = styled.del`
@@ -47,3 +33,16 @@ Price.propTypes = {
   price: PropTypes.number.isRequired,
   discount: PropTypes.number
 };
+
+const Wrapper = styled.p`
+  grid-area: price;
+
+  font-weight: bolder;
+
+  > ${DefaultPrice}, > ${OldPrice}, > ${NewPrice} {
+    &::before {
+      content: '$';
+      margin-right: ${spacing.xxs};
+    }
+  }
+`;
