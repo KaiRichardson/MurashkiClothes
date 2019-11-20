@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter } from 'react-router-dom';
 import Normalize from 'react-normalize';
 
+import { GlobalStyle } from './GlobalStyle';
 import { Container } from 'layout';
 import { Button, Link, ButtonLink, ProductList, ProductItem, Section, Badge } from 'elements';
 
@@ -9,6 +10,8 @@ const App = () => {
   return (
     <>
       <Normalize />
+      <GlobalStyle />
+
       <Container>
         <Button>I am a Button</Button>
         <Button dark>I am a dark button</Button>
@@ -51,7 +54,6 @@ const App = () => {
               id: 'abc123',
               title: 'denim jacket',
               price: 46.0,
-              rating: 2,
               img: 'https://via.placeholder.com/500'
             }}
           />
