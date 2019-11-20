@@ -10,7 +10,6 @@ describe('<ProductItem /> tests', () => {
       id: 'abc123',
       title: 'denim jacket',
       price: 46.0,
-      rating: 5,
       img: 'https://via.placeholder.com/500'
     };
 
@@ -22,7 +21,7 @@ describe('<ProductItem /> tests', () => {
     const title = getByTestId(`title-${testData.id}`);
     const img = getByTestId(`img-${testData.id}`);
 
-    expect(wrapper.children.length).toBe(4);
+    expect(wrapper.children.length).toBe(3);
     expect(title.textContent.toLowerCase()).toBe(testData.title);
     expect(img.getAttribute('src')).toBe(testData.img);
     expect(img.getAttribute('alt')).toBe(testData.title);
