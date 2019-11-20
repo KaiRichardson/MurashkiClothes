@@ -3,7 +3,7 @@ import Normalize from 'react-normalize';
 
 import { GlobalStyle } from './GlobalStyle';
 import { Container } from 'layout';
-import { Button, Link, ButtonLink, ProductList, ProductItem, Section, Badge } from 'elements';
+import { Button, Link, ButtonLink, ProductList, ProductItem, Section, Badge, Logo } from 'elements';
 
 const App = () => {
   return (
@@ -12,6 +12,7 @@ const App = () => {
       <GlobalStyle />
 
       <Container>
+        <Logo />
         <Button>I am a Button</Button>
         <Button dark>I am a dark button</Button>
         <Button trans>I am a transparent button</Button>
