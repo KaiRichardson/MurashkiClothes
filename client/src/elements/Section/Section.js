@@ -13,7 +13,9 @@ const Section = ({ title, children }) => (
 
 export default Section;
 
-const Wrapper = styled.section``;
+const Wrapper = styled.section`
+  margin-bottom: ${spacing.xxl};
+`;
 
 const Title = styled.h2`
   border-left: 4px solid ${red};
