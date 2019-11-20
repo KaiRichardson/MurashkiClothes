@@ -48,13 +48,36 @@ describe('<Button /> tests', () => {
 
     // Color rules tests
     expect(testButton).toHaveStyleRule('--txtColor', '#fff');
-    expect(testButton).toHaveStyleRule('color', 'var(--txtColor)');
-
     expect(testButton).toHaveStyleRule('--bg', '#000');
-    expect(testButton).toHaveStyleRule('background', 'var(--bg)');
-
     // Hover test
     expect(testButton).toHaveStyleRule('--bg', '#333', {
+      modifier: ':hover'
+    });
+  });
+
+  it('renders a transparent button', () => {
+    //* Act
+    const { getByTestId } = render(
+      <Button trans data-testid='testButton'>
+        Test Button
+      </Button>
+    );
+
+    //* Assert
+    const testButton = getByTestId('testButton');
+
+    // Snapshot test
+    expect(testButton).toMatchSnapshot();
+
+    // Transparency test
+    expect(testButton).toHaveStyleRule('--txtColor', '#b3b3b3');
+    expect(testButton).toHaveStyleRule('--bg', 'transparent');
+
+    // Hover test
+    expect(testButton).toHaveStyleRule('--txtColor', '#000', {
+      modifier: ':hover'
+    });
+    expect(testButton).toHaveStyleRule('--bg', 'transparent', {
       modifier: ':hover'
     });
   });
@@ -76,6 +99,9 @@ describe('<ButtonLink /> tests', () => {
 
     // Snapshot test
     expect(testButton).toMatchSnapshot();
+
+    // Href test
+    expect(testButton.getAttribute('href')).toBe('/test');
 
     // Color rules tests
     expect(testButton).toHaveStyleRule('--txtColor', '#000');
@@ -111,13 +137,39 @@ describe('<ButtonLink /> tests', () => {
 
     // Color rules tests
     expect(testButton).toHaveStyleRule('--txtColor', '#fff');
-    expect(testButton).toHaveStyleRule('color', 'var(--txtColor)');
-
     expect(testButton).toHaveStyleRule('--bg', '#000');
-    expect(testButton).toHaveStyleRule('background', 'var(--bg)');
 
     // Hover test
     expect(testButton).toHaveStyleRule('--bg', '#333', {
+      modifier: ':hover'
+    });
+  });
+
+  it('renders a transparent button link', () => {
+    //* Act
+    const { getByTestId } = render(
+      <Router>
+        <ButtonLink trans to='/test' data-testid='testButton'>
+          Test Button
+        </ButtonLink>
+      </Router>
+    );
+
+    //* Assert
+    const testButton = getByTestId('testButton');
+
+    // Snapshot test
+    expect(testButton).toMatchSnapshot();
+
+    // Transparency test
+    expect(testButton).toHaveStyleRule('--txtColor', '#b3b3b3');
+    expect(testButton).toHaveStyleRule('--bg', 'transparent');
+
+    // Hover test
+    expect(testButton).toHaveStyleRule('--txtColor', '#000', {
+      modifier: ':hover'
+    });
+    expect(testButton).toHaveStyleRule('--bg', 'transparent', {
       modifier: ':hover'
     });
   });

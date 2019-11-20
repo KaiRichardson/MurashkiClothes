@@ -3,7 +3,7 @@ import styled, { css } from 'styled-components';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
-import { spacing, transition, white, black, grey } from 'utils';
+import { spacing, transition, white, black, grey, lightGrey } from 'utils';
 
 /*
     @desc Button component.
@@ -39,9 +39,22 @@ export const Button = styled.button`
         --bg: ${grey};
       }
     `}
+
+    /* Transparent Button */
+    ${props =>
+      props.trans &&
+      css`
+        --txtColor: ${lightGrey};
+        --bg: transparent;
+
+        &:hover {
+          --txtColor: ${black};
+          --bg: transparent;
+        }
+      `}
 `;
 
-export const ButtonLink = styled(({ dark, ...rest }) => <Link {...rest} />)`
+export const ButtonLink = styled(({ dark, trans, ...rest }) => <Link {...rest} />)`
   /* Default Button */
   --bg: ${white};
   --txtColor: ${black};
@@ -71,12 +84,27 @@ export const ButtonLink = styled(({ dark, ...rest }) => <Link {...rest} />)`
         --bg: ${grey};
       }
     `}
+
+  /* Transparent Button */
+  ${props =>
+    props.trans &&
+    css`
+      --txtColor: ${lightGrey};
+      --bg: transparent;
+
+      &:hover {
+        --txtColor: ${black};
+        --bg: transparent;
+      }
+    `}
 `;
 
 Button.propTypes = {
-  dark: PropTypes.bool
+  dark: PropTypes.bool,
+  trans: PropTypes.bool
 };
 
 ButtonLink.propTypes = {
-  dark: PropTypes.bool
+  dark: PropTypes.bool,
+  trans: PropTypes.bool
 };

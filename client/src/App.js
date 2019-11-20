@@ -12,6 +12,7 @@ const App = () => {
       <Container>
         <Button>I am a Button</Button>
         <Button dark>I am a dark button</Button>
+        <Button trans>I am a transparent button</Button>
         <BrowserRouter>
           <Link to='/cart'>I am a link</Link>
           <Link dark to='/cart'>
@@ -20,6 +21,9 @@ const App = () => {
           <ButtonLink to='/cart'>I am a button link</ButtonLink>
           <ButtonLink dark to='/cart'>
             I am a dark button link
+          </ButtonLink>
+          <ButtonLink trans to='/cart'>
+            I am a transparent button link
           </ButtonLink>
         </BrowserRouter>
         <Section
