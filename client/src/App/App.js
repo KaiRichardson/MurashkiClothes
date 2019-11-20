@@ -1,5 +1,4 @@
 import React from 'react';
-import { BrowserRouter } from 'react-router-dom';
 import Normalize from 'react-normalize';
 
 import { GlobalStyle } from './GlobalStyle';
@@ -16,19 +15,17 @@ const App = () => {
         <Button>I am a Button</Button>
         <Button dark>I am a dark button</Button>
         <Button trans>I am a transparent button</Button>
-        <BrowserRouter>
-          <Link to='/cart'>I am a link</Link>
-          <Link dark to='/cart'>
-            I am a dark link
-          </Link>
-          <ButtonLink to='/cart'>I am a button link</ButtonLink>
-          <ButtonLink dark to='/cart'>
-            I am a dark button link
-          </ButtonLink>
-          <ButtonLink trans to='/cart'>
-            I am a transparent button link
-          </ButtonLink>
-        </BrowserRouter>
+        <Link to='/cart'>I am a link</Link>
+        <Link dark to='/cart'>
+          I am a dark link
+        </Link>
+        <ButtonLink to='/cart'>I am a button link</ButtonLink>
+        <ButtonLink dark to='/cart'>
+          I am a dark button link
+        </ButtonLink>
+        <ButtonLink trans to='/cart'>
+          I am a transparent button link
+        </ButtonLink>
         <div style={{ position: 'relative', width: '70px' }}>
           This is a badge
           <Badge number={11} />
