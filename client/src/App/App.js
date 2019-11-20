@@ -53,7 +53,7 @@ const App = () => {
                 id: 'abc123',
                 title: 'denim jacket',
                 price: 46.0,
-                img: 'https://via.placeholder.com/500'
+                img: 'https://via.placeholder.com/330x400'
               }}
             />
             <ProductItem
@@ -62,7 +62,7 @@ const App = () => {
                 title: 'denim jacket',
                 price: 46.0,
                 discount: 28.5,
-                img: 'https://via.placeholder.com/500'
+                img: 'https://via.placeholder.com/330x400'
               }}
             />
             <ProductItem
@@ -70,7 +70,7 @@ const App = () => {
                 id: 'abc123',
                 title: 'denim jacket',
                 price: 46.0,
-                img: 'https://via.placeholder.com/500'
+                img: 'https://via.placeholder.com/330x400'
               }}
             />
             <ProductItem
@@ -79,7 +79,7 @@ const App = () => {
                 title: 'denim jacket',
                 price: 46.0,
                 discount: 28.5,
-                img: 'https://via.placeholder.com/500'
+                img: 'https://via.placeholder.com/330x400'
               }}
             />
           </ProductList>

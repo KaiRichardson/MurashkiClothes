@@ -2,14 +2,27 @@
 
 exports[`<ProductList /> tests matches the snapshot 1`] = `
 .c0 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-wrap: wrap;
-  -ms-flex-wrap: wrap;
-  flex-wrap: wrap;
-  padding: 0 1.5rem;
+  --gap: 1.5rem;
+  padding: var(--gap) 0;
+  display: grid;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  justify-items: center;
+  grid-gap: var(--gap);
+}
+
+@media screen and (min-width:768px) {
+  .c0 {
+    grid-template-columns: repeat(2,1fr);
+  }
+}
+
+@media screen and (min-width:992px) {
+  .c0 {
+    grid-template-columns: repeat(3,1fr);
+  }
 }
 
 <section
