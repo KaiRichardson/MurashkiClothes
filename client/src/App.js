@@ -3,7 +3,7 @@ import { BrowserRouter } from 'react-router-dom';
 import Normalize from 'react-normalize';
 
 import { Container } from 'layout';
-import { Button, Link, ButtonLink, ProductList, ProductItem, Section } from 'elements';
+import { Button, Link, ButtonLink, ProductList, ProductItem, Section, Badge } from 'elements';
 
 const App = () => {
   return (
@@ -26,6 +26,10 @@ const App = () => {
             I am a transparent button link
           </ButtonLink>
         </BrowserRouter>
+        <div style={{ position: 'relative', width: '70px' }}>
+          This is a badge
+          <Badge number={11} />
+        </div>
         <Section
           title={
             <>
