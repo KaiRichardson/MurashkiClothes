@@ -47,26 +47,43 @@ const App = () => {
         </Section>
         <Section title='this is also a section'>
           <p>this section's title is a string</p>
+          <ProductList>
+            <ProductItem
+              product={{
+                id: 'abc123',
+                title: 'denim jacket',
+                price: 46.0,
+                img: 'https://via.placeholder.com/500'
+              }}
+            />
+            <ProductItem
+              product={{
+                id: 'abc123',
+                title: 'denim jacket',
+                price: 46.0,
+                discount: 28.5,
+                img: 'https://via.placeholder.com/500'
+              }}
+            />
+            <ProductItem
+              product={{
+                id: 'abc123',
+                title: 'denim jacket',
+                price: 46.0,
+                img: 'https://via.placeholder.com/500'
+              }}
+            />
+            <ProductItem
+              product={{
+                id: 'abc123',
+                title: 'denim jacket',
+                price: 46.0,
+                discount: 28.5,
+                img: 'https://via.placeholder.com/500'
+              }}
+            />
+          </ProductList>
         </Section>
-        <ProductList>
-          <ProductItem
-            product={{
-              id: 'abc123',
-              title: 'denim jacket',
-              price: 46.0,
-              img: 'https://via.placeholder.com/500'
-            }}
-          />
-          <ProductItem
-            product={{
-              id: 'abc123',
-              title: 'denim jacket',
-              price: 46.0,
-              discount: 28.5,
-              img: 'https://via.placeholder.com/500'
-            }}
-          />
-        </ProductList>
       </Container>
     </>
   );
