@@ -2,7 +2,7 @@ import React from 'react';
 import Normalize from 'react-normalize';
 
 import { GlobalStyle } from './GlobalStyle';
-import { Container } from 'layout';
+import { Container, Header } from 'layout';
 import { Button, Link, ButtonLink, ProductList, ProductItem, Section, Badge, Logo } from 'elements';
 
 const App = () => {
@@ -11,8 +11,9 @@ const App = () => {
       <Normalize />
       <GlobalStyle />
 
+      <Header />
+
       <Container>
-        <Logo />
         <Button>I am a Button</Button>
         <Button dark>I am a dark button</Button>
         <Button trans>I am a transparent button</Button>

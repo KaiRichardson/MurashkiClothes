@@ -14,6 +14,7 @@ export default Logo;
 
 const Wrapper = styled.h1`
   font-weight: normal;
+  margin: 0;
 `;
 
 const Link = styled(L)`
