@@ -2,20 +2,23 @@ import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
-import { yellow } from 'utils';
+import { yellow, lightGrey } from 'utils';
 
 const StarRating = ({ id, rating }) => (
   <div data-testid={`rating-${id}`}>
-    {[...Array(rating)].map((e, i) => (
-      <Star className='fas fa-star' key={`${id}-star-${i}`} data-testid='rating-star' />
+    {[...Array(5)].map((e, i) => (
+      <Star filled={i < rating} key={`${id}-star-${i}`} />
     ))}
   </div>
 );
 
 export default StarRating;
 
-const Star = styled.i`
-  color: ${yellow};
+const Star = styled.i.attrs(props => ({
+  className: 'fas fa-star',
+  'data-testid': `rating-star${props.filled ? '' : '--empty'}`
+}))`
+  color: ${props => (props.filled ? yellow : lightGrey)};
 `;
 
 StarRating.propTypes = {

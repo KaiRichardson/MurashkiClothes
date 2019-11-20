@@ -28,7 +28,7 @@ const App = () => {
               id: 'abc123',
               title: 'denim jacket',
               price: 46.0,
-              rating: 5,
+              rating: 2,
               img: 'https://via.placeholder.com/500'
             }}
           />
