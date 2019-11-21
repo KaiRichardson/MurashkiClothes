@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const axios = require('axios');
-const Product = require('../utils/productContructor');
+const ProductData = require('../utils/productContructor');
+const Products = require('../models/Products')
 const Order = require('../utils/orderConstructor');
 const getUnsortedProducts = require('../utils/getUnsortedProducts');
 const PRINTFUL_64 = process.env.PRINTFUL_64;
@@ -15,7 +16,24 @@ router
             Authorization: `Basic ${PRINTFUL_64}`
         }
     }).then(apiRes => {
-        console.log(apiRes.data.result) // <-- Array of products
+
+        return res.status(200).json(apiRes.data.result);
+    })
+    .catch(err => {
+        console.log(err);
+
+        return res.status(500).send(`Error getting products: ${err}`);
+    })
+
+})
+.get('/products/add', async (req, res) => {
+
+    //get all of our stores products
+    axios.get('https://api.printful.com/store/products', {
+        headers: {
+            Authorization: `Basic ${PRINTFUL_64}`
+        }
+    }).then(apiRes => {
 
         return await getUnsortedProducts(res, apiRes.data.result);
     })
@@ -26,8 +44,29 @@ router
     })
 
 })
+.post('/products/add', async (req, res) => {
+
+    const { productsToAdd } = req.body;
+
+    try {
+
+        const added = await Products.create(productsToAdd);
+
+        console.log(added);
+
+        res.sendStatus(200);
+
+    } catch(err) {
+        console.log(err);
+
+        return res.status(500).send(`Error adding products: ${err}`);
+    }
+
+
+})
 .get('/printful/variants/:id', (req, res) => {
     const { id } = req.params;
+
     axios.get(`https://api.printful.com/store/products/${id}`, {
         headers: {
             Authorization: `Basic ${PRINTFUL_64}`
@@ -38,16 +77,17 @@ router
             res.status(404).send('Product not found!');
         }
 
-        const data = apiRes.data.result.sync_variants.map(p => new Product(p));
+        const data = apiRes.data.result.sync_variants.map(p => new ProductData(p));
 
-        res.status(200).json(data);
+        return res.status(200).json(data);
     })
     .catch(err => {
         console.log(err);
 
-        res.status(500).send(`Could not process request. Error: ${err}`);
+        return res.status(500).send(`Could not process request. Error: ${err}`);
     })
 })
+// Payment routes
 .post('/payment/user', (req, res) => {
     //TODO add Stripe, take payment, construct printful order
 
@@ -57,6 +97,7 @@ router
 
 
 })
+//Order routes
 .get('/printful/:order', (req, res) => {
     const { order } = req.params;
 
