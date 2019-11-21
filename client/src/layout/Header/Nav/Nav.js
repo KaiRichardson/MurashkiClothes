@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 const Nav = () => {
-  const items = [];
+  // const items = [];
 
   return <Wrapper>nav</Wrapper>;
 };

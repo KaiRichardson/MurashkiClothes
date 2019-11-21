@@ -26,10 +26,8 @@ app.use("/", routes);
 dbConn()
 	.then(() => {
 		console.log("Connected to DB.");
-		app.listen(
-			PORT,
-			() => console.log(`APP LISTENING FOR CONNECTIONS ON PORT: ${PORT}`),
-			console.log(`\nPlease visit http://localhost:${PORT}/`)
+		app.listen(PORT, () =>
+			console.log(`APP LISTENING FOR CONNECTIONS ON PORT: ${PORT}`)
 		);
 	})
 	.catch(error => {

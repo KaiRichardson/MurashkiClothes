@@ -1,7 +1,7 @@
 import React from 'react';
 
 const Buttons = () => {
-  const items = [];
+  // const items = [];
 
   return <div>buttons</div>;
 };

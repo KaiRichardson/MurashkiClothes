@@ -3,7 +3,8 @@ import Normalize from 'react-normalize';
 
 import { GlobalStyle } from './GlobalStyle';
 import { Container, Header } from 'layout';
-import { Button, Link, ButtonLink, ProductList, ProductItem, Section, Badge, Logo } from 'elements';
+import { Button, Link, ButtonLink, ProductList, ProductItem, Section, Badge } from 'elements';
+//, Logo
 
 const App = () => {
   return (
