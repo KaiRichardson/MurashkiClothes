@@ -2,6 +2,7 @@ const router = require('express').Router();
 const axios = require('axios');
 const Product = require('../utils/productContructor');
 const Order = require('../utils/orderConstructor');
+const getUnsortedProducts = require('../utils/getUnsortedProducts');
 const PRINTFUL_64 = process.env.PRINTFUL_64;
 
 
@@ -16,12 +17,12 @@ router
     }).then(apiRes => {
         console.log(apiRes.data.result) // <-- Array of products
 
-        res.sendStatus(200);
+        return await getUnsortedProducts(res, apiRes.data.result);
     })
     .catch(err => {
         console.log(err);
 
-        res.sendStatus(500);
+        return res.status(500).send(`Error getting products: ${err}`);
     })
 
 })
