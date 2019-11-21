@@ -26,7 +26,7 @@ router
     })
 
 })
-.get('/products/add', async (req, res) => {
+.get('/products/add', (req, res) => {
 
     //get all of our stores products
     axios.get('https://api.printful.com/store/products', {
@@ -35,7 +35,7 @@ router
         }
     }).then(apiRes => {
 
-        return await getUnsortedProducts(res, apiRes.data.result);
+        return getUnsortedProducts(res, apiRes.data.result);
     })
     .catch(err => {
         console.log(err);
