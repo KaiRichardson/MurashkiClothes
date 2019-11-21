@@ -1,0 +1,52 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Link /> tests renders a dark link 1`] = `
+.c0 {
+  --txtColor: #000;
+  -webkit-transition: color 250ms ease-in;
+  transition: color 250ms ease-in;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  color: var(--txtColor);
+  --txtColor: #b3b3b3;
+}
+
+.c0:hover {
+  --txtColor: #ee4266;
+}
+
+.c0:hover {
+  --txtColor: #000;
+}
+
+<a
+  class="c0"
+  data-testid="test-link"
+  href="/test"
+>
+  test link
+</a>
+`;
+
+exports[`<Link /> tests renders a default link 1`] = `
+.c0 {
+  --txtColor: #000;
+  -webkit-transition: color 250ms ease-in;
+  transition: color 250ms ease-in;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  color: var(--txtColor);
+}
+
+.c0:hover {
+  --txtColor: #ee4266;
+}
+
+<a
+  class="c0"
+  data-testid="test-link"
+  href="/test"
+>
+  test link
+</a>
+`;
