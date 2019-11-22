@@ -1,19 +1,22 @@
-const router = require("express").Router();
 const authRoutes = require("./authRoutes");
-const apiRoutes = require('./apiRoutes');
+const printfulRoutes = require('./printfulRoutes');
 const path = require('path');
 
 // HTML routes
-router.use('/api', apiRoutes);
-router.use('/auth', authRoutes);
-
-// Auth routes
 
 
 
-// If no Auth routes are hit, send the React app
+
+// If no valid routes are hit, send the React app
 router.get('*', (req, res) => {
 	res.sendFile(path.join(__dirname, "../client/build/index.html"));
 });
 
-module.exports = router;
+module.exports = (app) => {
+	const apiRoutes = require("express").Router();
+
+	apiRoutes.use('/printful', printfulRoutes);
+	
+	app.use('/auth', authRoutes);
+	app.use('/api', apiRoutes)
+};

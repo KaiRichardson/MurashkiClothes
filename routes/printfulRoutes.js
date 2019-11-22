@@ -1,14 +1,12 @@
 const router = require('express').Router();
 const axios = require('axios');
 const ProductData = require('../utils/productContructor');
-const Products = require('../models/Products')
 const Order = require('../utils/orderConstructor');
-const getUnsortedProducts = require('../utils/getUnsortedProducts');
 const PRINTFUL_64 = process.env.PRINTFUL_64;
 
 
 router
-.get('/printful', (req, res) => {
+.get('/', (req, res) => {
 
     //get all of our stores products
     axios.get('https://api.printful.com/store/products', {
@@ -26,45 +24,7 @@ router
     })
 
 })
-.get('/products/add', (req, res) => {
-
-    //get all of our stores products
-    axios.get('https://api.printful.com/store/products', {
-        headers: {
-            Authorization: `Basic ${PRINTFUL_64}`
-        }
-    }).then(apiRes => {
-
-        return getUnsortedProducts(res, apiRes.data.result);
-    })
-    .catch(err => {
-        console.log(err);
-
-        return res.status(500).send(`Error getting products: ${err}`);
-    })
-
-})
-.post('/products/add', async (req, res) => {
-
-    const { productsToAdd } = req.body;
-
-    try {
-
-        const added = await Products.create(productsToAdd);
-
-        console.log(added);
-
-        res.sendStatus(200);
-
-    } catch(err) {
-        console.log(err);
-
-        return res.status(500).send(`Error adding products: ${err}`);
-    }
-
-
-})
-.get('/printful/variants/:id', (req, res) => {
+.get('/variants/:id', (req, res) => {
     const { id } = req.params;
 
     axios.get(`https://api.printful.com/store/products/${id}`, {
@@ -73,13 +33,15 @@ router
         }
     }).then(apiRes => {
 
-        if (!apiRes.data.result.sync_variants) {
+        const data = apiRes.data.result.sync_variants;
+
+        if (data.length === 0 || !data) {
             res.status(404).send('Product not found!');
         }
 
-        const data = apiRes.data.result.sync_variants.map(p => new ProductData(p));
+        const productDTO = apiRes.data.result.sync_variants.map(p => new ProductData(p));
 
-        return res.status(200).json(data);
+        return res.status(200).json(productDTO);
     })
     .catch(err => {
         console.log(err);
@@ -98,8 +60,10 @@ router
 
 })
 //Order routes
-.get('/printful/:order', (req, res) => {
+.route('/:order')
+.get((req, res) => {
     const { order } = req.params;
+    console.log('Inside :order route');
 
     axios.get(`https://api.printful.com/orders/${order}`, {
         headers: {
@@ -121,12 +85,15 @@ router
     })
 
 })
-.put('/printful/:order', (req, res) => {
+.put((req, res) => {
     //TODO make request to printful to modify existing order
 
+    console.log('Inside :order route');
+
 })
-.delete('/printful/:order', (req, res) => {
-    //TODO cancel order
+.delete((req, res) => {
+
+    console.log('Inside :order route');
     const { order } = req.params;
     axios.delete(`https://api.printful.com/orders/${order}`, {
         headers: {
