@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import styled from 'styled-components';
 
 import { MobileNavContext } from '../../MobileNav.context';
-import { lightGrey, transition } from 'utils';
+import { lightGrey, transition, red } from 'utils';
 import { Button as B } from 'elements';
 
 const ToggleNavButton = () => {
@@ -26,7 +26,7 @@ const Hamburger = styled.span`
   position: relative;
   height: 2px;
   width: 1.5rem;
-  background: ${lightGrey};
+  background: ${props => (props.toggle ? red : lightGrey)};
   ${transition({ prop: 'transform' })};
   transform: rotate(${props => (props.toggle ? '45deg' : '0deg')});
 
@@ -37,7 +37,7 @@ const Hamburger = styled.span`
     display: block;
     height: 2px;
     width: 1.5rem;
-    background: ${lightGrey};
+    background: ${props => (props.toggle ? red : lightGrey)};
   }
   &::before {
     transform: translateY(-5px);
