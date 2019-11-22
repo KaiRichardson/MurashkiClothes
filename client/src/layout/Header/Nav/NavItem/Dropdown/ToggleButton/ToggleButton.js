@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 
 import { spacing, grey, transition } from 'utils';
 import { Button as B } from 'elements';
@@ -22,3 +23,8 @@ const Arrow = styled.i.attrs({ className: 'far fa-chevron-down' })`
   ${props => (props.toggle ? 'transform: rotate(-180deg);' : 'transform: rotate(0deg);')}
   ${transition({ prop: 'transform' })};
 `;
+
+ToggleButton.propTypes = {
+  toggle: PropTypes.func.isRequired,
+  menuIsOpen: PropTypes.bool.isRequired
+};

@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 
 import { red, lightGrey, transition, spacing, absolute, white } from 'utils';
 import ToggleButton from './ToggleButton';
@@ -70,3 +71,12 @@ const Link = styled(NavLink)`
     color: ${red};
   }
 `;
+
+Dropdown.propTypes = {
+  options: PropTypes.arrayOf(
+    PropTypes.shape({
+      name: PropTypes.string.isRequired,
+      link: PropTypes.string.isRequired
+    })
+  ).isRequired
+};
