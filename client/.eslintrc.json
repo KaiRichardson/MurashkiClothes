@@ -1,0 +1,21 @@
+{
+  "extends": ["eslint:recommended", "react-app", "plugin:react/recommended", "plugin:prettier/recommended"],
+  "plugins": ["react", "prettier"],
+  "env": { "browser": true, "jest": true },
+  "rules": {
+    "jsx-quotes": ["error", "prefer-single"],
+    "no-multiple-empty-lines": [
+      "error",
+      {
+        "max": 1,
+        "maxEOF": 0
+      }
+    ]
+  },
+  "settings": {
+    "react": {
+      "pragma": "React",
+      "version": "detect"
+    }
+  }
+}

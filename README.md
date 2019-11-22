@@ -1,3 +1,3 @@
 # Murashki Clothes
 
-### Russian. home grown. apparel shopping
+### Russian. Home Grown. Apparel Shopping

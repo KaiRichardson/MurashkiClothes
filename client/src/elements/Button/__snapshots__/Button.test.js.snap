@@ -1,0 +1,195 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Button /> tests renders a dark button 1`] = `
+.c0 {
+  --bg: #fff;
+  --txtColor: #000;
+  cursor: pointer;
+  padding: 0.5rem 1rem;
+  background: var(--bg);
+  color: var(--txtColor);
+  border: none;
+  -webkit-transition: all 250ms ease-in;
+  transition: all 250ms ease-in;
+  --bg: #000;
+  --txtColor: #fff;
+}
+
+.c0:hover {
+  --bg: #000;
+  --txtColor: #fff;
+}
+
+.c0:hover {
+  --bg: #333;
+}
+
+<button
+  class="c0"
+  data-testid="testButton"
+>
+  Test Button
+</button>
+`;
+
+exports[`<Button /> tests renders a default button 1`] = `
+.c0 {
+  --bg: #fff;
+  --txtColor: #000;
+  cursor: pointer;
+  padding: 0.5rem 1rem;
+  background: var(--bg);
+  color: var(--txtColor);
+  border: none;
+  -webkit-transition: all 250ms ease-in;
+  transition: all 250ms ease-in;
+}
+
+.c0:hover {
+  --bg: #000;
+  --txtColor: #fff;
+}
+
+<button
+  class="c0"
+  data-testid="testButton"
+>
+  Test Button
+</button>
+`;
+
+exports[`<Button /> tests renders a transparent button 1`] = `
+.c0 {
+  --bg: #fff;
+  --txtColor: #000;
+  cursor: pointer;
+  padding: 0.5rem 1rem;
+  background: var(--bg);
+  color: var(--txtColor);
+  border: none;
+  -webkit-transition: all 250ms ease-in;
+  transition: all 250ms ease-in;
+  --txtColor: #b3b3b3;
+  --bg: transparent;
+}
+
+.c0:hover {
+  --bg: #000;
+  --txtColor: #fff;
+}
+
+.c0:hover {
+  --txtColor: #000;
+  --bg: transparent;
+}
+
+<button
+  class="c0"
+  data-testid="testButton"
+>
+  Test Button
+</button>
+`;
+
+exports[`<ButtonLink /> tests renders a dark button link 1`] = `
+.c0 {
+  --bg: #fff;
+  --txtColor: #000;
+  background: var(--bg);
+  color: var(--txtColor);
+  display: inline-block;
+  border: none;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  -webkit-transition: all 250ms ease-in;
+  transition: all 250ms ease-in;
+  cursor: pointer;
+  padding: 0.5rem 1rem;
+  --bg: #000;
+  --txtColor: #fff;
+}
+
+.c0:hover {
+  --bg: #000;
+  --txtColor: #fff;
+}
+
+.c0:hover {
+  --bg: #333;
+}
+
+<a
+  class="c0"
+  data-testid="testButton"
+  href="/test"
+>
+  test link
+</a>
+`;
+
+exports[`<ButtonLink /> tests renders a default button link 1`] = `
+.c0 {
+  --bg: #fff;
+  --txtColor: #000;
+  background: var(--bg);
+  color: var(--txtColor);
+  display: inline-block;
+  border: none;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  -webkit-transition: all 250ms ease-in;
+  transition: all 250ms ease-in;
+  cursor: pointer;
+  padding: 0.5rem 1rem;
+}
+
+.c0:hover {
+  --bg: #000;
+  --txtColor: #fff;
+}
+
+<a
+  class="c0"
+  data-testid="testButton"
+  href="/test"
+>
+  test link
+</a>
+`;
+
+exports[`<ButtonLink /> tests renders a transparent button link 1`] = `
+.c0 {
+  --bg: #fff;
+  --txtColor: #000;
+  background: var(--bg);
+  color: var(--txtColor);
+  display: inline-block;
+  border: none;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  -webkit-transition: all 250ms ease-in;
+  transition: all 250ms ease-in;
+  cursor: pointer;
+  padding: 0.5rem 1rem;
+  --txtColor: #b3b3b3;
+  --bg: transparent;
+}
+
+.c0:hover {
+  --bg: #000;
+  --txtColor: #fff;
+}
+
+.c0:hover {
+  --txtColor: #000;
+  --bg: transparent;
+}
+
+<a
+  class="c0"
+  data-testid="testButton"
+  href="/test"
+>
+  Test Button
+</a>
+`;
