@@ -5,6 +5,7 @@ import { spacing } from 'utils';
 import { ButtonLink, Badge } from 'elements';
 
 const Buttons = () => {
+<<<<<<< HEAD
   const items = [
     {
       name: 'search',
@@ -22,6 +23,9 @@ const Buttons = () => {
       icon: 'fas fa-shopping-bag'
     }
   ];
+=======
+  // const items = [];
+>>>>>>> 63658d0af6f189dbee4bbb5e1399686ee9d870a5
 
   return (
     <Wrapper>
