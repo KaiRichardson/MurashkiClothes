@@ -1,16 +1,6 @@
-const authRoutes = require("./authRoutes");
+const authRoutes = require('./authRoutes');
 const printfulRoutes = require('./printfulRoutes');
-const path = require('path');
-
-// HTML routes
-
-
-
-
-// If no valid routes are hit, send the React app
-// router.get('*', (req, res) => {
-// 	res.sendFile(path.join(__dirname, "../client/build/index.html"));
-// });
+const htmlRoutes = require('./htmlRoutes');
 
 module.exports = (app) => {
 	const apiRoutes = require("express").Router();
@@ -18,5 +8,6 @@ module.exports = (app) => {
 	apiRoutes.use('/printful', printfulRoutes);
 	
 	app.use('/auth', authRoutes);
-	app.use('/api', apiRoutes)
+	app.use('/api', apiRoutes);
+	app.use('/', htmlRoutes);
 };
