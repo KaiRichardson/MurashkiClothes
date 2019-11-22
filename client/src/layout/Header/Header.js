@@ -23,5 +23,5 @@ const Wrapper = styled(Container).attrs({ as: 'header' })`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: ${spacing.lg} 0;
+  padding: ${spacing.lg} ${spacing.sm};
 `;
