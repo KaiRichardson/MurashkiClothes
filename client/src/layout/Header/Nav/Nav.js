@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import styled from 'styled-components';
 
 import { MobileNavContext } from '../MobileNav.context';
-import { absolute, red, fadeIn, fadeOut, lightGrey, white } from 'utils';
+import { absolute, fadeIn, fadeOut, white } from 'utils';
 import NavItem from './NavItem';
 
 const Nav = () => {
@@ -61,13 +61,11 @@ const NavList = styled.ul`
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
-  background: ${white};
   visibility: ${props => (props.toggle ? 'visable' : 'hidden')};
   animation: 100ms linear ${props => (props.toggle ? fadeIn : fadeOut)};
-  list-style: none;
+  background: ${white};
   z-index: 2;
-
-  ${props => (props.toggle ? (document.body.style.overflow = 'hidden') : (document.body.style.overflow = 'initial'))}
+  list-style: none;
 
   @media screen and (min-width: 768px) {
     visibility: initial;
@@ -77,4 +75,6 @@ const NavList = styled.ul`
     position: initial;
     background: initial;
   }
+
+  ${props => (props.toggle ? (document.body.style.overflow = 'hidden') : (document.body.style.overflow = 'initial'))};
 `;
