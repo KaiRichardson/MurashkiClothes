@@ -3,9 +3,9 @@ import styled from 'styled-components';
 
 import { spacing } from 'utils';
 import { ButtonLink, Badge } from 'elements';
+import ToggleNavButton from './ToggleNavButton';
 
 const Buttons = () => {
-<<<<<<< HEAD
   const items = [
     {
       name: 'search',
@@ -23,9 +23,6 @@ const Buttons = () => {
       icon: 'fas fa-shopping-bag'
     }
   ];
-=======
-  // const items = [];
->>>>>>> 63658d0af6f189dbee4bbb5e1399686ee9d870a5
 
   return (
     <Wrapper>
@@ -36,6 +33,8 @@ const Buttons = () => {
           {item.name === 'cart' && <Badge number={3} />}
         </Item>
       ))}
+
+      <ToggleNavButton />
     </Wrapper>
   );
 };
@@ -44,7 +43,11 @@ export default Buttons;
 
 const Wrapper = styled.div`
   display: grid;
-  grid-template-columns: repeat(3, max-content);
+  grid-template-columns: repeat(4, max-content);
+
+  @media screen and (min-width: 768px) {
+    grid-template-columns: repeat(3, max-content);
+  }
 `;
 
 const Item = styled(ButtonLink)`

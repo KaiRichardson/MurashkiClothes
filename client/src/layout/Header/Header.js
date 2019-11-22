@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
+import { MobileNavContextProvider } from './MobileNav.context';
 import { spacing } from 'utils';
 import { Logo } from 'elements';
 import { Container } from 'layout/Container';
@@ -11,9 +12,11 @@ const Header = () => (
   <Wrapper>
     <Logo />
 
-    <Nav />
+    <MobileNavContextProvider>
+      <Nav />
 
-    <Buttons />
+      <Buttons />
+    </MobileNavContextProvider>
   </Wrapper>
 );
 
