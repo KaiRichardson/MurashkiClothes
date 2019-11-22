@@ -1,5 +1,5 @@
 import React from 'react';
-import { render } from '@testing-library/react';
+import { render, cleanup } from '@testing-library/react';
 import { BrowserRouter as Router } from 'react-router-dom';
 
 import NavItem from './NavItem';
@@ -8,6 +8,7 @@ describe('<NavItem /> tests', () => {
   it('renders a nav item for the home page', () => {
     //* Arrange
     const testData = { name: 'home', link: '/' };
+    document.remove = jest.fn();
 
     //* Act
     const { getByTestId } = render(

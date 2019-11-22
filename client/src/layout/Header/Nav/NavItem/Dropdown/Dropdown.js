@@ -17,12 +17,30 @@ const Dropdown = ({ options }) => {
       currentPage.current = location;
     }
   }, [location]);
+
+  const toggleRef = useRef();
+  const menuRef = useRef();
+  useEffect(() => {
+    const handleClick = e => {
+      if (toggleRef && menuRef) {
+        if (toggleRef.current.contains(e.target) || menuRef.current.contains(e.target)) {
+          return;
+        }
+
+        setMenuIsOpen(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClick);
+    return () => document.remove('mousedown', handleClick);
+  }, []);
+
   const toggleMenu = () => setMenuIsOpen(!menuIsOpen);
 
   return (
     <>
-      <ToggleButton toggle={toggleMenu} menuIsOpen={menuIsOpen} />
-      <List toggle={menuIsOpen} data-testid='dropdown'>
+      <ToggleButton ref={toggleRef} toggle={toggleMenu} menuIsOpen={menuIsOpen} />
+      <List ref={menuRef} toggle={menuIsOpen} data-testid='dropdown'>
         {options.map(item => (
           <Option key={item.link} data-testid='dropdownOption'>
             <Link to={item.link} data-testid='navItemLink' onClick={toggleMenu}>

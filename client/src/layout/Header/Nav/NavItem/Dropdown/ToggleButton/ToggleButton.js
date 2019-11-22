@@ -1,15 +1,15 @@
-import React from 'react';
+import React, { forwardRef } from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
 import { spacing, grey, transition } from 'utils';
 import { Button as B } from 'elements';
 
-const ToggleButton = ({ toggle, menuIsOpen }) => (
-  <Button onClick={toggle} data-testid='toggleButton'>
+const ToggleButton = forwardRef(({ toggle, menuIsOpen }, ref) => (
+  <Button ref={ref} onClick={toggle} data-testid='toggleButton'>
     <Arrow toggle={menuIsOpen} />
   </Button>
-);
+));
 
 export default ToggleButton;
 
