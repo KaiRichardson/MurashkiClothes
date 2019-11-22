@@ -2,7 +2,7 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 
-import { red, grey, transition } from 'utils';
+import { red, grey, transition, spacing } from 'utils';
 import Dropdown from './Dropdown';
 
 const NavItem = ({ name, link, dropdownOptions }) => (
@@ -32,6 +32,9 @@ const Item = styled.li`
   color: ${grey};
   text-align: center;
   letter-spacing: 2px;
+  position: relative;
+  align-self: center;
+  padding: ${spacing.sm} ${spacing.lg};
 `;
 
 const Link = styled(NavLink)`

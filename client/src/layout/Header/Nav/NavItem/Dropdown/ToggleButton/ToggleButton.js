@@ -19,6 +19,6 @@ const Button = styled(B).attrs({ trans: true })`
 const Arrow = styled.i.attrs({ className: 'far fa-chevron-down' })`
   font-size: 60%;
   color: ${grey};
-  ${props => props.toggle && 'transform: rotate(-180deg);'}
+  ${props => (props.toggle ? 'transform: rotate(-180deg);' : 'transform: rotate(0deg);')}
   ${transition({ prop: 'transform' })};
 `;

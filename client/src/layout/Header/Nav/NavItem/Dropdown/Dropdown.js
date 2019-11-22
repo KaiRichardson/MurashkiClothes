@@ -1,13 +1,21 @@
-import React, { useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import React, { useState, useEffect, useRef } from 'react';
+import { NavLink, useLocation } from 'react-router-dom';
 import styled from 'styled-components';
 
-import { red, lightGrey, transition, spacing } from 'utils';
+import { red, lightGrey, transition, spacing, absolute, white } from 'utils';
 import ToggleButton from './ToggleButton';
 
 const Dropdown = ({ options }) => {
   const [menuIsOpen, setMenuIsOpen] = useState(false);
+  const location = useLocation();
 
+  const currentPage = useRef();
+  useEffect(() => {
+    if (currentPage.current !== location) {
+      setMenuIsOpen(false);
+      currentPage.current = location;
+    }
+  }, [location]);
   const toggleMenu = () => setMenuIsOpen(!menuIsOpen);
 
   return (
@@ -16,7 +24,7 @@ const Dropdown = ({ options }) => {
       <List toggle={menuIsOpen} data-testid='dropdown'>
         {options.map(item => (
           <Option key={item.link} data-testid='dropdownOption'>
-            <Link to={item.link} data-testid='navItemLink'>
+            <Link to={item.link} data-testid='navItemLink' onClick={toggleMenu}>
               {item.name}
             </Link>
           </Option>
@@ -33,6 +41,16 @@ const List = styled.ul`
   font-size: 70%;
   list-style: none;
   transform: scaleY(${props => (props.toggle ? 1 : 0)});
+  transform-origin: top;
+  ${transition({ prop: 'transform' })};
+
+  @media screen and (min-width: 768px) {
+    ${absolute({})};
+    top: 3rem;
+    background: ${white};
+    padding: ${spacing.md};
+    border-top: 2px solid ${red};
+  }
 `;
 
 const Option = styled.li`

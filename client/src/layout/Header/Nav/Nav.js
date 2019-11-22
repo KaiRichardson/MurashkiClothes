@@ -13,7 +13,7 @@ const Nav = () => {
   const handleNavItemClick = e => {
     if (e.target.dataset['testid'] !== 'navItemLink') return;
 
-    toggleNavIsOpen();
+    if (navIsOpen) toggleNavIsOpen();
   };
   useEventListener('click', handleNavItemClick, navListRef.current);
 
