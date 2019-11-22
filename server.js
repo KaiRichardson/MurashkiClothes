@@ -4,7 +4,7 @@ const express = require("express");
 const app = express();
 const dbConn = require("./database/db");
 
-const routes = require("./routes");
+const routeConfig = require("./routes");
 const morgan = require("morgan");
 
 const PORT = process.env.PORT || 6969;
@@ -19,8 +19,8 @@ if (process.env.NODE_ENV === "production") {
 	app.use(express.static("client/build"));
 }
 
-// Add routes, both API and view
-app.use("/", routes);
+//configure routes
+routeConfig(app);
 
 // Start the API server
 dbConn()

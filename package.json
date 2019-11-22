@@ -16,7 +16,6 @@
 		"start": "node server.js",
 		"dev": "concurrently \"nodemon server.js'\" \"yarn run client\"",
 		"client": "cd client && yarn run start",
-		"seed": "node scripts/seedDB.js",
 		"install": "cd client && yarn install",
 		"build": "cd client && yarn run build",
 		"heroku-postbuild": "yarn run build"

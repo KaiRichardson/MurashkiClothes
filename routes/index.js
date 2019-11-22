@@ -8,9 +8,9 @@ const path = require('path');
 
 
 // If no valid routes are hit, send the React app
-router.get('*', (req, res) => {
-	res.sendFile(path.join(__dirname, "../client/build/index.html"));
-});
+// router.get('*', (req, res) => {
+// 	res.sendFile(path.join(__dirname, "../client/build/index.html"));
+// });
 
 module.exports = (app) => {
 	const apiRoutes = require("express").Router();
