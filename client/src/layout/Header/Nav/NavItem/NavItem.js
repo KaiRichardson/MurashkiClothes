@@ -1,26 +1,30 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 
-import { MobileNavContext } from '../../MobileNav.context';
 import { red, grey } from 'utils';
+import Dropdown from './Dropdown';
 
-const NavItem = ({ name, link, dropdownOptions }) => {
-  const { toggleNavIsOpen } = useContext(MobileNavContext);
-  return (
-    <Item>
-      {link === '/' ? (
-        <Link exact to={link} onClick={toggleNavIsOpen} data-testid={`${name}-link`}>
+const NavItem = ({ name, link, dropdownOptions }) => (
+  <Item>
+    {link === '/' ? (
+      <Link exact to={link} data-testid={`navItemLink`}>
+        {name}
+      </Link>
+    ) : dropdownOptions ? (
+      <>
+        <Link to={link} data-testid={`navItemLink`}>
           {name}
         </Link>
-      ) : (
-        <Link to={link} onClick={toggleNavIsOpen} data-testid={`${name}-link`}>
-          {name}
-        </Link>
-      )}
-    </Item>
-  );
-};
+        <Dropdown options={dropdownOptions} />
+      </>
+    ) : (
+      <Link to={link} data-testid={`navItemLink`}>
+        {name}
+      </Link>
+    )}
+  </Item>
+);
 
 export default NavItem;
 

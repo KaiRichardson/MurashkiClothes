@@ -17,9 +17,30 @@ describe('<NavItem /> tests', () => {
     );
 
     //* Assert
-    const testLink = getByTestId(`${testData.name}-link`);
+    const testLink = getByTestId('navItemLink');
 
     expect(testLink.getAttribute('href')).toBe(testData.link);
     expect(testLink.textContent).toBe(testData.name);
+  });
+
+  it('renders a nav item with a dropdown menu', () => {
+    //* Arrange
+    const testData = {
+      name: 'test',
+      link: '/test',
+      dropdownOptions: [{ name: 'dropdown item', link: '/test/dropdown' }]
+    };
+
+    //* Act
+    const { getByTestId } = render(
+      <Router>
+        <NavItem name={testData.name} link={testData.link} dropdownOptions={testData.dropdownOptions} />
+      </Router>
+    );
+
+    //* Assert
+    const dropdown = getByTestId(`dropdown`);
+
+    expect(dropdown);
   });
 });

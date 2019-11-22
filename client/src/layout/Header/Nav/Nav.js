@@ -1,12 +1,21 @@
-import React, { useContext } from 'react';
+import React, { useContext, useRef } from 'react';
 import styled from 'styled-components';
 
 import { MobileNavContext } from '../MobileNav.context';
+import { useEventListener } from 'hooks';
 import { absolute, fadeIn, fadeOut, white } from 'utils';
 import NavItem from './NavItem';
 
 const Nav = () => {
-  const { navIsOpen } = useContext(MobileNavContext);
+  const { navIsOpen, toggleNavIsOpen } = useContext(MobileNavContext);
+
+  const navListRef = useRef();
+  const handleNavItemClick = e => {
+    if (e.target.dataset['testid'] !== 'navItemLink') return;
+
+    toggleNavIsOpen();
+  };
+  useEventListener('click', handleNavItemClick, navListRef.current);
 
   const items = [
     {
@@ -39,9 +48,9 @@ const Nav = () => {
 
   return (
     <Wrapper>
-      <NavList toggle={navIsOpen}>
+      <NavList ref={navListRef} toggle={navIsOpen}>
         {items.map(item => (
-          <NavItem name={item.name} link={item.link} key={item.name} />
+          <NavItem name={item.name} link={item.link} key={item.name} dropdownOptions={item.dropdownOptions} />
         ))}
       </NavList>
     </Wrapper>
