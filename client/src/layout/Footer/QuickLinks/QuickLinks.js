@@ -1,7 +1,8 @@
 import React from 'react';
 import { Link as L } from 'react-router-dom';
 import styled from 'styled-components';
-import { Section } from 'elements';
+
+import { spacing, red, grey, lightGrey, transition } from 'utils';
 
 const QuickLinks = () => {
   const items = [
@@ -33,7 +34,8 @@ const QuickLinks = () => {
     }
   ];
   return (
-    <Wrapper title='quick links' titleTag='h3'>
+    <Wrapper>
+      <Title>quick links</Title>
       <List>
         {items.map(item => (
           <Item key={item.link}>
@@ -56,12 +58,40 @@ const QuickLinks = () => {
 
 export default QuickLinks;
 
-const Wrapper = styled(Section)`
+const Wrapper = styled.section`
   grid-area: QuickLinks;
+
+  text-transform: uppercase;
 `;
 
-const List = styled.ul``;
+const Title = styled.h3`
+  border-left: 3px solid ${red};
+  padding-left: ${spacing.md};
+  margin-bottom: ${spacing.md};
+  color: ${grey};
+`;
 
-const Item = styled.li``;
+const List = styled.ul`
+  color: ${lightGrey};
+  list-style: none;
+  margin-left: ${spacing.md};
+`;
 
-const Link = styled(L)``;
+const Item = styled.li`
+  > ${List} {
+    margin-left: ${spacing.sm};
+    font-size: 70%;
+  }
+`;
+
+const Link = styled(L)`
+  padding-bottom: ${spacing.md};
+  display: inline-block;
+  text-decoration: none;
+  color: inherit;
+  ${transition({ prop: 'color' })};
+
+  &:hover {
+    color: ${red};
+  }
+`;

@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
+import { spacing } from 'utils';
 import { Container } from '../Container';
 import ContactInfo from './ContactInfo';
 import CurrentPromo from './CurrentPromo';
@@ -27,6 +28,7 @@ const Wrapper = styled(Container).attrs({ as: 'footer' })`
     'QuickLinks'
     'ContactInfo'
     'NewsLetterSignUp';
+  grid-gap: ${spacing.lg};
 
   @media screen and (min-width: 768px) {
     grid-template-rows: max-content 1fr;
