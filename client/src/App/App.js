@@ -2,7 +2,7 @@ import React from 'react';
 import Normalize from 'react-normalize';
 
 import { GlobalStyle } from './GlobalStyle';
-import { Container, Header } from 'layout';
+import { Container, Header, Footer } from 'layout';
 import { Button, Link, ButtonLink, ProductList, ProductItem, Section, Badge } from 'elements';
 //, Logo
 
@@ -85,6 +85,8 @@ const App = () => {
           </ProductList>
         </Section>
       </Container>
+
+      <Footer />
     </>
   );
 };
