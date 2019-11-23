@@ -5,13 +5,13 @@ import PropTypes from 'prop-types';
 import { spacing, grey, transition } from 'utils';
 import { Button as B } from 'elements';
 
-const ToggleButton = forwardRef(({ toggle, menuIsOpen }, ref) => (
+const ToggleButton = ({ toggle, menuIsOpen }, ref) => (
   <Button ref={ref} onClick={toggle} data-testid='toggleButton'>
     <Arrow toggle={menuIsOpen} />
   </Button>
-));
+);
 
-export default ToggleButton;
+export default forwardRef(ToggleButton);
 
 const Button = styled(B).attrs({ trans: true })`
   padding: ${spacing.sm} ${spacing.xs};
