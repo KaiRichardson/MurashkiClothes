@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 
 import { red, lightGrey, transition, spacing, absolute, white } from 'utils';
 import ToggleButton from './ToggleButton';
+import { useExternalClick } from 'hooks';
 
 const Dropdown = ({ options }) => {
   const [menuIsOpen, setMenuIsOpen] = useState(false);
@@ -18,29 +19,14 @@ const Dropdown = ({ options }) => {
     }
   }, [location]);
 
-  const toggleRef = useRef();
-  const menuRef = useRef();
-  useEffect(() => {
-    const handleClick = e => {
-      if (toggleRef && menuRef) {
-        if (toggleRef.current.contains(e.target) || menuRef.current.contains(e.target)) {
-          return;
-        }
-
-        setMenuIsOpen(false);
-      }
-    };
-
-    document.addEventListener('mousedown', handleClick);
-    return () => document.remove('mousedown', handleClick);
-  }, []);
+  const { internalref, externalRef } = useExternalClick(setMenuIsOpen);
 
   const toggleMenu = () => setMenuIsOpen(!menuIsOpen);
 
   return (
     <>
-      <ToggleButton ref={toggleRef} toggle={toggleMenu} menuIsOpen={menuIsOpen} />
-      <List ref={menuRef} toggle={menuIsOpen} data-testid='dropdown'>
+      <ToggleButton ref={externalRef} toggle={toggleMenu} menuIsOpen={menuIsOpen} />
+      <List ref={internalref} toggle={menuIsOpen} data-testid='dropdown'>
         {options.map(item => (
           <Option key={item.link} data-testid='dropdownOption'>
             <Link to={item.link} data-testid='navItemLink' onClick={toggleMenu}>
