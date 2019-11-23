@@ -28,9 +28,17 @@ const Wrapper = styled(Container).attrs({ as: 'footer' })`
     'ContactInfo'
     'NewsLetterSignUp';
 
+  @media screen and (min-width: 768px) {
+    grid-template-rows: max-content 1fr;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-areas:
+      'CurrentPromo ContactInfo'
+      'QuickLinks NewsLetterSignUp';
+  }
+
   @media screen and (min-width: 992px) {
     grid-template-rows: max-content 1fr;
-    grid-template-columns: repeat(3 1fr);
+    grid-template-columns: repeat(3, 1fr);
     grid-template-areas:
       'CurrentPromo QuickLinks ContactInfo'
       'CurrentPromo QuickLinks NewsLetterSignUp';
