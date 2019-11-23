@@ -25,5 +25,5 @@ const Title = styled.h2`
 
 Section.propTypes = {
   title: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
-  children: PropTypes.element
+  children: PropTypes.any
 };

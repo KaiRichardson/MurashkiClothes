@@ -10,8 +10,8 @@ export default Badge;
 
 const Dot = styled.span`
   position: absolute;
-  top: 0;
-  right: -10px;
+  top: -10px;
+  right: -5px;
   width: 20px;
   height: 20px;
   line-height: 20px;
@@ -20,6 +20,10 @@ const Dot = styled.span`
   text-align: center;
   color: ${white};
   background: ${red};
+
+  @media screen and (min-width: 992px) {
+    top: -5px;
+  }
 `;
 
 Badge.propTypes = {

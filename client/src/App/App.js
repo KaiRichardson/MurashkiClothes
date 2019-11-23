@@ -40,13 +40,13 @@ const App = () => {
             </>
           }
         >
-          <p>this section's title is a jsx element</p>
+          <p>this sections title is a jsx element</p>
         </Section>
         <Section>
           <p>this section has no title</p>
         </Section>
         <Section title='this is also a section'>
-          <p>this section's title is a string</p>
+          <p>this sections title is a string</p>
           <ProductList>
             <ProductItem
               product={{

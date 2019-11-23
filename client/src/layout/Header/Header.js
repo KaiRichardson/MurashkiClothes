@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
+import { MobileNavContextProvider } from './MobileNav.context';
 import { spacing } from 'utils';
 import { Logo } from 'elements';
 import { Container } from 'layout/Container';
@@ -11,9 +12,11 @@ const Header = () => (
   <Wrapper>
     <Logo />
 
-    <Nav />
+    <MobileNavContextProvider>
+      <Nav />
 
-    <Buttons />
+      <Buttons />
+    </MobileNavContextProvider>
   </Wrapper>
 );
 
@@ -23,5 +26,5 @@ const Wrapper = styled(Container).attrs({ as: 'header' })`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: ${spacing.lg} 0;
+  padding: ${spacing.lg} ${spacing.sm};
 `;
