@@ -6,8 +6,6 @@ exports[`<Button /> tests renders a dark button 1`] = `
   --txtColor: #000;
   cursor: pointer;
   padding: 0.5rem 1rem;
-  overflow: hidden;
-  white-space: nowrap;
   border: none;
   -webkit-transition: all 250ms ease-in;
   transition: all 250ms ease-in;
@@ -40,8 +38,6 @@ exports[`<Button /> tests renders a default button 1`] = `
   --txtColor: #000;
   cursor: pointer;
   padding: 0.5rem 1rem;
-  overflow: hidden;
-  white-space: nowrap;
   border: none;
   -webkit-transition: all 250ms ease-in;
   transition: all 250ms ease-in;
@@ -68,8 +64,6 @@ exports[`<Button /> tests renders a transparent button 1`] = `
   --txtColor: #000;
   cursor: pointer;
   padding: 0.5rem 1rem;
-  overflow: hidden;
-  white-space: nowrap;
   border: none;
   -webkit-transition: all 250ms ease-in;
   transition: all 250ms ease-in;
@@ -111,8 +105,6 @@ exports[`<ButtonLink /> tests renders a dark button link 1`] = `
   transition: all 250ms ease-in;
   cursor: pointer;
   padding: 0.5rem 1rem;
-  overflow: hidden;
-  white-space: nowrap;
   --bg: #000;
   --txtColor: #fff;
 }
@@ -149,8 +141,6 @@ exports[`<ButtonLink /> tests renders a default button link 1`] = `
   transition: all 250ms ease-in;
   cursor: pointer;
   padding: 0.5rem 1rem;
-  overflow: hidden;
-  white-space: nowrap;
 }
 
 .c0:hover {
@@ -181,8 +171,6 @@ exports[`<ButtonLink /> tests renders a transparent button link 1`] = `
   transition: all 250ms ease-in;
   cursor: pointer;
   padding: 0.5rem 1rem;
-  overflow: hidden;
-  white-space: nowrap;
   --txtColor: #b3b3b3;
   --bg: transparent;
 }

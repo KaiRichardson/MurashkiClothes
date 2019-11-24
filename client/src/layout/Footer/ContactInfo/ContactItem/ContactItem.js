@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 
 import { spacing } from 'utils';
 import { Link as L } from 'elements';
@@ -32,3 +33,9 @@ const Icon = styled.i`
 `;
 
 const Value = styled.span``;
+
+ContactItem.propTypes = {
+  value: PropTypes.string.isRequired,
+  icon: PropTypes.string.isRequired,
+  link: PropTypes.string.isRequired
+};

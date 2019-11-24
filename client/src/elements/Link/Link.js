@@ -1,10 +1,10 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
 import { Link as L } from 'react-router-dom';
-import PropTypes from 'prop-types';
 
 import { black, red, transition, lightGrey } from 'utils';
 
+// eslint-disable-next-line
 export const Link = styled(({ dark, light, ext, ...rest }) => (ext ? <a {...rest} /> : <L {...rest} />))`
   --txtColor: ${black};
 
@@ -40,7 +40,3 @@ export const Link = styled(({ dark, light, ext, ...rest }) => (ext ? <a {...rest
       }
     `}
 `;
-
-Link.propTypes = {
-  dark: PropTypes.bool
-};
