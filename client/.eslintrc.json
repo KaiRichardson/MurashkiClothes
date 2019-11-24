@@ -1,6 +1,13 @@
 {
-  "extends": ["eslint:recommended", "react-app", "plugin:react/recommended", "plugin:prettier/recommended"],
-  "plugins": ["react", "prettier"],
+  "extends": [
+    "eslint:recommended",
+    "react-app",
+    "plugin:@typescript-eslint/recommended",
+    "prettier/@typescript-eslint",
+    "plugin:react/recommended",
+    "plugin:prettier/recommended"
+  ],
+  "plugins": ["react", "@typescript-eslint", "prettier"],
   "env": { "browser": true, "jest": true },
   "rules": {
     "jsx-quotes": ["error", "prefer-single"],
@@ -10,12 +17,19 @@
         "max": 1,
         "maxEOF": 0
       }
-    ]
+    ],
+    "@typescript-eslint/explicit-function-return-type": 0,
+    "@typescript-eslint/no-empty-interface": 0,
+    "@typescript-eslint/ban-ts-ignore": 0,
+    "@typescript-eslint/no-explicit-any": 0,
+    "@typescript-eslint/semi": ["error"],
+    "react/no-unescaped-entities": 0
   },
   "settings": {
     "react": {
       "pragma": "React",
       "version": "detect"
     }
-  }
+  },
+  "parser": "@typescript-eslint/parser"
 }
