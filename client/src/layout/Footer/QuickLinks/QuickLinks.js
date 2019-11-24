@@ -1,8 +1,8 @@
 import React from 'react';
-import { Link as L } from 'react-router-dom';
 import styled from 'styled-components';
 
 import { spacing, red, grey, lightGrey, transition } from 'utils';
+import { Link as L } from 'elements';
 
 const QuickLinks = () => {
   const items = [
@@ -39,12 +39,16 @@ const QuickLinks = () => {
       <List>
         {items.map(item => (
           <Item key={item.link}>
-            <Link to={item.link}>{item.name}</Link>
+            <Link light to={item.link}>
+              {item.name}
+            </Link>
             {item.options && (
               <List>
                 {item.options.map(item => (
                   <Item key={item.link}>
-                    <Link to={item.link}>{item.name}</Link>
+                    <Link light to={item.link}>
+                      {item.name}
+                    </Link>
                   </Item>
                 ))}
               </List>
@@ -68,7 +72,6 @@ const Title = styled.h3`
   border-left: 3px solid ${red};
   padding-left: ${spacing.md};
   margin-bottom: ${spacing.md};
-  color: ${grey};
 `;
 
 const List = styled.ul`
@@ -87,11 +90,4 @@ const Item = styled.li`
 const Link = styled(L)`
   padding-bottom: ${spacing.md};
   display: inline-block;
-  text-decoration: none;
-  color: inherit;
-  ${transition({ prop: 'color' })};
-
-  &:hover {
-    color: ${red};
-  }
 `;

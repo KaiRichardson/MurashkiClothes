@@ -61,4 +61,32 @@ describe('<Link /> tests', () => {
       modifier: ':hover'
     });
   });
+
+  it('renders a light link', () => {
+    //* Act
+    const { getByTestId } = render(
+      <Router>
+        <Link light data-testid='test-link' to='/test'>
+          test link
+        </Link>
+      </Router>
+    );
+
+    //* Assert
+    const testLink = getByTestId('test-link');
+
+    expect(testLink.getAttribute('href')).toBe('/test');
+
+    // Snapshot test
+    expect(testLink).toMatchSnapshot();
+
+    // Color test
+    expect(testLink).toHaveStyleRule('--txtColor', '#b3b3b3');
+    expect(testLink).toHaveStyleRule('color', 'var(--txtColor)');
+
+    // Hover test
+    expect(testLink).toHaveStyleRule('--txtColor', '#ee4266', {
+      modifier: ':hover'
+    });
+  });
 });
