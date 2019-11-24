@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import { spacing, red, grey, lightGrey, transition } from 'utils';
-import { Link as L } from 'elements';
+import { spacing } from 'utils';
+import { Link as L, Title3 } from 'elements';
 
 const QuickLinks = () => {
   const items = [
@@ -68,14 +68,11 @@ const Wrapper = styled.section`
   text-transform: uppercase;
 `;
 
-const Title = styled.h3`
-  border-left: 3px solid ${red};
-  padding-left: ${spacing.md};
+const Title = styled(Title3)`
   margin-bottom: ${spacing.md};
 `;
 
 const List = styled.ul`
-  color: ${lightGrey};
   list-style: none;
   margin-left: ${spacing.md};
 `;
