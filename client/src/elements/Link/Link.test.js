@@ -89,4 +89,19 @@ describe('<Link /> tests', () => {
       modifier: ':hover'
     });
   });
+
+  it('renders an external link', () => {
+    //* Act
+    const { getByTestId } = render(
+      <Link ext data-testid='testLink' href='/test'>
+        test link
+      </Link>
+    );
+
+    //* Assert
+    const testLink = getByTestId('testLink');
+
+    expect(testLink.tagName).toBe('A');
+    expect(testLink.getAttribute('href')).toBe('/test');
+  });
 });

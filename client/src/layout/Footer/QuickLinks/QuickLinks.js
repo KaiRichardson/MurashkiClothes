@@ -40,16 +40,12 @@ const QuickLinks = () => {
       <List>
         {items.map(item => (
           <Item key={item.link}>
-            <Link light to={item.link}>
-              {item.name}
-            </Link>
+            <Link to={item.link}>{item.name}</Link>
             {item.options && (
               <List>
                 {item.options.map(item => (
                   <Item key={item.link}>
-                    <Link light to={item.link}>
-                      {item.name}
-                    </Link>
+                    <Link to={item.link}>{item.name}</Link>
                   </Item>
                 ))}
               </List>
@@ -85,7 +81,7 @@ const Item = styled.li`
   }
 `;
 
-const Link = styled(L)`
+const Link = styled(L).attrs({ light: true })`
   padding-bottom: ${spacing.md};
   display: inline-block;
 `;

@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 
 import { black, red, transition, lightGrey } from 'utils';
 
-export const Link = styled(({ dark, light, ...rest }) => <L {...rest} />)`
+export const Link = styled(({ dark, light, ext, ...rest }) => (ext ? <a {...rest} /> : <L {...rest} />))`
   --txtColor: ${black};
 
   ${transition({ prop: 'color' })};

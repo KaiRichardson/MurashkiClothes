@@ -29,10 +29,12 @@ const Wrapper = styled(Container).attrs({ as: 'footer' })`
     'ContactInfo'
     'NewsLetterSignUp';
   grid-gap: ${spacing.lg};
+  padding-top: ${spacing.lg};
+  padding-bottom: ${spacing.lg};
 
   @media screen and (min-width: 768px) {
     grid-template-rows: max-content 1fr;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     grid-template-areas:
       'CurrentPromo ContactInfo'
       'QuickLinks NewsLetterSignUp';
