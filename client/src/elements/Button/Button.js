@@ -16,12 +16,12 @@ export const Button = styled.button`
 
   cursor: pointer;
   padding: ${spacing.sm} ${spacing.md};
+  border: none;
+  ${transition({})};
 
   /* Default Button */
   background: var(--bg);
   color: var(--txtColor);
-  border: none;
-  ${transition({})};
 
   &:hover {
     --bg: ${black};
@@ -68,6 +68,7 @@ export const ButtonLink = styled(({ dark, trans, ...rest }) => <Link {...rest} /
   ${transition({})};
   cursor: pointer;
   padding: ${spacing.sm} ${spacing.md};
+  
 
   &:hover {
     --bg: ${black};

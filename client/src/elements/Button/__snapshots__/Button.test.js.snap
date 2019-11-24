@@ -6,11 +6,11 @@ exports[`<Button /> tests renders a dark button 1`] = `
   --txtColor: #000;
   cursor: pointer;
   padding: 0.5rem 1rem;
-  background: var(--bg);
-  color: var(--txtColor);
   border: none;
   -webkit-transition: all 250ms ease-in;
   transition: all 250ms ease-in;
+  background: var(--bg);
+  color: var(--txtColor);
   --bg: #000;
   --txtColor: #fff;
 }
@@ -38,11 +38,11 @@ exports[`<Button /> tests renders a default button 1`] = `
   --txtColor: #000;
   cursor: pointer;
   padding: 0.5rem 1rem;
-  background: var(--bg);
-  color: var(--txtColor);
   border: none;
   -webkit-transition: all 250ms ease-in;
   transition: all 250ms ease-in;
+  background: var(--bg);
+  color: var(--txtColor);
 }
 
 .c0:hover {
@@ -64,11 +64,11 @@ exports[`<Button /> tests renders a transparent button 1`] = `
   --txtColor: #000;
   cursor: pointer;
   padding: 0.5rem 1rem;
-  background: var(--bg);
-  color: var(--txtColor);
   border: none;
   -webkit-transition: all 250ms ease-in;
   transition: all 250ms ease-in;
+  background: var(--bg);
+  color: var(--txtColor);
   --txtColor: #b3b3b3;
   --bg: transparent;
 }
