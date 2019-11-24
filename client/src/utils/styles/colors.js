@@ -1,3 +1,4 @@
+// Named colors
 export const black = '#000';
 export const grey = '#333';
 export const lightGrey = '#b3b3b3';
