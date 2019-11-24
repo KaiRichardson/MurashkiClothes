@@ -33,6 +33,7 @@ const QuickLinks = () => {
       link: '/contact'
     }
   ];
+
   return (
     <Wrapper>
       <Title>quick links</Title>
