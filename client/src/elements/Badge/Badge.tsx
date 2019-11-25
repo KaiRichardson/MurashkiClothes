@@ -4,7 +4,11 @@ import PropTypes from 'prop-types';
 
 import { white, red } from 'utils';
 
-const Badge = ({ number }) => <Dot data-testid='badge'>{number <= 10 ? number : '10+'}</Dot>;
+interface Props {
+  number: number;
+}
+
+const Badge: React.FC<Props> = ({ number }) => <Dot data-testid='badge'>{number <= 10 ? number : '10+'}</Dot>;
 
 export default Badge;
 

@@ -14,7 +14,7 @@ describe('<Badge /> tests', () => {
     //* Assert
     const testBadge = getByTestId('badge');
 
-    expect(testBadge.firstChild.textContent).toBe(testNumber.toString());
+    expect(testBadge.textContent).toBe(testNumber.toString());
   });
 
   it('renders "10+" if the number is greater than ten', () => {
@@ -27,6 +27,6 @@ describe('<Badge /> tests', () => {
     //* Assert
     const testBadge = getByTestId('badge');
 
-    expect(testBadge.firstChild.textContent).toBe('10+');
+    expect(testBadge.textContent).toBe('10+');
   });
 });

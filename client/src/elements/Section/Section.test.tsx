@@ -14,7 +14,9 @@ describe('<Section /> tests', () => {
 
     //* Assert
     const testSection = getByTestId('section');
-    expect(testSection.firstElementChild.tagName).not.toBe('H2');
+    if (testSection.firstElementChild) {
+      expect(testSection.firstElementChild.tagName).not.toBe('H2');
+    }
   });
 
   it('renders a section with a string title', () => {
@@ -30,7 +32,9 @@ describe('<Section /> tests', () => {
 
     //* Assert
     const testSection = getByTestId('section');
-    expect(testSection.firstElementChild.tagName).toBe('H2');
+    if (testSection.firstElementChild) {
+      expect(testSection.firstElementChild.tagName).toBe('H2');
+    }
   });
 
   it('renders a section with a JSX Element title', () => {
@@ -46,6 +50,9 @@ describe('<Section /> tests', () => {
 
     //* Assert
     const testSection = getByTestId('section');
-    expect(testSection.firstElementChild.tagName).toBe('H2');
+
+    if (testSection.firstElementChild) {
+      expect(testSection.firstElementChild.tagName).toBe('H2');
+    }
   });
 });

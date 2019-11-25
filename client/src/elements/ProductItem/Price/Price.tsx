@@ -4,7 +4,13 @@ import PropTypes from 'prop-types';
 
 import { spacing, lightGrey } from 'utils';
 
-const Price = ({ id, price, discount }) => (
+interface Props {
+  id: string;
+  price: number;
+  discount?: number;
+}
+
+const Price: React.FC<Props> = ({ id, price, discount }) => (
   <Wrapper data-testid={`price-${id}`}>
     {discount ? (
       <>
@@ -28,12 +34,6 @@ const OldPrice = styled.del`
 
 const NewPrice = styled.span``;
 
-Price.propTypes = {
-  id: PropTypes.string.isRequired,
-  price: PropTypes.number.isRequired,
-  discount: PropTypes.number
-};
-
 const Wrapper = styled.p`
   grid-area: price;
 
@@ -46,3 +46,9 @@ const Wrapper = styled.p`
     }
   }
 `;
+
+Price.propTypes = {
+  id: PropTypes.string.isRequired,
+  price: PropTypes.number.isRequired,
+  discount: PropTypes.number
+};

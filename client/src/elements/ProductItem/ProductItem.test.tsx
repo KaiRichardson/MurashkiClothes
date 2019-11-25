@@ -14,7 +14,7 @@ describe('<ProductItem /> tests', () => {
     };
 
     //* Act
-    const { getByTestId } = render(<ProductItem product={testData} />);
+    const { getByTestId } = render(<ProductItem {...testData} />);
 
     //* Assert
     const wrapper = getByTestId(`product-${testData.id}`);
@@ -22,7 +22,9 @@ describe('<ProductItem /> tests', () => {
     const img = getByTestId(`img-${testData.id}`);
 
     expect(wrapper.children.length).toBe(3);
-    expect(title.textContent.toLowerCase()).toBe(testData.title);
+    if (title.textContent) {
+      expect(title.textContent.toLowerCase()).toBe(testData.title);
+    }
     expect(img.getAttribute('src')).toBe(testData.img);
     expect(img.getAttribute('alt')).toBe(testData.title);
   });

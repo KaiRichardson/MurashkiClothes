@@ -2,16 +2,19 @@ import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
+import { ProductProps } from 'Store';
 import { spacing } from 'utils';
 import Price from './Price';
 
-const ProductItem = ({ product }) => (
-  <Item data-testid={`product-${product.id}`}>
-    <Title data-testid={`title-${product.id}`}>{product.title}</Title>
+interface Props extends ProductProps {}
 
-    <Price id={product.id} price={product.price} discount={product.discount} />
+const ProductItem: React.FC<Props> = ({ id, title, price, discount, img }) => (
+  <Item data-testid={`product-${id}`}>
+    <Title data-testid={`title-${id}`}>{title}</Title>
 
-    <Img src={product.img} alt={product.title} data-testid={`img-${product.id}`} />
+    <Price id={id} price={price} discount={discount} />
+
+    <Img src={img} alt={title} data-testid={`img-${id}`} />
   </Item>
 );
 
@@ -42,11 +45,9 @@ const Img = styled.img`
 `;
 
 ProductItem.propTypes = {
-  product: PropTypes.shape({
-    id: PropTypes.string.isRequired,
-    title: PropTypes.string.isRequired,
-    price: PropTypes.number.isRequired,
-    discount: PropTypes.number,
-    img: PropTypes.string.isRequired
-  }).isRequired
+  id: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  price: PropTypes.number.isRequired,
+  discount: PropTypes.number,
+  img: PropTypes.string.isRequired
 };

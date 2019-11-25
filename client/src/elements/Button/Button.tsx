@@ -10,7 +10,7 @@ import { spacing, transition, white, black, grey, lightGrey } from 'utils';
         Add optional dark prop for dark button, default is light.
 */
 
-export const Button = styled.button`
+export const Button = styled.button<{ dark?: boolean; trans?: boolean }>`
   --bg: ${white};
   --txtColor: ${black};
 
@@ -54,7 +54,7 @@ export const Button = styled.button`
       `}
 `;
 
-export const ButtonLink = styled(({ dark, trans, ...rest }) => <Link {...rest} />)`
+export const ButtonLink = styled(({ dark, trans, ...rest }) => <Link {...rest} />)<{ dark?: boolean; trans?: boolean }>`
   /* Default Button */
   --bg: ${white};
   --txtColor: ${black};

@@ -5,7 +5,11 @@ import { Link as L } from 'react-router-dom';
 import { black, red, transition, lightGrey } from 'utils';
 
 // eslint-disable-next-line
-export const Link = styled(({ dark, light, ext, ...rest }) => (ext ? <a {...rest} /> : <L {...rest} />))`
+export const Link = styled(({ dark, light, ext, ...rest }) => (ext ? <a {...rest} /> : <L {...rest} />))<{
+  dark?: boolean;
+  light?: boolean;
+  ext?: boolean;
+}>`
   --txtColor: ${black};
 
   ${transition({ prop: 'color' })};

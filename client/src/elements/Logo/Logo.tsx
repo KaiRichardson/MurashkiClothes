@@ -4,7 +4,9 @@ import styled from 'styled-components';
 
 import { spacing, black } from 'utils';
 
-const Logo = () => (
+interface Props {}
+
+const Logo: React.FC<Props> = () => (
   <Wrapper>
     <Link to='/'>murashki</Link>
   </Wrapper>

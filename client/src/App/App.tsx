@@ -4,9 +4,8 @@ import Normalize from 'react-normalize';
 import { GlobalStyle } from './GlobalStyle';
 import { Container, Header, Footer } from 'layout';
 import { Button, Link, ButtonLink, ProductList, ProductItem, Section, Badge } from 'elements';
-//, Logo
 
-const App = () => {
+const App: React.FC = () => {
   return (
     <>
       <Normalize />
@@ -49,7 +48,7 @@ const App = () => {
           <p>this sections title is a string</p>
           <ProductList>
             <ProductItem
-              product={{
+              {...{
                 id: 'abc123',
                 title: 'denim jacket',
                 price: 46.0,
@@ -57,7 +56,7 @@ const App = () => {
               }}
             />
             <ProductItem
-              product={{
+              {...{
                 id: 'abc123',
                 title: 'denim jacket',
                 price: 46.0,
@@ -66,7 +65,7 @@ const App = () => {
               }}
             />
             <ProductItem
-              product={{
+              {...{
                 id: 'abc123',
                 title: 'denim jacket',
                 price: 46.0,
@@ -74,7 +73,7 @@ const App = () => {
               }}
             />
             <ProductItem
-              product={{
+              {...{
                 id: 'abc123',
                 title: 'denim jacket',
                 price: 46.0,

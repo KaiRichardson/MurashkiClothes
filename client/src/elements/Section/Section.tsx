@@ -5,7 +5,13 @@ import PropTypes from 'prop-types';
 import { spacing } from 'utils';
 import { Title2 } from '../Title';
 
-const Section = ({ title, titleTag = 'h2', children }) => (
+interface Props {
+  title?: any;
+  titleTag?: any;
+  children: any;
+}
+
+const Section: React.FC<Props> = ({ title, titleTag = 'h2', children }) => (
   <Wrapper data-testid='section'>
     {title && (
       <Title2 as={titleTag} data-testid='sectionTitle'>
@@ -23,7 +29,7 @@ const Wrapper = styled.section`
 `;
 
 Section.propTypes = {
-  title: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
-  titleTag: PropTypes.string,
+  title: PropTypes.any,
+  titleTag: PropTypes.string.isRequired,
   children: PropTypes.any
 };
