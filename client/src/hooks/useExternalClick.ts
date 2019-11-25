@@ -1,25 +1,25 @@
 import { useRef, useEffect } from 'react';
 
-export const useExternalClick = setStateAction => {
+export const useExternalClick = (callback: () => any) => {
   // External ref for a single component
-  const externalRef = useRef();
+  const externalRef = useRef<any>();
 
   // Internal ref for component calling the hook
-  const internalref = useRef();
+  const internalref = useRef<any>();
   useEffect(() => {
-    const handleClick = e => {
+    const handleClick = (e: any) => {
       if (externalRef && internalref) {
         if (externalRef.current.contains(e.target) || internalref.current.contains(e.target)) {
           return;
         }
 
-        setStateAction(false);
+        callback();
       }
     };
 
     document.addEventListener('mousedown', handleClick);
-    return () => document.remove('mousedown', handleClick);
-  }, [setStateAction]);
+    return () => document.removeEventListener('mousedown', handleClick);
+  }, [callback]);
 
   return { internalref, externalRef };
 };
