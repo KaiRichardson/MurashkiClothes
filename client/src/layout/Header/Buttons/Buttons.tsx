@@ -5,7 +5,9 @@ import { spacing } from 'utils';
 import { ButtonLink, Badge } from 'elements';
 import ToggleNavButton from './ToggleNavButton';
 
-const Buttons = () => {
+interface Props {}
+
+const Buttons: React.FC<Props> = () => {
   const items = [
     {
       name: 'search',

@@ -6,24 +6,19 @@ import PropTypes from 'prop-types';
 import { red, grey, transition, spacing } from 'utils';
 import Dropdown from './Dropdown';
 
-const NavItem = ({ name, link, dropdownOptions }) => (
+interface Props {
+  name: string;
+  link: string;
+  dropdownOptions?: { name: string; link: string }[];
+}
+
+const NavItem: React.FC<Props> = ({ name, link, dropdownOptions }) => (
   <Item>
-    {link === '/' ? (
-      <Link exact to={link} data-testid={'navItemLink'}>
-        {name}
-      </Link>
-    ) : dropdownOptions ? (
-      <>
-        <Link to={link} data-testid={'navItemLink'}>
-          {name}
-        </Link>
-        <Dropdown options={dropdownOptions} />
-      </>
-    ) : (
-      <Link to={link} data-testid={'navItemLink'}>
-        {name}
-      </Link>
-    )}
+    <Link exact={link === '/'} to={link} data-testid={'navItemLink'}>
+      {name}
+    </Link>
+
+    {dropdownOptions && <Dropdown options={dropdownOptions} />}
   </Item>
 );
 
@@ -52,6 +47,7 @@ const Link = styled(NavLink)`
   }
 `;
 
+//@ts-ignore
 NavItem.propTypes = {
   name: PropTypes.string.isRequired,
   link: PropTypes.string.isRequired,

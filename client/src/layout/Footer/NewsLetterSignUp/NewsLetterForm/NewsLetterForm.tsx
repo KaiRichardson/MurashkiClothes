@@ -4,7 +4,9 @@ import styled from 'styled-components';
 import { useForm } from 'hooks';
 import { Form, Input, Button as B, FormGroup } from 'elements';
 
-const NewsLetterForm = () => {
+interface Props {}
+
+const NewsLetterForm: React.FC<Props> = () => {
   const { values, handleChange, resetForm } = useForm({ email: '' });
 
   const handleSubmit = () => {

@@ -5,7 +5,9 @@ import { spacing } from 'utils';
 import { Title3 } from 'elements';
 import ContactItem from './ContactItem';
 
-const ContactInfo = () => {
+interface Props {}
+
+const ContactInfo: React.FC<Props> = () => {
   const items = [
     {
       value: '(555)-555-5555',

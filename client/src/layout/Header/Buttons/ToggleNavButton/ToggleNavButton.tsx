@@ -5,7 +5,9 @@ import { MobileNavContext } from '../../MobileNav.context';
 import { lightGrey, transition, red } from 'utils';
 import { Button as B } from 'elements';
 
-const ToggleNavButton = () => {
+interface Props {}
+
+const ToggleNavButton: React.FC<Props> = () => {
   const { navIsOpen, toggleNavIsOpen } = useContext(MobileNavContext);
 
   return (
@@ -21,7 +23,7 @@ const Button = styled(B)`
   z-index: 2;
 `;
 
-const Hamburger = styled.span`
+const Hamburger = styled.span<{ toggle: boolean }>`
   display: block;
   position: relative;
   height: 2px;

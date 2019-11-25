@@ -5,7 +5,11 @@ const initialState = { navIsOpen: false, toggleNavIsOpen: () => {} };
 
 export const MobileNavContext = createContext(initialState);
 
-export const MobileNavContextProvider = ({ children }) => {
+interface Props {
+  children: any;
+}
+
+export const MobileNavContextProvider: React.FC<Props> = ({ children }) => {
   const [navIsOpen, setNavIsOpen] = useState(false);
   const toggleNavIsOpen = () => setNavIsOpen(!navIsOpen);
 

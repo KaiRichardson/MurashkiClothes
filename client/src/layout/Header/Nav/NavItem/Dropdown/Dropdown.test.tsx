@@ -11,7 +11,7 @@ describe('<Dropdown /> tests', () => {
       { name: 'item one', link: '/item/one' },
       { name: 'item two', link: '/item/two' }
     ];
-    document.remove = jest.fn();
+    document.removeEventListener = jest.fn();
 
     //* Act
     const { getAllByTestId } = render(

@@ -8,7 +8,9 @@ import CurrentPromo from './CurrentPromo';
 import NewsLetterSignUp from './NewsLetterSignUp';
 import QuickLinks from './QuickLinks';
 
-const Footer = () => (
+interface Props {}
+
+const Footer: React.FC<Props> = () => (
   <Wrapper>
     <CurrentPromo />
     <QuickLinks />

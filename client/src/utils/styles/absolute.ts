@@ -1,4 +1,4 @@
-export const absolute = ({ x = 'left', y = 'top' }: { x: 'left' | 'right'; y: 'top' | 'bottom' }) => `
+export const absolute = ({ x = 'left', y = 'top' }: { x?: 'left' | 'right'; y?: 'top' | 'bottom' }) => `
     position: absolute;
     ${x}: 0;
     ${y}: 0;    

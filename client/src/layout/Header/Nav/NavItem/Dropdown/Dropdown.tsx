@@ -3,15 +3,19 @@ import { NavLink, useLocation } from 'react-router-dom';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
+import { useExternalClick } from 'hooks';
 import { red, lightGrey, transition, spacing, absolute, white } from 'utils';
 import ToggleButton from './ToggleButton';
-import { useExternalClick } from 'hooks';
 
-const Dropdown = ({ options }) => {
-  const [menuIsOpen, setMenuIsOpen] = useState(false);
+interface Props {
+  options: { name: string; link: string }[];
+}
+
+const Dropdown: React.FC<Props> = ({ options }) => {
+  const [menuIsOpen, setMenuIsOpen] = useState<boolean>(false);
   const location = useLocation();
 
-  const currentPage = useRef();
+  const currentPage = useRef<any>();
   useEffect(() => {
     if (currentPage.current !== location) {
       setMenuIsOpen(false);
@@ -19,7 +23,7 @@ const Dropdown = ({ options }) => {
     }
   }, [location]);
 
-  const { internalref, externalRef } = useExternalClick(setMenuIsOpen);
+  const { internalref, externalRef } = useExternalClick(() => setMenuIsOpen(false));
 
   const toggleMenu = () => setMenuIsOpen(!menuIsOpen);
 
@@ -41,7 +45,7 @@ const Dropdown = ({ options }) => {
 
 export default Dropdown;
 
-const List = styled.ul`
+const List = styled.ul<{ toggle: boolean }>`
   color: ${lightGrey};
   font-size: 70%;
   list-style: none;
@@ -76,6 +80,7 @@ const Link = styled(NavLink)`
   }
 `;
 
+//@ts-ignore
 Dropdown.propTypes = {
   options: PropTypes.arrayOf(
     PropTypes.shape({

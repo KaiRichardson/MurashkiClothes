@@ -5,7 +5,9 @@ import { spacing } from 'utils';
 import { Title3 } from 'elements';
 import NewsLetterForm from './NewsLetterForm';
 
-const NewsLetterSignUp = () => (
+interface Props {}
+
+const NewsLetterSignUp: React.FC<Props> = () => (
   <Wrapper>
     <Title>Sign up for our news letter</Title>
     <NewsLetterForm />

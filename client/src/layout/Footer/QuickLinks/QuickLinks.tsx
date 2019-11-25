@@ -4,7 +4,9 @@ import styled from 'styled-components';
 import { spacing } from 'utils';
 import { Link as L, Title3 } from 'elements';
 
-const QuickLinks = () => {
+interface Props {}
+
+const QuickLinks: React.FC<Props> = () => {
   const items = [
     {
       name: 'cart',

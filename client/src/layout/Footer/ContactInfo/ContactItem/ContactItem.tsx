@@ -5,7 +5,13 @@ import PropTypes from 'prop-types';
 import { spacing } from 'utils';
 import { Link as L } from 'elements';
 
-const ContactItem = ({ value, icon, link }) => (
+interface Props {
+  value: string;
+  icon: string;
+  link: string;
+}
+
+const ContactItem: React.FC<Props> = ({ value, icon, link }) => (
   <Item>
     <Link href={link} target='_blank' data-testid='contactItemLink'>
       <Icon className={icon} data-testid='contactItemIcon' />

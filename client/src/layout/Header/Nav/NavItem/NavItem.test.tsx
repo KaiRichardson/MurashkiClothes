@@ -8,7 +8,7 @@ describe('<NavItem /> tests', () => {
   it('renders a nav item for the home page', () => {
     //* Arrange
     const testData = { name: 'home', link: '/' };
-    document.remove = jest.fn();
+    document.removeEventListener = jest.fn();
 
     //* Act
     const { getByTestId } = render(

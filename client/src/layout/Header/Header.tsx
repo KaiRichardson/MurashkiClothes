@@ -8,7 +8,9 @@ import { Container } from 'layout/Container';
 import Nav from './Nav';
 import Buttons from './Buttons';
 
-const Header = () => (
+interface Props {}
+
+const Header: React.FC<Props> = () => (
   <Wrapper>
     <Logo />
 

@@ -5,7 +5,12 @@ import PropTypes from 'prop-types';
 import { spacing, grey, transition } from 'utils';
 import { Button as B } from 'elements';
 
-const ToggleButton = ({ toggle, menuIsOpen }, ref) => (
+interface Props {
+  toggle: () => void;
+  menuIsOpen: boolean;
+}
+
+const ToggleButton: React.FC<Props> = ({ toggle, menuIsOpen }, ref) => (
   <Button ref={ref} onClick={toggle} data-testid='toggleButton'>
     <Arrow toggle={menuIsOpen} />
   </Button>
@@ -17,7 +22,7 @@ const Button = styled(B).attrs({ trans: true })`
   padding: ${spacing.sm} ${spacing.xs};
 `;
 
-const Arrow = styled.i.attrs({ className: 'far fa-chevron-down' })`
+const Arrow = styled.i.attrs({ className: 'far fa-chevron-down' })<{ toggle: boolean }>`
   font-size: 60%;
   color: ${grey};
   ${props => (props.toggle ? 'transform: rotate(-180deg);' : 'transform: rotate(0deg);')}

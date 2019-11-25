@@ -6,11 +6,13 @@ import { useEventListener } from 'hooks';
 import { absolute, fadeIn, fadeOut, white } from 'utils';
 import NavItem from './NavItem';
 
-const Nav = () => {
+interface Props {}
+
+const Nav: React.FC<Props> = () => {
   const { navIsOpen, toggleNavIsOpen } = useContext(MobileNavContext);
 
-  const navListRef = useRef();
-  const handleNavItemClick = e => {
+  const navListRef = useRef<any>();
+  const handleNavItemClick = (e: any) => {
     if (e.target.dataset['testid'] !== 'navItemLink') return;
 
     if (navIsOpen) toggleNavIsOpen();
@@ -63,7 +65,7 @@ const Wrapper = styled.nav`
   text-transform: uppercase;
 `;
 
-const NavList = styled.ul`
+const NavList = styled.ul<{ toggle: boolean }>`
   ${absolute({})}
   height: 100vh;
   width: 100%;

@@ -4,7 +4,9 @@ import styled from 'styled-components';
 import { Title3 } from 'elements';
 import { spacing } from 'utils';
 
-const CurrentPromo = () => (
+interface Props {}
+
+const CurrentPromo: React.FC<Props> = () => (
   <Wrapper>
     <Title>Featured Style</Title>
     <Img src='https://via.placeholder.com/300' alt='promo image' />
