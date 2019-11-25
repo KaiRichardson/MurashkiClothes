@@ -30,6 +30,6 @@ const Wrapper = styled.section`
 
 Section.propTypes = {
   title: PropTypes.any,
-  titleTag: PropTypes.string.isRequired,
+  titleTag: PropTypes.string,
   children: PropTypes.any
 };
