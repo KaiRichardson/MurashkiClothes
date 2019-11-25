@@ -1,53 +1,53 @@
 {
-	"name": "murashkiclothes",
-	"version": "0.1.0",
-	"private": true,
-	"repository": {
-		"type": "git",
-		"url": "git+https://github.com/KaiRichardson/MurashkiClothes.git"
-	},
-	"author": "Zach Murphy/Kai Richardson",
-	"license": "ISC",
-	"bugs": {
-		"url": "https://github.com/KaiRichardson/MurashkiClothes/issues"
-	},
-	"homepage": "https://murashki.herokuapp.com/",
-	"scripts": {
-		"start": "node server.js",
-		"dev": "concurrently \"nodemon server.js'\" \"yarn run client\"",
-		"client": "cd client && yarn run start",
-		"install": "cd client && yarn install",
-		"build": "cd client && yarn run build",
-		"heroku-postbuild": "yarn run build"
-	},
-	"eslintConfig": {
-		"extends": "react-app"
-	},
-	"browserslist": {
-		"production": [
-			">0.2%",
-			"not dead",
-			"not op_mini all"
-		],
-		"development": [
-			"last 1 chrome version",
-			"last 1 firefox version",
-			"last 1 safari version"
-		]
-	},
-	"dependencies": {
-		"axios": "^0.19.0",
-		"bcrypt": "^3.0.6",
-		"dotenv": "^8.2.0",
-		"express": "^4.17.1",
-		"jsonwebtoken": "^8.5.1",
-		"morgan": "^1.9.1",
-		"mongoose": "^5.7.10"
-	},
-	"devDependencies": {
-		"concurrently": "^4.1.0",
-		"morgan": "^1.9.1",
-		"nodemon": "^1.19.4",
-		"prettier": "^1.17.1"
-	}
+  "name": "murashkiclothes",
+  "version": "0.1.0",
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KaiRichardson/MurashkiClothes.git"
+  },
+  "author": "Zach Murphy/Kai Richardson",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/KaiRichardson/MurashkiClothes/issues"
+  },
+  "homepage": "https://murashki.herokuapp.com/",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "concurrently \"nodemon server.js'\" \"yarn run client\"",
+    "client": "cd client && yarn run start",
+    "install": "cd client && yarn install",
+    "build": "cd client && yarn run build",
+    "heroku-postbuild": "yarn run build"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "dependencies": {
+    "axios": "^0.19.0",
+    "bcrypt": "^3.0.6",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
+    "morgan": "^1.9.1",
+    "mongoose": "^5.7.10"
+  },
+  "devDependencies": {
+    "concurrently": "^4.1.0",
+    "morgan": "^1.9.1",
+    "nodemon": "^1.19.4",
+    "prettier": "^1.17.1"
+  }
 }
