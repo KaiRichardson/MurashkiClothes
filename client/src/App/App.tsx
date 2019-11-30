@@ -15,8 +15,8 @@ const App: React.FC = () => {
 
       <Container>
         <Button>I am a Button</Button>
-        <Button dark>I am a dark button</Button>
-        <Button trans>I am a transparent button</Button>
+        <Button dark>dark button</Button>
+        <Button trans>Click to get products from API</Button>
         <Link to='/cart'>I am a link</Link>
         <Link dark to='/cart'>
           I am a dark link
