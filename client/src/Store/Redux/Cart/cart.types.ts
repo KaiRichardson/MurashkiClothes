@@ -1,20 +1,13 @@
-import { Action, PrintfulProduct } from '../../types';
+import { Action, PrintfulProduct } from 'Store/types';
 
 //* Cart Action Types
 export const ADD_PRODUCT_TO_CART = 'Cart/ADD_PRODUCT_TO_CART';
 export const REMOVE_PRODUCT_FROM_CART = 'Cart/REMOVE_PRODUCT_FROM_CART';
 export const EMPTY_CART = 'Cart/EMPTY_CART';
+
 export const REQUEST_READ_CART_ITEMS_FROM_DB = 'Cart/REQUEST_READ_CART_ITEMS_FROM_DB';
 export const SUCCESS_READ_CART_ITEMS_FROM_DB = 'Cart/SUCCESS_READ_CART_ITEMS_FROM_DB';
 export const FAIL_READ_CART_ITEMS_FROM_DB = 'Cart/FAIL_READ_CART_ITEMS_FROM_DB';
-
-export type CartActionTypes =
-  | typeof ADD_PRODUCT_TO_CART
-  | typeof REMOVE_PRODUCT_FROM_CART
-  | typeof EMPTY_CART
-  | typeof REQUEST_READ_CART_ITEMS_FROM_DB
-  | typeof SUCCESS_READ_CART_ITEMS_FROM_DB
-  | typeof FAIL_READ_CART_ITEMS_FROM_DB;
 
 //* Cart Actions
 export interface AddProductToCart extends Action {

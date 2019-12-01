@@ -24,6 +24,11 @@ export interface PrintfulProductVariant {
   size: string;
 }
 
+export interface User {
+  id: string;
+  username: string;
+}
+
 export interface Action<T = any> {
   type: T;
   payload?: any | undefined;
