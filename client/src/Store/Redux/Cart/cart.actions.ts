@@ -1,42 +1,57 @@
 import { Dispatch } from 'redux';
 
-import { Action } from 'Store';
-import { PrintfulProduct } from 'Store/types';
-
-//* Cart Action Types
-export const ADD_PRODUCT_TO_CART = 'ADD_PRODUCT_TO_CART';
-export const REMOVE_PRODUCT_FROM_CART = 'REMOVE_PRODUCT_FROM_CART';
-export const EMPTY_CART = 'EMPTY_CART';
-export const GET_CART_ITEMS_FROM_DB = 'GET_CART_ITEMS_FROM_DB';
-
-export type CartActionTypes =
-  | typeof ADD_PRODUCT_TO_CART
-  | typeof REMOVE_PRODUCT_FROM_CART
-  | typeof EMPTY_CART
-  | typeof GET_CART_ITEMS_FROM_DB;
+// TODO: Add default `store` export when api/products route is complete
+import { PrintfulProduct } from 'Store';
+import {
+  AddProductToCart,
+  RemoveProductFromCart,
+  EmptyCart,
+  RequestGetCartItemsFromDB,
+  SuccessGetCartItemsFromDB,
+  FailGetCartItemsFromDB,
+  ADD_PRODUCT_TO_CART,
+  REMOVE_PRODUCT_FROM_CART,
+  EMPTY_CART,
+  REQUEST_READ_CART_ITEMS_FROM_DB,
+  SUCCESS_READ_CART_ITEMS_FROM_DB,
+  FAIL_READ_CART_ITEMS_FROM_DB
+} from './cart.types';
 
 //* Cart Action Creators
-export const addProductToCart = (id: number): Action<typeof ADD_PRODUCT_TO_CART> => ({
+export const addProductToCart = (id: number): AddProductToCart => ({
   type: ADD_PRODUCT_TO_CART,
   payload: id
 });
 
-export const removeProductFromCart = (id: number): Action<typeof REMOVE_PRODUCT_FROM_CART> => ({
+export const removeProductFromCart = (id: number): RemoveProductFromCart => ({
   type: REMOVE_PRODUCT_FROM_CART,
   payload: id
 });
 
-export const emptyCart = (): Action<typeof EMPTY_CART> => ({ type: EMPTY_CART });
+export const emptyCart = (): EmptyCart => ({ type: EMPTY_CART });
 
-export const getCartItemsFromDB = () => async (
-  dispatch: Dispatch<Action<typeof GET_CART_ITEMS_FROM_DB>>
-): Promise<Action<typeof GET_CART_ITEMS_FROM_DB> | undefined> => {
+export const readCartItemsFromDB = () => async (
+  dispatch: Dispatch<RequestGetCartItemsFromDB | SuccessGetCartItemsFromDB | FailGetCartItemsFromDB>
+): Promise<SuccessGetCartItemsFromDB | FailGetCartItemsFromDB> => {
+  // Get product ids from store
+  // const ids: number[] = store.getState().cart.productIds;
+  dispatch({ type: REQUEST_READ_CART_ITEMS_FROM_DB });
+
   try {
+    // TODO: Create POST route at /api/products
+    // TODO: which will recieve an array of ids and return an array of associated products
+    // const response: Response = await fetch('/api/products', {
+    //   method: 'POST',
+    //   headers: {
+    //     'Content-Type': 'application/json'
+    //   },
+    //   body: JSON.stringify({ids})
+    // });
     const response: Response = await fetch('/api/printful', { method: 'GET' });
     const data: PrintfulProduct[] = await response.json();
 
-    return dispatch({ type: GET_CART_ITEMS_FROM_DB, payload: data });
+    return dispatch({ type: SUCCESS_READ_CART_ITEMS_FROM_DB, payload: data });
   } catch (err) {
-    console.log(err);
+    return dispatch({ type: FAIL_READ_CART_ITEMS_FROM_DB, payload: err.message });
   }
 };

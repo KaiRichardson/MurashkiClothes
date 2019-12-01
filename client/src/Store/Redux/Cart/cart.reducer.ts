@@ -1,23 +1,30 @@
-import { Action } from 'Store';
 import { PrintfulProduct } from 'Store/types';
 import {
-  CartActionTypes,
+  CartActions,
   ADD_PRODUCT_TO_CART,
   REMOVE_PRODUCT_FROM_CART,
   EMPTY_CART,
-  GET_CART_ITEMS_FROM_DB
-} from './cart.actions';
+  SUCCESS_READ_CART_ITEMS_FROM_DB,
+  FAIL_READ_CART_ITEMS_FROM_DB,
+  REQUEST_READ_CART_ITEMS_FROM_DB
+} from './cart.types';
 
-interface CartState {
+export interface CartState {
   productIds: number[];
   products: PrintfulProduct[];
+  loading: {
+    products: boolean;
+  };
 }
 const initialState: CartState = {
   productIds: [],
-  products: []
+  products: [],
+  loading: {
+    products: false
+  }
 };
 
-export default (state: CartState = initialState, action: Action<CartActionTypes>): CartState => {
+export default (state: CartState = initialState, action: CartActions): CartState => {
   const { type, payload } = action;
 
   switch (type) {
@@ -27,8 +34,12 @@ export default (state: CartState = initialState, action: Action<CartActionTypes>
       return { ...state, productIds: state.productIds.filter(id => id !== payload) };
     case EMPTY_CART:
       return { ...state, productIds: [], products: [] };
-    case GET_CART_ITEMS_FROM_DB:
-      return { ...state, products: [...payload] };
+    case REQUEST_READ_CART_ITEMS_FROM_DB:
+      return { ...state, products: [], loading: { ...state.loading, products: true } };
+    case SUCCESS_READ_CART_ITEMS_FROM_DB:
+      return { ...state, products: [...payload], loading: { ...state.loading, products: false } };
+    case FAIL_READ_CART_ITEMS_FROM_DB:
+      return { ...state, products: [], loading: { ...state.loading, products: false } };
     default:
       return state;
   }

@@ -3,6 +3,7 @@ import fetchMock from 'fetch-mock';
 import thunk from 'redux-thunk';
 
 import * as actions from './cart.actions';
+import * as types from './cart.types';
 import { Action } from 'Store/types';
 
 const middlewares = [thunk];
@@ -16,8 +17,8 @@ describe('Redux Cart Action Creator tests', () => {
   it('should create an action to add an id to the productIds', () => {
     //* Arrange
     const idToBeAdded = 33;
-    const expectedAction: Action<typeof actions.ADD_PRODUCT_TO_CART> = {
-      type: actions.ADD_PRODUCT_TO_CART,
+    const expectedAction: Action<typeof types.ADD_PRODUCT_TO_CART> = {
+      type: types.ADD_PRODUCT_TO_CART,
       payload: idToBeAdded
     };
 
@@ -28,8 +29,8 @@ describe('Redux Cart Action Creator tests', () => {
   it('should create an action to remove an id from the productIds', () => {
     //* Arrange
     const idToBeRemoved = 33;
-    const expectedAction: Action<typeof actions.REMOVE_PRODUCT_FROM_CART> = {
-      type: actions.REMOVE_PRODUCT_FROM_CART,
+    const expectedAction: Action<typeof types.REMOVE_PRODUCT_FROM_CART> = {
+      type: types.REMOVE_PRODUCT_FROM_CART,
       payload: idToBeRemoved
     };
 
@@ -39,21 +40,23 @@ describe('Redux Cart Action Creator tests', () => {
 
   it('should create an action to empty the cart', () => {
     //* Arrange
-    const expectedAction: Action<typeof actions.EMPTY_CART> = {
-      type: actions.EMPTY_CART
+    const expectedAction: Action<typeof types.EMPTY_CART> = {
+      type: types.EMPTY_CART
     };
 
     //* Assert
     expect(actions.emptyCart()).toEqual(expectedAction);
   });
 
-  it('should create an action to get the items referenced in the cart from the database', () => {
+  it('should create an action to request to read the items referenced in the cart from the database and a success action', () => {
     //* Arrange
     const store = mockStore({ productIds: [33], products: [] });
-
-    const expectedActions: Action<actions.CartActionTypes>[] = [
+    const expectedActions: types.CartActions[] = [
       {
-        type: actions.GET_CART_ITEMS_FROM_DB,
+        type: types.REQUEST_READ_CART_ITEMS_FROM_DB
+      },
+      {
+        type: types.SUCCESS_READ_CART_ITEMS_FROM_DB,
         payload: [
           // eslint-disable-next-line
           { external_id: 'testdata', id: 33, name: 'test product', synced: 73, thumbnail_url: 'testurl', variants: 73 }
@@ -63,12 +66,37 @@ describe('Redux Cart Action Creator tests', () => {
 
     //* Act
     fetchMock.getOnce('/api/printful', {
-      body: expectedActions[0].payload
+      body: expectedActions[1].payload
     });
 
     //* Assert
     //@ts-ignore
-    return store.dispatch(actions.getCartItemsFromDB()).then(() => {
+    return store.dispatch(actions.readCartItemsFromDB()).then(() => {
+      expect(store.getActions()).toEqual(expectedActions);
+    });
+  });
+
+  it('should create an action to request to read the items refenced in the cart from the database and a fail action', () => {
+    //* Arrange
+    const store = mockStore({ productIds: [33], products: [] });
+    const expectedActions: types.CartActions[] = [
+      {
+        type: types.REQUEST_READ_CART_ITEMS_FROM_DB
+      },
+      {
+        type: types.FAIL_READ_CART_ITEMS_FROM_DB,
+        payload: 'Oops, something went wrong'
+      }
+    ];
+
+    //* Act
+    fetchMock.once('/api/printful', {
+      throws: Error('Oops, something went wrong')
+    });
+
+    //* Assert
+    //@ts-ignore
+    return store.dispatch(actions.readCartItemsFromDB()).then(() => {
       expect(store.getActions()).toEqual(expectedActions);
     });
   });
