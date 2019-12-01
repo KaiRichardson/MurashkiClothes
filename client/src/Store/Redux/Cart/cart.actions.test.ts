@@ -4,7 +4,6 @@ import thunk from 'redux-thunk';
 
 import * as actions from './cart.actions';
 import * as types from './cart.types';
-import { Action } from 'Store/types';
 
 const middlewares = [thunk];
 const mockStore = configureMockStore(middlewares);
@@ -17,7 +16,7 @@ describe('Redux Cart Action Creator tests', () => {
   it('should create an action to add an id to the productIds', () => {
     //* Arrange
     const idToBeAdded = 33;
-    const expectedAction: Action<typeof types.ADD_PRODUCT_TO_CART> = {
+    const expectedAction: types.AddProductToCart = {
       type: types.ADD_PRODUCT_TO_CART,
       payload: idToBeAdded
     };
@@ -29,7 +28,7 @@ describe('Redux Cart Action Creator tests', () => {
   it('should create an action to remove an id from the productIds', () => {
     //* Arrange
     const idToBeRemoved = 33;
-    const expectedAction: Action<typeof types.REMOVE_PRODUCT_FROM_CART> = {
+    const expectedAction: types.RemoveProductFromCart = {
       type: types.REMOVE_PRODUCT_FROM_CART,
       payload: idToBeRemoved
     };
@@ -40,7 +39,7 @@ describe('Redux Cart Action Creator tests', () => {
 
   it('should create an action to empty the cart', () => {
     //* Arrange
-    const expectedAction: Action<typeof types.EMPTY_CART> = {
+    const expectedAction: types.EmptyCart = {
       type: types.EMPTY_CART
     };
 
