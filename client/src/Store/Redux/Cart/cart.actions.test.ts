@@ -50,22 +50,23 @@ describe('Redux Cart Action Creator tests', () => {
   it('should create an action to request to read the items referenced in the cart from the database and a success action', () => {
     //* Arrange
     const store = mockStore({ productIds: [33], products: [] });
+    const apiResponse = [
+      // eslint-disable-next-line
+      { external_id: 'testdata', id: 33, name: 'test product', synced: 73, thumbnail_url: 'testurl', variants: 73 }
+    ];
     const expectedActions: types.CartActions[] = [
       {
         type: types.REQUEST_READ_CART_ITEMS_FROM_DB
       },
       {
         type: types.SUCCESS_READ_CART_ITEMS_FROM_DB,
-        payload: [
-          // eslint-disable-next-line
-          { external_id: 'testdata', id: 33, name: 'test product', synced: 73, thumbnail_url: 'testurl', variants: 73 }
-        ]
+        payload: apiResponse
       }
     ];
 
     //* Act
     fetchMock.getOnce('/api/printful', {
-      body: expectedActions[1].payload
+      body: apiResponse
     });
 
     //* Assert

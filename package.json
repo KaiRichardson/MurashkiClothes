@@ -19,7 +19,7 @@
     "install": "cd client && yarn install",
     "build": "cd client && yarn run build",
     "heroku-postbuild": "yarn run build",
-    "validate-client": "cd client && yarn lint:fix && yarn test --help"
+    "validate-client": "cd client && yarn lint:fix"
   },
   "eslintConfig": {
     "extends": "react-app"
