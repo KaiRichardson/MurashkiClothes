@@ -25,19 +25,17 @@ const initialState: CartState = {
 };
 
 export default (state: CartState = initialState, action: CartActions): CartState => {
-  const { type, payload } = action;
-
-  switch (type) {
+  switch (action.type) {
     case ADD_PRODUCT_TO_CART:
-      return { ...state, productIds: [payload, ...state.productIds] };
+      return { ...state, productIds: [action.payload, ...state.productIds] };
     case REMOVE_PRODUCT_FROM_CART:
-      return { ...state, productIds: state.productIds.filter(id => id !== payload) };
+      return { ...state, productIds: state.productIds.filter(id => id !== action.payload) };
     case EMPTY_CART:
       return { ...state, productIds: [], products: [] };
     case REQUEST_READ_CART_ITEMS_FROM_DB:
       return { ...state, products: [], loading: { ...state.loading, products: true } };
     case SUCCESS_READ_CART_ITEMS_FROM_DB:
-      return { ...state, products: [...payload], loading: { ...state.loading, products: false } };
+      return { ...state, products: [...action.payload], loading: { ...state.loading, products: false } };
     case FAIL_READ_CART_ITEMS_FROM_DB:
       return { ...state, products: [], loading: { ...state.loading, products: false } };
     default:

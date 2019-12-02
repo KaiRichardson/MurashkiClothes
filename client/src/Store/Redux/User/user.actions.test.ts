@@ -23,10 +23,10 @@ describe('Redux User Action Creator tests', () => {
     };
     const expectedActions: types.UserActions[] = [
       {
-        type: types.REQUEST_LOG_USER_IN
+        type: types.REQUEST_READ_USER_INFO
       },
       {
-        type: types.SUCCESS_LOG_USER_IN,
+        type: types.SUCCESS_READ_USER_INFO,
         payload: testData
       }
     ];
@@ -49,10 +49,10 @@ describe('Redux User Action Creator tests', () => {
     const testData = 'Oops, something went wrong';
     const expectedActions: types.UserActions[] = [
       {
-        type: types.REQUEST_LOG_USER_IN
+        type: types.REQUEST_READ_USER_INFO
       },
       {
-        type: types.FAIL_LOG_USER_IN,
+        type: types.FAIL_READ_USER_INFO,
         payload: testData
       }
     ];

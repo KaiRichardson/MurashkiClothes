@@ -31,5 +31,4 @@ export interface User {
 
 export interface Action<T = any> {
   type: T;
-  payload?: any | undefined;
 }

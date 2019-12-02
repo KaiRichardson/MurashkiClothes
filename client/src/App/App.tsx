@@ -4,14 +4,8 @@ import Normalize from 'react-normalize';
 import { GlobalStyle } from './GlobalStyle';
 import { Container, Header, Footer } from 'layout';
 import { Button, Link, ButtonLink, ProductList, ProductItem, Section, Badge } from 'elements';
-import { useDispatch } from 'react-redux';
-import { logUserOut, logUserIn } from 'Store';
 
 const App: React.FC = () => {
-  const dispatch = useDispatch();
-  React.useEffect(() => {
-    // dispatch(logUserIn({ id: 'testId', username: 'nichsecord' }));
-  }, []);
   return (
     <>
       <Normalize />
