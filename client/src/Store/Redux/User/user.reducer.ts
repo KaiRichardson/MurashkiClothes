@@ -1,4 +1,4 @@
-import { User } from 'Store/types';
+import { User } from 'Store';
 import {
   UserActions,
   LOG_USER_OUT,
