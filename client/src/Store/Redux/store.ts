@@ -8,7 +8,7 @@ import cart, { CartState } from './Cart';
 import user, { UserState } from './User';
 
 const rLSConfig: RLSOptions = {
-  states: ['cart.productIds', 'user.id']
+  states: ['cart', 'user.id']
 };
 
 const loadOptions: LoadOptions = {

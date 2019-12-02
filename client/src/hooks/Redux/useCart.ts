@@ -12,6 +12,8 @@ import {
 export const useCart = () => {
   const dispatch = useDispatch();
 
+  const numberOfItemsInCart = useSelector((state: StoreState) => state.cart.productIds).length;
+
   /*
     Creates a reference to the products (not the ids) being kept in the store
   */
@@ -47,6 +49,7 @@ export const useCart = () => {
   return {
     cartItems,
     cartItemsLoading,
+    numberOfItemsInCart,
     addProductToCart,
     removeProductFromCart,
     emptyCart,

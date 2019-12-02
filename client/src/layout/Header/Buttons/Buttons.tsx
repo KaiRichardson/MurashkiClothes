@@ -4,10 +4,13 @@ import styled from 'styled-components';
 import { spacing } from 'utils';
 import { ButtonLink, Badge } from 'elements';
 import ToggleNavButton from './ToggleNavButton';
+import { useCart } from 'hooks';
 
 interface Props {}
 
 const Buttons: React.FC<Props> = () => {
+  const { numberOfItemsInCart } = useCart();
+
   const items = [
     {
       name: 'search',
@@ -31,8 +34,7 @@ const Buttons: React.FC<Props> = () => {
       {items.map(item => (
         <Item trans to={item.link} key={item.name}>
           <i className={item.icon} />
-          {/* TODO: Read number of items in cart and display on badge */}
-          {item.name === 'cart' && <Badge number={3} />}
+          {item.name === 'cart' && <Badge number={numberOfItemsInCart} />}
         </Item>
       ))}
 
