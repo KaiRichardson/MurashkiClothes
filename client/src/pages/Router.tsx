@@ -56,6 +56,10 @@ const Router: React.FC<Props> = () => {
           <Women />
         </Route>
 
+        <Route exact path='/shop/:category/:productid'>
+          <Product />
+        </Route>
+
         <Route exact path='/cart'>
           <Cart />
         </Route>
@@ -66,10 +70,6 @@ const Router: React.FC<Props> = () => {
 
         <Route exact path='/search'>
           <Search />
-        </Route>
-
-        <Route exact path='/:category/product/:productid'>
-          <Product />
         </Route>
       </Switch>
     </Container>
