@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 import { MobileNavContextProvider } from './MobileNav.context';
-import { spacing } from 'utils';
+import { spacing, white } from 'utils';
 import { Logo } from 'elements';
 import { Container } from 'layout/Container';
 import Nav from './Nav';
@@ -29,4 +29,5 @@ const Wrapper = styled(Container).attrs({ as: 'header' })`
   justify-content: space-between;
   align-items: center;
   padding: ${spacing.lg} ${spacing.sm};
+  background: ${white};
 `;

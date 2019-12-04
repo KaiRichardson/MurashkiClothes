@@ -4,12 +4,13 @@ import styled from 'styled-components';
 import { spacing } from 'utils';
 import { ButtonLink, Badge } from 'elements';
 import ToggleNavButton from './ToggleNavButton';
-import { useCartState } from 'hooks';
+import { useCartState, useUserState } from 'hooks';
 
 interface Props {}
 
 const Buttons: React.FC<Props> = () => {
   const { numberOfItemsInCart } = useCartState();
+  const { userInfo } = useUserState();
 
   const items = [
     {
@@ -17,11 +18,19 @@ const Buttons: React.FC<Props> = () => {
       link: '/search',
       icon: 'fas fa-search'
     },
-    {
-      name: 'favorites',
-      link: '/favorites',
-      icon: 'far fa-heart'
-    },
+    // If there is no user id, the user is not signed in,
+    // so the sign in button is displayed instead of the favorites button
+    !userInfo.id
+      ? {
+          name: 'sign in',
+          link: '/login',
+          icon: 'fas fa-sign-in'
+        }
+      : {
+          name: 'favorites',
+          link: '/favorites',
+          icon: 'far fa-heart'
+        },
     {
       name: 'cart',
       link: '/cart',

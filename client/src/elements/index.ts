@@ -5,6 +5,7 @@ import ProductItem from './ProductItem';
 import Section from './Section';
 
 export * from './Button';
+export * from './Card';
 export * from './Form';
 export * from './Link';
 export * from './ProductList';

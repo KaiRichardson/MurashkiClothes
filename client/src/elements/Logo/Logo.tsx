@@ -2,7 +2,7 @@ import React from 'react';
 import { Link as L } from 'react-router-dom';
 import styled from 'styled-components';
 
-import { spacing, black } from 'utils';
+import { spacing, black, white } from 'utils';
 
 interface Props {}
 
@@ -17,6 +17,7 @@ export default Logo;
 const Wrapper = styled.h1`
   font-weight: normal;
   margin: 0;
+  z-index: 1;
 `;
 
 const Link = styled(L)`
@@ -27,4 +28,5 @@ const Link = styled(L)`
   color: ${black};
   border: 2px solid ${black};
   text-decoration: none;
+  background: ${white};
 `;
