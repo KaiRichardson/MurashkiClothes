@@ -43,7 +43,8 @@ export const useCartState = () => {
 };
 
 /*
-  Contains dispatches for actions for updating cart state. For use in components that need to update state but not be subscribed to changes
+  Contains dispatches for actions for updating cart state.
+  For use in components that need to update state but not be subscribed to changes
   (prevents unnecessary rerenders)
 */
 export const useCartActions = () => {
