@@ -68,7 +68,7 @@ const Router: React.FC<Props> = () => {
           <Search />
         </Route>
 
-        <Route exact path='/product/:productid'>
+        <Route exact path='/:category/product/:productid'>
           <Product />
         </Route>
       </Switch>
