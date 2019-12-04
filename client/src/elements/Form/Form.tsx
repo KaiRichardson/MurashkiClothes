@@ -1,15 +1,14 @@
 import styled from 'styled-components';
 
-import { spacing, lightGrey } from 'utils';
+import { spacing } from 'utils';
 
 export const Form = styled.form`
   display: flex;
   flex-direction: column;
-`;
 
-export const Input = styled.input`
-  padding: ${spacing.xs} ${spacing.sm};
-  border: 1px solid ${lightGrey};
+  > * {
+    margin: ${spacing.sm} 0;
+  }
 `;
 
 export const FormGroup = styled.div`

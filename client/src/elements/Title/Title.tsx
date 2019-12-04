@@ -6,6 +6,7 @@ export const Title2 = styled.h2`
   border-left: 4px solid ${red};
   padding-left: ${spacing.md};
   text-transform: uppercase;
+  letter-spacing: 1px;
 `;
 
 export const Title3 = styled(Title2).attrs({ as: 'h3' })`
