@@ -1,13 +1,16 @@
 import React from 'react';
-import { useParams } from 'react-router';
+// import { useParams } from 'react-router';
+
+import { Breadcrumbs } from 'elements';
 
 interface Props {}
 
 const Product: React.FC<Props> = () => {
-  const { category, productid } = useParams();
+  // const { category, productid } = useParams();
   return (
     <>
-      Product {category} {productid}
+      <Breadcrumbs productName={'JavaScript is !Cool'} />
+      Product
     </>
   );
 };
