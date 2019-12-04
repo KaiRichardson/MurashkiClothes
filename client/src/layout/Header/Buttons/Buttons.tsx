@@ -4,12 +4,12 @@ import styled from 'styled-components';
 import { spacing } from 'utils';
 import { ButtonLink, Badge } from 'elements';
 import ToggleNavButton from './ToggleNavButton';
-import { useCart } from 'hooks';
+import { useCartState } from 'hooks';
 
 interface Props {}
 
 const Buttons: React.FC<Props> = () => {
-  const { numberOfItemsInCart } = useCart();
+  const { numberOfItemsInCart } = useCartState();
 
   const items = [
     {

@@ -9,9 +9,24 @@ import {
   readCartItemsFromDB as rCIFDB
 } from 'Store';
 
+/*
+  Combines useCartActions and useCartState for components that need to subscribe to data
+  as well as be able to dispatch actions to update it
+*/
 export const useCart = () => {
-  const dispatch = useDispatch();
+  const cartState = useCartState();
+  const cartActions = useCartActions();
 
+  return {
+    ...cartState,
+    ...cartActions
+  };
+};
+
+/*
+  Contains selections of pieces of cart state for components that need to read state but not update it
+*/
+export const useCartState = () => {
   const numberOfItemsInCart = useSelector((state: StoreState) => state.cart.productIds).length;
 
   /*
@@ -23,6 +38,16 @@ export const useCart = () => {
     Creates a reference to the loading state of the cart products
   */
   const cartItemsLoading = useSelector((state: StoreState) => state.cart.loading.products);
+
+  return { cartItems, cartItemsLoading, numberOfItemsInCart };
+};
+
+/*
+  Contains dispatches for actions for updating cart state. For use in components that need to update state but not be subscribed to changes
+  (prevents unnecessary rerenders)
+*/
+export const useCartActions = () => {
+  const dispatch = useDispatch();
 
   /*
     Dispatches an action to add a product's id to the reference list
@@ -46,22 +71,15 @@ export const useCart = () => {
   */
   const readCartItemsFromDB = () => dispatch(rCIFDB());
 
-  return {
-    cartItems,
-    cartItemsLoading,
-    numberOfItemsInCart,
-    addProductToCart,
-    removeProductFromCart,
-    emptyCart,
-    readCartItemsFromDB
-  };
+  return { addProductToCart, removeProductFromCart, emptyCart, readCartItemsFromDB };
 };
 
 /*
   Uses readCartItemsFromDB effect when components mounts to the DOM
 */
 export const useReadCartItemsOnMount = () => {
-  const { readCartItemsFromDB } = useCart();
+  const { readCartItemsFromDB } = useCartActions();
+
   useEffect(() => {
     readCartItemsFromDB();
   }, [readCartItemsFromDB]);
