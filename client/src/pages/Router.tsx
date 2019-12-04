@@ -4,6 +4,7 @@ import styled from 'styled-components';
 
 import { Container as C } from 'layout';
 import Home from './Home';
+import AdminDashboard from './AdminDashboard';
 import Login from './Login';
 import RegisterAccount from './RegisterAccount';
 import Contact from './Contact';
@@ -11,6 +12,7 @@ import Shop, { Children, Men, Women } from './Shop';
 import Cart from './Cart';
 import Favorites from './Favorites';
 import Search from './Search';
+import Product from './Product';
 
 interface Props {}
 
@@ -20,6 +22,10 @@ const Router: React.FC<Props> = () => {
       <Switch>
         <Route exact path='/'>
           <Home />
+        </Route>
+
+        <Route exact path='/admin'>
+          <AdminDashboard />
         </Route>
 
         <Route exact path='/login'>
@@ -60,6 +66,10 @@ const Router: React.FC<Props> = () => {
 
         <Route exact path='/search'>
           <Search />
+        </Route>
+
+        <Route exact path='/product/:productid'>
+          <Product />
         </Route>
       </Switch>
     </Container>
