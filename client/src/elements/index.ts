@@ -1,4 +1,5 @@
 import Badge from './Badge';
+import Breadcrumbs from './Breadcrumbs';
 import Logo from './Logo';
 import ProductItem from './ProductItem';
 import Section from './Section';
@@ -9,4 +10,4 @@ export * from './Link';
 export * from './ProductList';
 export * from './Title';
 
-export { Badge, Logo, ProductItem, Section };
+export { Badge, Breadcrumbs, Logo, ProductItem, Section };
