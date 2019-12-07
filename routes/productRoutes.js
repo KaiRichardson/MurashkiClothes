@@ -1,8 +1,25 @@
 const router = require('express').Router();
 const getUnsortedProducts = require('../utils/getUnsortedProducts');
 const Products = require('../models/Products');
+const axios = require('axios');
+const PRINTFUL_64 = process.env.PRINTFUL_64;
 
 router
+  .get('/', async (req, res) => {
+    try {
+      const products = await Products.find({});
+
+      if (!products) {
+        return res.status(404).send(`Error. No products to retrieve`);
+      }
+
+      return res.status(200).json(products);
+    } catch (err) {
+      console.log(err);
+
+      return res.status(500).send(`Error retrieving products: ${err}`);
+    }
+  })
   .get('/admin/add', (req, res) => {
     //get all of our stores products
     axios
@@ -41,21 +58,6 @@ router
       return res.status(500).send(`Error adding products: ${err}`);
     }
   })
-  .get('/admin/edit', async (req, res) => {
-    try {
-      const products = await Products.find({});
-
-      if (!products) {
-        return res.status(404).send(`Error. No products to retrieve`);
-      }
-
-      return res.status(200).json(products);
-    } catch (err) {
-      console.log(err);
-
-      return res.status(500).send(`Error retrieving products: ${err}`);
-    }
-  })
   .post('/admin/edit', async (req, res) => {
     const { productsToUpdate } = req.body;
 
@@ -65,3 +67,5 @@ router
 
     return res.sendStatus(200);
   });
+
+module.exports = router;
