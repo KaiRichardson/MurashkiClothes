@@ -24,11 +24,54 @@ export interface PrintfulProductVariant {
   size: string;
 }
 
-export interface User {
-  id: string;
-  username: string;
-}
-
 export interface Action<T = any> {
   type: T;
+}
+
+/* Product Data Types */
+export type ProductCategories = 'men' | 'women' | 'children';
+
+export interface Product {
+  _id: string;
+  _extID: number;
+  category: string;
+  name: string;
+  imgUrls: {
+    base: string[];
+    side: string[];
+  };
+  price: number;
+}
+
+export interface Variant {
+  variant_id: string;
+  name: string;
+  color: string;
+  size: string;
+  quantity?: number;
+}
+
+/* User Data Types */
+export interface User {
+  _id: string;
+  username: string;
+  email: string;
+  stripeToken?: string;
+  orders: string[];
+  address?: Address;
+  cart: Variant[];
+}
+
+export interface Address {
+  name: string;
+  address1: string;
+  address2?: string;
+  city: string;
+  company?: string;
+  state_code: string;
+  state_name: string;
+  country_code: string;
+  country_name: string;
+  phone?: string;
+  zip: string;
 }
