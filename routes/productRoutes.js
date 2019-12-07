@@ -40,4 +40,22 @@ router
 
       return res.status(500).send(`Error adding products: ${err}`);
     }
+  })
+  .get('/admin/edit', async (req, res) => {
+    try {
+      const products = await Products.find({});
+
+      if (!products) {
+        return res.status(404).send(`Error. No products to retrieve`);
+      }
+
+      return res.status(200).json(products);
+    } catch (err) {
+      console.log(err);
+
+      return res.status(500).send(`Error retrieving products: ${err}`);
+    }
+  })
+  .post('/admin/edit', async (req, res) => {
+    const { productsToUpdate } = req.body;
   });
