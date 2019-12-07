@@ -58,4 +58,10 @@ router
   })
   .post('/admin/edit', async (req, res) => {
     const { productsToUpdate } = req.body;
+
+    const _ids = productsToUpdate.map((p) => p._id);
+
+    console.log(_ids);
+
+    return res.sendStatus(200);
   });
