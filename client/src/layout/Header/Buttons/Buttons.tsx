@@ -4,21 +4,33 @@ import styled from 'styled-components';
 import { spacing } from 'utils';
 import { ButtonLink, Badge } from 'elements';
 import ToggleNavButton from './ToggleNavButton';
+import { useCartState, useUserState } from 'hooks';
 
 interface Props {}
 
 const Buttons: React.FC<Props> = () => {
+  const { numberOfItemsInCart } = useCartState();
+  const { userInfo } = useUserState();
+
   const items = [
     {
       name: 'search',
       link: '/search',
       icon: 'fas fa-search'
     },
-    {
-      name: 'favorites',
-      link: '/favorites',
-      icon: 'far fa-heart'
-    },
+    // If there is no user id, the user is not signed in,
+    // so the sign in button is displayed instead of the favorites button
+    !userInfo.id
+      ? {
+          name: 'sign in',
+          link: '/login',
+          icon: 'fas fa-sign-in'
+        }
+      : {
+          name: 'favorites',
+          link: '/favorites',
+          icon: 'far fa-heart'
+        },
     {
       name: 'cart',
       link: '/cart',
@@ -31,8 +43,7 @@ const Buttons: React.FC<Props> = () => {
       {items.map(item => (
         <Item trans to={item.link} key={item.name}>
           <i className={item.icon} />
-          {/* TODO: Read number of items in cart and display on badge */}
-          {item.name === 'cart' && <Badge number={3} />}
+          {item.name === 'cart' && <Badge number={numberOfItemsInCart} />}
         </Item>
       ))}
 
@@ -54,7 +65,7 @@ const Wrapper = styled.div`
 
 const Item = styled(ButtonLink)`
   position: relative;
-  padding: ${spacing.xs};
+  padding: ${spacing.sm};
 
   @media screen and (min-width: 992px) {
     padding: ${spacing.sm} ${spacing.md};

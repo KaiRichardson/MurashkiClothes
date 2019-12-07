@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
 import { useExternalClick } from 'hooks';
-import { red, lightGrey, transition, spacing, absolute, white } from 'utils';
+import { red, lightGrey, transition, spacing, absolute, white, elevation } from 'utils';
 import ToggleButton from './ToggleButton';
 
 interface Props {
@@ -59,6 +59,7 @@ const List = styled.ul<{ toggle: boolean }>`
     background: ${white};
     padding: ${spacing.md};
     border-top: 2px solid ${red};
+    ${elevation[2]};
   }
 `;
 

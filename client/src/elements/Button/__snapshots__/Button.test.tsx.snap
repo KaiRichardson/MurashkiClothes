@@ -97,6 +97,7 @@ exports[`<ButtonLink /> tests renders a dark button link 1`] = `
   --txtColor: #000;
   background: var(--bg);
   color: var(--txtColor);
+  text-align: center;
   display: inline-block;
   border: none;
   -webkit-text-decoration: none;
@@ -133,6 +134,7 @@ exports[`<ButtonLink /> tests renders a default button link 1`] = `
   --txtColor: #000;
   background: var(--bg);
   color: var(--txtColor);
+  text-align: center;
   display: inline-block;
   border: none;
   -webkit-text-decoration: none;
@@ -163,6 +165,7 @@ exports[`<ButtonLink /> tests renders a transparent button link 1`] = `
   --txtColor: #000;
   background: var(--bg);
   color: var(--txtColor);
+  text-align: center;
   display: inline-block;
   border: none;
   -webkit-text-decoration: none;

@@ -7,7 +7,11 @@ import { Link as L, Title3 } from 'elements';
 interface Props {}
 
 const QuickLinks: React.FC<Props> = () => {
-  const items = [
+  const items: { name: string; link: string; options?: { name: string; link: string }[] }[] = [
+    {
+      name: 'home',
+      link: '/'
+    },
     {
       name: 'cart',
       link: '/cart'
