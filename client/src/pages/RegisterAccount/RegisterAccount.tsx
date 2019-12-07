@@ -1,5 +1,4 @@
 import React from 'react';
-import styled from 'styled-components';
 
 import { useBodyScrollLock } from 'hooks';
 import { Card, Section, Link } from 'elements';
