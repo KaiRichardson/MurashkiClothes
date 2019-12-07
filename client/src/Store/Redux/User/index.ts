@@ -1,6 +1,6 @@
-import userReducer from './user.reducer';
+import userReducer from './reducer/user.reducer';
 
-export * from './user.actions';
-export * from './user.reducer';
+export * from './actions';
+export * from './reducer';
 
 export default userReducer;

@@ -10,7 +10,7 @@ import {
   REQUEST_READ_USER_INFO,
   SUCCESS_READ_USER_INFO,
   FAIL_READ_USER_INFO
-} from './user.types';
+} from '../user.types';
 
 export const logUserIn = ({ username, password }: { username: string; password: string }) => async (
   dispatch: Dispatch<RequestReadUserInfo | SuccessReadUserInfo | FailReadUserInfo>

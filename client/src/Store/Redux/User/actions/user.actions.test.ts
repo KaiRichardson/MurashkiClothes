@@ -4,7 +4,7 @@ import thunk from 'redux-thunk';
 
 import { User } from 'Store/types';
 import * as actions from './user.actions';
-import * as types from './user.types';
+import * as types from '../user.types';
 
 const middlewares = [thunk];
 const mockStore = configureMockStore(middlewares);
@@ -18,8 +18,11 @@ describe('Redux User Action Creator tests', () => {
     //* Arrange
     const store = mockStore({ user: null, loading: { login: false } });
     const testData: User = {
-      id: 'testId',
-      username: 'nichsecord'
+      _id: 'testId',
+      username: 'nichsecord',
+      email: '',
+      orders: [],
+      cart: []
     };
     const expectedActions: types.UserActions[] = [
       {

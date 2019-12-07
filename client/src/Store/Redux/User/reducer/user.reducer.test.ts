@@ -1,18 +1,21 @@
 import { User } from 'Store/types';
 import reducer, { UserState } from './user.reducer';
-import * as types from './user.types';
+import * as types from '../user.types';
 
 describe('userReducer tests', () => {
   it(`should handle ${types.REQUEST_READ_USER_INFO}`, () => {
     //* Arrange
     const initialState: UserState = {
-      id: '',
+      _id: '',
       username: '',
+      email: '',
+      orders: [],
+      cart: [],
       loading: {
         login: false
       }
     };
-    const expectedState: UserState = { ...initialState, id: '', username: '', loading: { login: true } };
+    const expectedState: UserState = { ...initialState, _id: '', username: '', loading: { login: true } };
 
     //* Act
     const result = reducer(initialState, { type: types.REQUEST_READ_USER_INFO });
@@ -24,12 +27,18 @@ describe('userReducer tests', () => {
   it(`should handle ${types.SUCCESS_READ_USER_INFO}`, () => {
     //* Arrange
     const testData: User = {
-      id: 'testId',
-      username: 'nichsecord'
+      _id: 'testId',
+      username: 'nichsecord',
+      email: '',
+      orders: [],
+      cart: []
     };
     const initialState: UserState = {
-      id: '',
+      _id: '',
       username: '',
+      email: '',
+      orders: [],
+      cart: [],
       loading: {
         login: true
       }
@@ -46,13 +55,16 @@ describe('userReducer tests', () => {
   it(`should handle ${types.FAIL_READ_USER_INFO}`, () => {
     //* Arrange
     const initialState: UserState = {
-      id: '',
+      _id: '',
       username: '',
+      email: '',
+      orders: [],
+      cart: [],
       loading: {
         login: true
       }
     };
-    const expectedState: UserState = { ...initialState, id: '', username: '', loading: { login: false } };
+    const expectedState: UserState = { ...initialState, _id: '', username: '', loading: { login: false } };
 
     //* Act
     const result = reducer(initialState, { type: types.FAIL_READ_USER_INFO, payload: 'Oops, something went wrong' });
@@ -64,13 +76,16 @@ describe('userReducer tests', () => {
   it(`should handle ${types.LOG_USER_OUT}`, () => {
     //* Arrange
     const initialState: UserState = {
-      id: 'testId',
+      _id: 'testId',
       username: 'nichsecord',
+      email: '',
+      orders: [],
+      cart: [],
       loading: {
         login: false
       }
     };
-    const expectedState: UserState = { ...initialState, id: '', username: '' };
+    const expectedState: UserState = { ...initialState, _id: '', username: '' };
 
     //* Act
     const result = reducer(initialState, { type: types.LOG_USER_OUT });
