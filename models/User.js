@@ -2,25 +2,30 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const userSchema = new Schema({
-    username: String,
-    password: String,
-    email: String,
-    stripeToken: String,
-    orders: [String],
-    address: {
-        name: String,
-        company: String,
-        address1: String,
-        address2: String,
-        city: String,
-        state_code: String,
-        state_name: String,
-        country_code: String,
-        country_name: String,
-        zip: String,
-        phone: String
+  username: String,
+  password: String,
+  email: String,
+  stripeToken: String,
+  orders: [String], //change to ref orders
+  address: {
+    name: String,
+    company: String,
+    address1: String,
+    address2: String,
+    city: String,
+    state_code: String,
+    state_name: String,
+    country_code: String,
+    country_name: String,
+    zip: String,
+    phone: String
+  },
+  cart: [
+    {
+      stuff: String
     }
-})
+  ]
+});
 
 const Users = mongoose.model('User', userSchema);
 
