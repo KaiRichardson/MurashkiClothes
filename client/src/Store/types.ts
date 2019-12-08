@@ -7,15 +7,6 @@ export interface ProductProps {
   img: string;
 }
 
-export interface PrintfulProduct {
-  external_id: string;
-  id: number;
-  name: string;
-  synced: number;
-  thumbnail_url: string;
-  variants: number;
-}
-
 export interface PrintfulProductVariant {
   variant_id: number;
   retail_price: string;
@@ -31,10 +22,11 @@ export interface Action<T = any> {
 /* Product Data Types */
 export type ProductCategories = 'men' | 'women' | 'children';
 
+// Product in Murashki Database
 export interface Product {
-  _id: string;
+  _id?: string;
   _extID: number;
-  category: string;
+  category: ProductCategories;
   name: string;
   imgUrls: {
     base: string[];
@@ -43,12 +35,23 @@ export interface Product {
   price: number;
 }
 
+// Product in Printful Database
 export interface Variant {
   variant_id: string;
   name: string;
   color: string;
   size: string;
   quantity?: number;
+}
+
+// Admin Use Only
+export interface PrintfulProduct {
+  external_id: string;
+  id: number;
+  name: string;
+  synced: number;
+  thumbnail_url: string;
+  variants: number;
 }
 
 /* User Data Types */

@@ -1,9 +1,21 @@
-import { useProductCategory } from './useProductCategory';
+import { useState, useEffect } from 'react';
+import { Product } from 'Store';
 
 export const useAllProducts = () => {
-  const mensProducts = useProductCategory('men');
-  const womensProducts = useProductCategory('women');
-  const childrensProducts = useProductCategory('children');
+  const [products, setProducts] = useState<Product[]>([]);
 
-  return { mensProducts, womensProducts, childrensProducts };
+  useEffect(() => {
+    const fetchProducts = async () => {
+      const response: Response = await fetch('/api/products', {
+        method: 'GET'
+      });
+      const data: Product[] = await response.json();
+
+      setProducts(data);
+    };
+
+    fetchProducts();
+  }, []);
+
+  return products;
 };
