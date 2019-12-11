@@ -19,12 +19,14 @@ describe('Redux Admin Action Creator tests', () => {
     const store = mockStore();
     const apiResponse: PrintfulProduct[] = [
       {
+        /* eslint-disable */
         id: 142621663,
         external_id: '5dcf0b2972a144',
         name: 'JavaScript is !Cool',
         variants: 28,
         synced: 28,
         thumbnail_url: 'https://files.cdn.printful.com/files/ba1/ba13faa1332b7f18ec847cb9f4d79868_preview.png'
+        /* eslint-enable */
       }
     ];
     const expectedActions: types.AdminActions[] = [
@@ -140,12 +142,14 @@ describe('Redux Admin Action Creator tests', () => {
     //* Arrange
     const testData: { product: PrintfulProduct; category: ProductCategories; price: number } = {
       product: {
+        /* eslint-disable */
         id: 142621663,
         external_id: '5dcf0b2972a144',
         name: 'JavaScript is !Cool',
         variants: 28,
         synced: 28,
         thumbnail_url: 'https://files.cdn.printful.com/files/ba1/ba13faa1332b7f18ec847cb9f4d79868_preview.png'
+        /* eslint-enable */
       },
       category: 'men',
       price: 33
