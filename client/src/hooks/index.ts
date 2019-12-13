@@ -1,5 +1,3 @@
-export * from './useAdminAddProducts';
-export * from './useAdminEditProducts';
 export * from './useAllProducts';
 export * from './useBodyScrollLock';
 export * from './useEventListener';

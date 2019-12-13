@@ -40,7 +40,7 @@ describe('<NavItem /> tests', () => {
     );
 
     //* Assert
-    const dropdown = getByTestId(`dropdown`);
+    const dropdown = getByTestId('dropdown');
 
     expect(dropdown);
   });
