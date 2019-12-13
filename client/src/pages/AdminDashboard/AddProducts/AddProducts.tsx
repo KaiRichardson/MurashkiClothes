@@ -1,17 +1,17 @@
 import React from 'react';
-import { useAdminNewProductsState } from 'hooks';
+
+import { useReadNewProductsOnMount, useAdminNewProductsState } from 'hooks';
+import { Section, LoadingSpinner } from 'elements';
 
 interface Props {}
 
 const AddProducts: React.FC<Props> = () => {
   // TODO: Fetch Products from Printful and add price and category, then store in DB
-  const { newProducts } = useAdminNewProductsState();
+  useReadNewProductsOnMount();
+  const { newProducts, newProductsLoading } = useAdminNewProductsState();
 
   return (
-    <>
-      AddProducts
-      {JSON.stringify(newProducts)}
-    </>
+    <Section title='Add new products'>{newProductsLoading ? <LoadingSpinner /> : JSON.stringify(newProducts)}</Section>
   );
 };
 

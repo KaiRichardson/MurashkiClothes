@@ -121,7 +121,7 @@ export const useAdminExistingProductsState = () => {
 */
 export const useAdminNewProductsActions = () => {
   const dispatch = useDispatch();
-  const { productsToAdd } = useAdminNewProductsState();
+  const productsToAdd = useSelector((state: StoreState) => state.admin.productsToAdd);
 
   /*
     Dispatches an action to read new products from Printful
@@ -222,23 +222,21 @@ export const useAdminExistingProductsActions = () => {
 };
 
 /*
-  Uses useReadNewProductsOnLoad effect when components mounts to the DOM
+  Dispatches an action to readNewProducts effect when components mounts to the DOM
 */
-export const useReadNewProductsOnLoad = () => {
-  const { readNewProducts } = useAdminNewProductsActions();
-
+export const useReadNewProductsOnMount = () => {
+  const dispatch = useDispatch();
   useEffect(() => {
-    readNewProducts();
-  }, [readNewProducts]);
+    dispatch(rNP());
+  }, [dispatch, rNP]);
 };
 
 /*
-  Uses useReadExistingProductsOnLoad effect when components mounts to the DOM
+  Dispatches an action to readExistingProducts effect when components mounts to the DOM
 */
-export const useReadExistingProductsOnLoad = () => {
-  const { readExistingProducts } = useAdminExistingProductsActions();
-
+export const useReadExistingProductsOnMount = () => {
+  const dispatch = useDispatch();
   useEffect(() => {
-    readExistingProducts();
-  }, [readExistingProducts]);
+    dispatch(rEP());
+  }, [dispatch]);
 };
