@@ -2,6 +2,7 @@ import React from 'react';
 
 import { useReadNewProductsOnMount, useAdminNewProductsState } from 'hooks';
 import { Section, LoadingSpinner } from 'elements';
+import NewProductItem from './NewProductItem';
 
 interface Props {}
 
@@ -11,7 +12,9 @@ const AddProducts: React.FC<Props> = () => {
   const { newProducts, newProductsLoading } = useAdminNewProductsState();
 
   return (
-    <Section title='Add new products'>{newProductsLoading ? <LoadingSpinner /> : JSON.stringify(newProducts)}</Section>
+    <Section title='Add new products'>
+      {newProductsLoading ? <LoadingSpinner /> : newProducts.map(p => <NewProductItem key={p.id} {...p} />)}
+    </Section>
   );
 };
 

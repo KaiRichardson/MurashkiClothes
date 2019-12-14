@@ -228,7 +228,7 @@ export const useReadNewProductsOnMount = () => {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(rNP());
-  }, [dispatch, rNP]);
+  }, [dispatch]);
 };
 
 /*

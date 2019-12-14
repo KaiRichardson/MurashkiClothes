@@ -2,6 +2,7 @@ import React from 'react';
 
 import { useAdminExistingProductsState, useReadExistingProductsOnMount } from 'hooks';
 import { Section, LoadingSpinner } from 'elements';
+import ExistingProductItem from './ExistingProductItem';
 
 interface Props {}
 
@@ -12,7 +13,13 @@ const EditProducts: React.FC<Props> = () => {
 
   return (
     <Section title='Edit existing products'>
-      {existingProductsLoading ? <LoadingSpinner /> : JSON.stringify(existingProducts)}
+      {existingProductsLoading ? (
+        <LoadingSpinner />
+      ) : existingProducts.length === 0 ? (
+        <p>No products found in database, please add a product.</p>
+      ) : (
+        existingProducts.map(p => <ExistingProductItem key={p._extID} {...p} />)
+      )}
     </Section>
   );
 };
