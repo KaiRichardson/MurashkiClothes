@@ -1,5 +1,5 @@
 import React from 'react';
-import { Formik } from 'formik';
+import { Formik, Field } from 'formik';
 
 import { useUser } from 'hooks';
 import { Input, Form, Button, LoadingSpinner } from 'elements';
@@ -55,15 +55,7 @@ const RegisterUserForm: React.FC<Props> = () => {
               }}
             >
               {fields.map(field => (
-                <Input
-                  name={field.name}
-                  value={values[field.name]}
-                  placeholder={field.placeholder}
-                  label={field.label}
-                  icon={field.icon}
-                  onChange={handleChange}
-                  key={field.name}
-                />
+                <Field name={field.name} as={Input} key={field.name} />
               ))}
 
               <Button dark type='submit' data-testid='submitButton'>

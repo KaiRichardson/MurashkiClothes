@@ -20,7 +20,7 @@ const Buttons: React.FC<Props> = () => {
     },
     // If there is no user id, the user is not signed in,
     // so the sign in button is displayed instead of the favorites button
-    !userInfo.id
+    !userInfo._id
       ? {
           name: 'sign in',
           link: '/login',

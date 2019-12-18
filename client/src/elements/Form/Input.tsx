@@ -4,43 +4,59 @@ import PropTypes from 'prop-types';
 
 import { spacing, black, lightGrey, red } from 'utils';
 
-interface Props {
+type Props = {
   name: string;
-  value: string;
+  value: any;
   onChange: any;
+  onBlur: any;
   type?: string;
-  label?: string;
+  errorText?: string;
+  touched?: boolean;
   placeholder?: string;
+  label?: string;
   icon?: string;
   required?: boolean;
-}
+};
 export const Input: React.FC<Props> = ({
-  name,
   type = 'text',
-  label = name,
-  placeholder = name,
-  icon,
+  errorText,
+  touched,
+  name,
   value,
   onChange,
+  onBlur,
+  label,
+  placeholder,
+  icon,
   required
 }) => {
   return (
     <FormGroup hasIcon={icon !== undefined}>
-      <FormLabel htmlFor={name}>{label}</FormLabel>
+      <FormLabel htmlFor={name}>{label || name}</FormLabel>
 
       {type === 'textarea' ? (
-        <TextArea name={name} placeholder={placeholder} value={value} onChange={onChange} required={required} />
-      ) : (
-        <FormInput
-          type={type}
+        <TextArea
           name={name}
-          placeholder={placeholder}
           value={value}
           onChange={onChange}
+          onBlur={onBlur}
+          placeholder={placeholder}
+          required={required}
+          data-testid={`${name}Input`}
+        />
+      ) : (
+        <FormInput
+          name={name}
+          value={value}
+          onChange={onChange}
+          onBlur={onBlur}
+          type={type}
+          placeholder={placeholder}
           required={required}
           data-testid={`${name}Input`}
         />
       )}
+      {errorText && touched && <HelperText>{errorText}</HelperText>}
 
       {icon && <FormIcon className={icon} />}
     </FormGroup>
@@ -89,13 +105,21 @@ const FormIcon = styled.i`
   color: ${red};
 `;
 
+const HelperText = styled.p`
+  color: ${red};
+  font-weight: bolder;
+`;
+
 Input.propTypes = {
   name: PropTypes.string.isRequired,
-  value: PropTypes.string.isRequired,
+  value: PropTypes.any.isRequired,
   onChange: PropTypes.any.isRequired,
+  onBlur: PropTypes.any.isRequired,
   type: PropTypes.string,
-  label: PropTypes.string,
+  errorText: PropTypes.string,
+  touched: PropTypes.bool,
   placeholder: PropTypes.string,
+  label: PropTypes.string,
   icon: PropTypes.string,
   required: PropTypes.bool
 };

@@ -4,6 +4,7 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import 'jest-styled-components';
 
 import { Button, ButtonLink } from './Button';
+import { red } from 'utils';
 
 describe('<Button /> tests', () => {
   it('renders a default button', () => {
@@ -51,6 +52,29 @@ describe('<Button /> tests', () => {
     expect(testButton).toHaveStyleRule('--bg', '#000');
     // Hover test
     expect(testButton).toHaveStyleRule('--bg', '#333', {
+      modifier: ':hover'
+    });
+  });
+
+  it('renders a brand color button', () => {
+    //* Act
+    const { getByTestId } = render(
+      <Button brand data-testid='testButton'>
+        Test Button
+      </Button>
+    );
+
+    //* Assert
+    const testButton = getByTestId('testButton');
+
+    // Snapshot test
+    expect(testButton).toMatchSnapshot();
+
+    // Color rules tests
+    expect(testButton).toHaveStyleRule('--txtColor', '#fff');
+    expect(testButton).toHaveStyleRule('--bg', '#000');
+    // Hover test
+    expect(testButton).toHaveStyleRule('--bg', red, {
       modifier: ':hover'
     });
   });
@@ -141,6 +165,31 @@ describe('<ButtonLink /> tests', () => {
 
     // Hover test
     expect(testButton).toHaveStyleRule('--bg', '#333', {
+      modifier: ':hover'
+    });
+  });
+
+  it('renders a brand color button link', () => {
+    //* Act
+    const { getByTestId } = render(
+      <Router>
+        <ButtonLink brand to='/test' data-testid='testButton'>
+          Test Button
+        </ButtonLink>
+      </Router>
+    );
+
+    //* Assert
+    const testButton = getByTestId('testButton');
+
+    // Snapshot test
+    expect(testButton).toMatchSnapshot();
+
+    // Color rules tests
+    expect(testButton).toHaveStyleRule('--txtColor', '#fff');
+    expect(testButton).toHaveStyleRule('--bg', '#000');
+    // Hover test
+    expect(testButton).toHaveStyleRule('--bg', red, {
       modifier: ':hover'
     });
   });

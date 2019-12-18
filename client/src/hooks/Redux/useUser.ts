@@ -70,6 +70,6 @@ export const useUserActions = () => {
 export const useReadUserInfoOnMount = () => {
   const { userInfo, readUserInfo } = useUser();
   useEffect(() => {
-    readUserInfo(userInfo.id);
-  }, [readUserInfo, userInfo.id]);
+    readUserInfo(userInfo._id);
+  }, [readUserInfo, userInfo._id]);
 };

@@ -4,6 +4,7 @@ import logger from 'redux-logger';
 import thunk from 'redux-thunk';
 import { save, load, RLSOptions, LoadOptions } from 'redux-localstorage-simple';
 
+import admin, { AdminState } from './Admin';
 import cart, { CartState } from './Cart';
 import user, { UserState } from './User';
 
@@ -19,11 +20,12 @@ const loadOptions: LoadOptions = {
 const middleware = [logger, thunk, save(rLSConfig)];
 
 const store = createStore(
-  combineReducers({ cart, user }),
+  combineReducers({ admin, cart, user }),
   load(loadOptions),
   composeWithDevTools(applyMiddleware(...middleware))
 );
 export interface StoreState {
+  admin: AdminState;
   cart: CartState;
   user: UserState;
 }
