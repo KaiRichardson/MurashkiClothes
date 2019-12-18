@@ -1,5 +1,37 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`<Button /> tests renders a brand color button 1`] = `
+.c0 {
+  --bg: #fff;
+  --txtColor: #000;
+  cursor: pointer;
+  padding: 0.5rem 1rem;
+  border: none;
+  -webkit-transition: all 250ms ease-in;
+  transition: all 250ms ease-in;
+  background: var(--bg);
+  color: var(--txtColor);
+  --bg: #000;
+  --txtColor: #fff;
+}
+
+.c0:hover {
+  --bg: #000;
+  --txtColor: #fff;
+}
+
+.c0:hover {
+  --bg: #ee4266;
+}
+
+<button
+  class="c0"
+  data-testid="testButton"
+>
+  Test Button
+</button>
+`;
+
 exports[`<Button /> tests renders a dark button 1`] = `
 .c0 {
   --bg: #fff;
@@ -89,6 +121,43 @@ exports[`<Button /> tests renders a transparent button 1`] = `
 >
   Test Button
 </button>
+`;
+
+exports[`<ButtonLink /> tests renders a brand color button link 1`] = `
+.c0 {
+  --bg: #fff;
+  --txtColor: #000;
+  background: var(--bg);
+  color: var(--txtColor);
+  text-align: center;
+  display: inline-block;
+  border: none;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  -webkit-transition: all 250ms ease-in;
+  transition: all 250ms ease-in;
+  cursor: pointer;
+  padding: 0.5rem 1rem;
+  --bg: #000;
+  --txtColor: #fff;
+}
+
+.c0:hover {
+  --bg: #000;
+  --txtColor: #fff;
+}
+
+.c0:hover {
+  --bg: #ee4266;
+}
+
+<a
+  class="c0"
+  data-testid="testButton"
+  href="/test"
+>
+  Test Button
+</a>
 `;
 
 exports[`<ButtonLink /> tests renders a dark button link 1`] = `
