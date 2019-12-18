@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 import { useForm } from 'hooks';
-import { Form, Input, Button as B, FormGroup } from 'elements';
+import { Form, Button as B, FormGroup } from 'elements';
 
 interface Props {}
 
@@ -24,7 +24,7 @@ const NewsLetterForm: React.FC<Props> = () => {
       }}
     >
       <FormGroup>
-        <Input type='email' name='email' value={values.email} onChange={handleChange} placeholder='Enter your email' />
+        <input type='email' name='email' value={values.email} onChange={handleChange} placeholder='Enter your email' />
         <Button dark type='submit'>
           Sign Up
         </Button>
