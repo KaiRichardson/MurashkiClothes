@@ -9,13 +9,15 @@ module.exports = getUnsortedProducts = async(res, printProducts) => {
     
     products.forEach(e => prodIDs.push(e._extID));
 
-    const prodData = printProducts.map(p => {
-      if (prodIDs.indexOf(p.id) === -1) return p;
+    const prodData = printProducts.filter(p => {
+      if (prodIDs.indexOf(p.id) === -1) return true;
+
+      return false;
     })
 
     //Check 0th element for null/falsey value since map will just return an array with null if there are no matches
     if(!prodData[0]) {
-      return res.status(404).send('No products to add at this time!');
+      return res.status(204).send('No products to add at this time!');
     }
 
     return res.status(200).json(prodData);

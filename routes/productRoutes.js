@@ -61,9 +61,11 @@ router
   .post('/admin/edit', async (req, res) => {
     const { productsToUpdate } = req.body;
 
-    const _ids = productsToUpdate.map((p) => p._id);
+    if (!productsToUpdate || productsToUpdate.length === 0) {
+      return res.status(400).send('There were no products to add in this request!')
+    }
 
-    console.log(_ids);
+    const _ids = productsToUpdate.map((p) => p._id);
 
     return res.sendStatus(200);
   });
