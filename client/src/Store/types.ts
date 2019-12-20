@@ -20,7 +20,7 @@ export interface Action<T = any> {
 }
 
 /* Product Data Types */
-export type ProductCategories = 'men' | 'women' | 'children';
+export type ProductCategories = 'MENS' | 'WOMENS' | 'CHILDRENS';
 
 // Product in Murashki Database
 export interface Product {
