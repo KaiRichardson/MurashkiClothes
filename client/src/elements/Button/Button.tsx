@@ -66,6 +66,8 @@ export const Button = styled.button<{ dark?: boolean; trans?: boolean; brand?: b
       `}
 `;
 
+// Next line disabled to ignore single instance of "no-unexpected-multiline"
+// eslint-disable-next-line
 export const ButtonLink = styled(({ dark, trans, brand, ...rest }) => <Link {...rest} />)<{
   dark?: boolean;
   trans?: boolean;
