@@ -1,5 +1,5 @@
 import React from 'react';
-import { Formik, Field } from 'formik';
+import { Formik } from 'formik';
 
 import { useUser } from 'hooks';
 import { Input, Form, Button, LoadingSpinner } from 'elements';
@@ -8,13 +8,13 @@ interface Props {}
 
 const RegisterUserForm: React.FC<Props> = () => {
   const { loginIsLoading } = useUser();
-  const handleFormSubmission = () => {};
 
   const fields: {
     name: 'username' | 'email' | 'password' | 'passwordConfirm';
     icon: string;
     placeholder: string;
     label?: string;
+    type?: string;
   }[] = [
     {
       name: 'username',
@@ -24,20 +24,35 @@ const RegisterUserForm: React.FC<Props> = () => {
     {
       name: 'email',
       icon: 'fas fa-envelope',
-      placeholder: 'Enter your email'
+      placeholder: 'Enter your email',
+      type: 'email'
     },
     {
       name: 'password',
       icon: 'fas fa-lock-alt',
-      placeholder: 'Enter your password'
+      placeholder: 'Enter your password',
+      type: 'password'
     },
     {
       name: 'passwordConfirm',
       icon: 'fas fa-lock-alt',
       placeholder: 'Please reenter your password',
-      label: 'Confirm Password'
+      label: 'Confirm Password',
+      type: 'password'
     }
   ];
+
+  const handleFormSubmission = ({
+    username,
+    email,
+    password
+  }: {
+    username: string;
+    email: string;
+    password: string;
+  }) => {
+    console.log({ username, email, password });
+  };
 
   return (
     <>
@@ -46,16 +61,42 @@ const RegisterUserForm: React.FC<Props> = () => {
       ) : (
         <Formik
           initialValues={{ username: '', email: '', password: '', passwordConfirm: '' }}
-          onSubmit={handleFormSubmission}
+          validate={values => {
+            const errors: any = {};
+
+            for (let i = 0; i < Object.keys(values).length; i++) {
+              const current = Object.keys(values)[i];
+
+              //@ts-ignore
+              if (values[current] === '') {
+                errors[current] = `${current} is required!`;
+              }
+            }
+
+            if (values.password !== values.passwordConfirm) {
+              errors.passwordConfirm = 'Passwords must match!';
+            }
+
+            return errors;
+          }}
+          onSubmit={values => handleFormSubmission(values)}
         >
-          {({ values, handleChange, handleSubmit }) => (
-            <Form
-              onSubmit={e => {
-                e.preventDefault();
-              }}
-            >
+          {({ handleSubmit, values, touched, errors, handleChange, handleBlur }) => (
+            <Form onSubmit={handleSubmit}>
               {fields.map(field => (
-                <Field name={field.name} as={Input} key={field.name} />
+                <Input
+                  key={field.name}
+                  name={field.name}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  value={values[field.name]}
+                  touched={touched[field.name]}
+                  errorText={errors[field.name]}
+                  placeholder={field.placeholder}
+                  label={field.label}
+                  icon={field.icon}
+                  type={field.type}
+                />
               ))}
 
               <Button dark type='submit' data-testid='submitButton'>
