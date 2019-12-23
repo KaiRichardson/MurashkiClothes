@@ -52,16 +52,13 @@ const LoginForm: React.FC<Props> = () => {
             <Form onSubmit={handleSubmit}>
               {fields.map(field => (
                 <Input
+                  {...field}
                   key={field.name}
-                  name={field.name}
                   onChange={handleChange}
                   onBlur={handleBlur}
                   value={values[field.name]}
                   errorText={errors[field.name]}
-                  icon={field.icon}
                   touched={touched[field.name]}
-                  type={field.type}
-                  placeholder={field.placeholder}
                 />
               ))}
 

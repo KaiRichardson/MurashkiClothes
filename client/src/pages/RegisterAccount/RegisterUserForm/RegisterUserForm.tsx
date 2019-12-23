@@ -51,6 +51,7 @@ const RegisterUserForm: React.FC<Props> = () => {
     email: string;
     password: string;
   }) => {
+    // TODO: Make POST request to /api/login
     console.log({ username, email, password });
   };
 
@@ -85,17 +86,13 @@ const RegisterUserForm: React.FC<Props> = () => {
             <Form onSubmit={handleSubmit}>
               {fields.map(field => (
                 <Input
+                  {...field}
                   key={field.name}
-                  name={field.name}
                   onChange={handleChange}
                   onBlur={handleBlur}
                   value={values[field.name]}
                   touched={touched[field.name]}
                   errorText={errors[field.name]}
-                  placeholder={field.placeholder}
-                  label={field.label}
-                  icon={field.icon}
-                  type={field.type}
                 />
               ))}
 

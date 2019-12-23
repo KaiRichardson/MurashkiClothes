@@ -31,7 +31,7 @@ export const Input: React.FC<Props> = ({
   required
 }) => {
   return (
-    <FormGroup hasIcon={icon !== undefined} hasError={errorText !== undefined}>
+    <FormGroup hasIcon={icon !== undefined} hasError={errorText !== undefined && touched === true}>
       <FormLabel htmlFor={name}>{label || name}</FormLabel>
 
       {type === 'textarea' ? (
