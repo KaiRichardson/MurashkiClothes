@@ -31,7 +31,7 @@ export const Input: React.FC<Props> = ({
   required
 }) => {
   return (
-    <FormGroup hasIcon={icon !== undefined}>
+    <FormGroup hasIcon={icon !== undefined} hasError={errorText !== undefined && touched === true}>
       <FormLabel htmlFor={name}>{label || name}</FormLabel>
 
       {type === 'textarea' ? (
@@ -63,11 +63,23 @@ export const Input: React.FC<Props> = ({
   );
 };
 
-const FormGroup = styled.div<{ hasIcon: boolean }>`
+const FormGroup = styled.div<{ hasIcon: boolean; hasError: boolean }>`
   display: grid;
-  grid-template-rows: repeat(2, 1fr);
+  grid-template-rows: repeat(${props => (props.hasError ? 3 : 2)}, 1fr);
   grid-template-columns: ${props => (props.hasIcon ? 'max-content 1fr' : '1fr')};
   grid-template-areas: ${props => (props.hasIcon ? "'icon label' 'icon input'" : "'label' 'input'")};
+  grid-template-areas: ${props => {
+    if (props.hasIcon && props.hasError) {
+      return "'icon label' 'icon input' '. error'";
+    } else if (props.hasIcon) {
+      return "'icon label' 'icon input'";
+    } else if (props.hasError) {
+      return "'label' 'input' 'error'";
+    } else {
+      return "'label' 'input'";
+    }
+  }};
+
   justify-content: center;
   align-items: center;
   grid-gap: ${spacing.sm};
@@ -106,6 +118,7 @@ const FormIcon = styled.i`
 `;
 
 const HelperText = styled.p`
+  grid-area: error;
   color: ${red};
   font-weight: bolder;
 `;

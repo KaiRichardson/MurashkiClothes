@@ -20,9 +20,8 @@ const Breadcrumbs: React.FC<Props> = ({ productName }) => {
         <Item key={page}>
           {/*URL is constructed by joining the current item and all subsequent items */}
           <Breadcrumb to={`/${trail.slice(0, i + 1).join('/')}`}>
-            {/* If the current iteration is a number it is a productid,
-                  in which case the passed in productName is used instead*/}
-            {parseInt(page) && productName ? productName : page}
+            {/* The third item in the URL should be the product ID, in which case the passed in productName is used instead*/}
+            {i === 2 && productName ? productName : page}
           </Breadcrumb>
         </Item>
       ))}

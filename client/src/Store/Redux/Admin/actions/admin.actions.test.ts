@@ -80,7 +80,7 @@ describe('Redux Admin Action Creator tests', () => {
     const apiResponse: Product[] = [
       {
         _extID: 142621663,
-        category: 'men',
+        category: 'MENS',
         name: 'JavaScript is !Cool',
         imgUrls: {
           base: ['https://files.cdn.printful.com/files/ba1/ba13faa1332b7f18ec847cb9f4d79868_preview.png'],
@@ -100,7 +100,7 @@ describe('Redux Admin Action Creator tests', () => {
     ];
 
     //* Act
-    fetchMock.once('/api/products/admin/edit', {
+    fetchMock.once('/api/products', {
       body: apiResponse
     });
 
@@ -125,7 +125,7 @@ describe('Redux Admin Action Creator tests', () => {
     ];
 
     //* Act
-    fetchMock.once('/api/products/admin/edit', {
+    fetchMock.once('/api/products', {
       throws: Error('Oops, something went wrong')
     });
 
@@ -147,7 +147,7 @@ describe('Redux Admin Action Creator tests', () => {
         synced: 28,
         thumbnail_url: 'https://files.cdn.printful.com/files/ba1/ba13faa1332b7f18ec847cb9f4d79868_preview.png'
       },
-      category: 'men',
+      category: 'MENS',
       price: 33
     };
     const expectedAction: types.AddProduct = {
@@ -164,7 +164,7 @@ describe('Redux Admin Action Creator tests', () => {
     const testData: { product: Product; price: number } = {
       product: {
         _extID: 142621663,
-        category: 'men',
+        category: 'MENS',
         name: 'JavaScript is !Cool',
         imgUrls: {
           base: ['https://files.cdn.printful.com/files/ba1/ba13faa1332b7f18ec847cb9f4d79868_preview.png'],
@@ -176,7 +176,7 @@ describe('Redux Admin Action Creator tests', () => {
     };
     const updatedProduct: Product = {
       _extID: 142621663,
-      category: 'men',
+      category: 'MENS',
       name: 'JavaScript is !Cool',
       imgUrls: {
         base: ['https://files.cdn.printful.com/files/ba1/ba13faa1332b7f18ec847cb9f4d79868_preview.png'],
