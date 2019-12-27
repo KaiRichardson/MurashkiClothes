@@ -88,13 +88,13 @@ export const useUserActions = () => {
     Dispatches an action to remove an item from the users cart
     based on a passed in variant_id
   */
-  const removeCartItem = (variant_id: string) => dispatch(rCI(variant_id));
+  const removeCartItem = (variant_id: number) => dispatch(rCI(variant_id));
 
   /*
     Dispatches an action to set a cart items quantity to a new quantity
     based on a passed in variant_id
   */
-  const updateCartItemQuantity = ({ newQuantity, variant_id }: { newQuantity: number; variant_id: string }) =>
+  const updateCartItemQuantity = ({ newQuantity, variant_id }: { newQuantity: number; variant_id: number }) =>
     dispatch(uCIQ({ newQuantity, variant_id }));
 
   /*

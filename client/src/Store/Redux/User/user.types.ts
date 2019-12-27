@@ -34,13 +34,13 @@ export interface AddCartItem extends Action {
 }
 export interface RemoveCartItem extends Action {
   type: typeof REMOVE_CART_ITEM;
-  payload: string;
+  payload: number;
 }
 export interface UpdateCartItemQuantity extends Action {
   type: typeof UPDATE_CART_ITEM_QUANTITY;
   payload: {
     newQuantity: number;
-    variant_id: string;
+    variant_id: number;
   };
 }
 export interface EmptyCart extends Action {

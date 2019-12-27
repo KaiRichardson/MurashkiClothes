@@ -110,7 +110,7 @@ describe('userReducer tests', () => {
     const testData: { quantity: number; product: Variant } = {
       quantity: 1,
       product: {
-        variant_id: 'test_variant_id',
+        variant_id: 5510,
         name: 'test product',
         color: 'blue',
         size: 'medium'
@@ -142,7 +142,7 @@ describe('userReducer tests', () => {
 
   it(`should handle ${types.REMOVE_CART_ITEM}`, () => {
     //* Arrange
-    const testData = 'test_id';
+    const testData = 73;
     const initialState: UserState = {
       account: {
         _id: 'testId',
@@ -169,7 +169,7 @@ describe('userReducer tests', () => {
 
   it(`should handle ${types.UPDATE_CART_ITEM_QUANTITY}`, () => {
     //* Arrange
-    const testData = { newQuantity: 5510, variant_id: 'update_me' };
+    const testData = { newQuantity: 5510, variant_id: 33 };
     const initialState: UserState = {
       account: {
         _id: 'testId',
@@ -177,10 +177,10 @@ describe('userReducer tests', () => {
         email: '',
         orders: [],
         cart: [
-          { quantity: 33, product: { variant_id: 'update_me', name: 'test product', color: 'blue', size: 'medium' } },
+          { quantity: 33, product: { variant_id: 33, name: 'test product', color: 'blue', size: 'medium' } },
           {
             quantity: 73,
-            product: { variant_id: 'dont_update_me', name: 'a different product', color: 'yellow', size: 'large' }
+            product: { variant_id: 7373, name: 'a different product', color: 'yellow', size: 'large' }
           }
         ]
       },
@@ -195,11 +195,11 @@ describe('userReducer tests', () => {
         cart: [
           {
             quantity: testData.newQuantity,
-            product: { variant_id: 'update_me', name: 'test product', color: 'blue', size: 'medium' }
+            product: { variant_id: 33, name: 'test product', color: 'blue', size: 'medium' }
           },
           {
             quantity: 73,
-            product: { variant_id: 'dont_update_me', name: 'a different product', color: 'yellow', size: 'large' }
+            product: { variant_id: 7373, name: 'a different product', color: 'yellow', size: 'large' }
           }
         ]
       }
@@ -221,10 +221,10 @@ describe('userReducer tests', () => {
         email: '',
         orders: [],
         cart: [
-          { quantity: 33, product: { variant_id: 'update_me', name: 'test product', color: 'blue', size: 'medium' } },
+          { quantity: 33, product: { variant_id: 3333, name: 'test product', color: 'blue', size: 'medium' } },
           {
             quantity: 73,
-            product: { variant_id: 'dont_update_me', name: 'a different product', color: 'yellow', size: 'large' }
+            product: { variant_id: 6666, name: 'a different product', color: 'yellow', size: 'large' }
           }
         ]
       },

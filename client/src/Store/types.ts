@@ -37,7 +37,7 @@ export interface Product {
 
 // Product in Printful Database
 export interface Variant {
-  variant_id: string;
+  variant_id: number;
   name: string;
   color: string;
   size: string;
