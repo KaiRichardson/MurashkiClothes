@@ -46,7 +46,7 @@ const Buttons: React.FC<Props> = () => {
         </Item>
       ))}
 
-      <ToggleNavButton />
+      {window.innerWidth < 768 && <ToggleNavButton />}
     </Wrapper>
   );
 };
