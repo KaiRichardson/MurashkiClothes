@@ -4,7 +4,11 @@ import {
   LOG_USER_OUT,
   REQUEST_READ_USER_INFO,
   SUCCESS_READ_USER_INFO,
-  FAIL_READ_USER_INFO
+  FAIL_READ_USER_INFO,
+  ADD_CART_ITEM,
+  REMOVE_CART_ITEM,
+  UPDATE_CART_ITEM_QUANTITY,
+  EMPTY_CART
 } from '../user.types';
 
 export interface UserState {
@@ -48,6 +52,44 @@ export default (state: UserState = initialState, action: UserActions): UserState
       Set loading.login => false
       */
       return { ...state, account: initialState.account, loading: { login: false } };
+
+    case ADD_CART_ITEM:
+      /*
+        Add item to front of cart list
+      */
+      return { ...state, account: { ...state.account, cart: [action.payload, ...state.account.cart] } };
+    case REMOVE_CART_ITEM:
+      /*
+        Removes an item from the cart based on the passed in variant_id
+      */
+      return {
+        ...state,
+        account: {
+          ...state.account,
+          cart: state.account.cart.filter(item => item.product.variant_id !== action.payload)
+        }
+      };
+    case UPDATE_CART_ITEM_QUANTITY:
+      /*
+        Finds an item based on the passed in variant_id and sets its quantity to the passed in newQuantitty
+      */
+      return {
+        ...state,
+        account: {
+          ...state.account,
+          cart: state.account.cart.map(item =>
+            item.product.variant_id === action.payload.variant_id
+              ? { ...item, quantity: action.payload.newQuantity }
+              : item
+          )
+        }
+      };
+    case EMPTY_CART:
+      /*
+        Sets the cart to an empty array
+      */
+      return { ...state, account: { ...state.account, cart: [] } };
+
     case LOG_USER_OUT:
       /*
       Set account to empty values
