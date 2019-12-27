@@ -108,7 +108,7 @@ describe('Redux User Action Creator tests', () => {
     //* Arrange
     const testData = {
       newQuantity: 33,
-      variant_id: 'test_product_id'
+      variant_id: 5510
     };
     const expectedAction: types.UpdateCartItemQuantity = {
       type: types.UPDATE_CART_ITEM_QUANTITY,

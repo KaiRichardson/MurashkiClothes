@@ -79,9 +79,8 @@ export const useUserActions = () => {
 
   /*
     Dispatches an action to add a product to the users cart
-    the default value for the products quantity is 1
   */
-  const addCartItem = ({ quantity = 1, product }: { quantity?: number; product: Variant }) =>
+  const addCartItem = ({ quantity = 1, product }: { quantity: number; product: Variant }) =>
     dispatch(aCI({ quantity, product }));
 
   /*

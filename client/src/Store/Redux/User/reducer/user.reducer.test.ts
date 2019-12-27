@@ -140,6 +140,48 @@ describe('userReducer tests', () => {
     expect(result).toEqual(expectedState);
   });
 
+  it(`should handle ${types.ADD_CART_ITEM} for an existing item`, () => {
+    //* Arrange
+    const testData: Variant = {
+      variant_id: 5510,
+      name: 'test product',
+      color: 'blue',
+      size: 'medium'
+    };
+    const initialState: UserState = {
+      account: {
+        _id: 'testId',
+        username: 'nichsecord',
+        email: '',
+        orders: [],
+        cart: [
+          {
+            quantity: 1,
+            product: {
+              variant_id: 5510,
+              name: 'test product',
+              color: 'blue',
+              size: 'medium'
+            }
+          }
+        ]
+      },
+      loading: {
+        login: false
+      }
+    };
+    const expectedState: UserState = {
+      ...initialState,
+      account: { ...initialState.account, cart: [{ ...initialState.account.cart[0], quantity: 2 }] }
+    };
+
+    //* Act
+    const result = reducer(initialState, { type: types.ADD_CART_ITEM, payload: { quantity: 1, product: testData } });
+
+    //* Assert
+    expect(result).toEqual(expectedState);
+  });
+
   it(`should handle ${types.REMOVE_CART_ITEM}`, () => {
     //* Arrange
     const testData = 73;
