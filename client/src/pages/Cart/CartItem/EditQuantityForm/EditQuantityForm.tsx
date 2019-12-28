@@ -1,9 +1,11 @@
 import React from 'react';
-import { Formik, Field } from 'formik';
+import { Formik } from 'formik';
+import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
 import { useUserActions } from 'hooks';
-import { Form, Input, Button } from 'elements';
+import { spacing, lightGrey, black } from 'utils';
+import { Button } from 'elements';
 
 interface Props {
   currentQuantity: number;
@@ -11,7 +13,7 @@ interface Props {
 }
 
 const EditQuantityForm: React.FC<Props> = ({ currentQuantity, variant_id }) => {
-  const { updateCartItemQuantity } = useUserActions();
+  const { updateCartItemQuantity, removeCartItem } = useUserActions();
 
   return (
     <Formik
@@ -20,29 +22,69 @@ const EditQuantityForm: React.FC<Props> = ({ currentQuantity, variant_id }) => {
         const errors: any = {};
 
         if (values.quantity <= 0) {
-          errors.quantity = 'Please select a number greater than 0';
+          removeCartItem(variant_id);
         }
 
         return errors;
       }}
       onSubmit={({ quantity: newQuantity }) => {
-        updateCartItemQuantity({ newQuantity, variant_id });
+        newQuantity < 1 ? removeCartItem(variant_id) : updateCartItemQuantity({ newQuantity, variant_id });
       }}
     >
-      {({ handleSubmit, errors, touched }) => (
-        <Form onSubmit={handleSubmit}>
-          <Field as={Input} name='quantity' type='number' errorText={errors.quantity} touched={touched.quantity} />
-
-          <Button dark type='submit'>
-            Update Quantity
+      {({ handleSubmit, handleChange, handleBlur, values, setFieldValue }) => (
+        <Wrapper>
+          <Button
+            dark
+            type='button'
+            onClick={e => {
+              setFieldValue('quantity', values.quantity - 1);
+              handleSubmit();
+            }}
+          >
+            {values.quantity > 1 ? '-' : <i className='far fa-trash-alt' />}
           </Button>
-        </Form>
+          <Input
+            name='quantity'
+            onChange={e => {
+              handleChange(e);
+              handleSubmit();
+            }}
+            onBlur={handleBlur}
+            type='number'
+            value={values.quantity}
+          />
+          <Button
+            dark
+            type='button'
+            onClick={e => {
+              setFieldValue('quantity', values.quantity + 1);
+              handleSubmit();
+            }}
+          >
+            +
+          </Button>
+        </Wrapper>
       )}
     </Formik>
   );
 };
 
 export default EditQuantityForm;
+
+const Wrapper = styled.div`
+  display: grid;
+  grid-template-columns: repeat(3, max-content);
+  margin: ${spacing.md} 0;
+`;
+
+const Input = styled.input`
+  padding: ${spacing.xs} ${spacing.sm};
+  border: 1px solid ${lightGrey};
+  color: ${black};
+  max-width: 5rem;
+  text-align: center;
+  padding-left: ${spacing.md};
+`;
 
 EditQuantityForm.propTypes = {
   currentQuantity: PropTypes.number.isRequired,

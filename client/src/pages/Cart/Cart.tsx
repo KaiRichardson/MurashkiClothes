@@ -12,7 +12,7 @@ const Cart: React.FC<Props> = () => {
   return (
     <Section title='Cart'>
       <ButtonLink brand to='/checkout' style={{ alignSelf: 'flex-end' }}>
-        Checkout
+        Proceed to Checkout
       </ButtonLink>
 
       <section>
@@ -22,7 +22,7 @@ const Cart: React.FC<Props> = () => {
       </section>
 
       <ButtonLink brand to='/checkout' style={{ alignSelf: 'flex-end' }}>
-        Checkout
+        Proceed to Checkout
       </ButtonLink>
     </Section>
   );
