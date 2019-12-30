@@ -138,4 +138,14 @@ describe('Redux User Action Creator tests', () => {
     //* Assert
     expect(actions.logUserOut()).toEqual(expectedAction);
   });
+
+  it('should create an action to clear out the user._error field', () => {
+    //* Arrange
+    const expectedAction: types.ClearUserError = {
+      type: types.CLEAR_USER_ERROR
+    };
+
+    //* Assert
+    expect(actions.clearUserError()).toEqual(expectedAction);
+  });
 });

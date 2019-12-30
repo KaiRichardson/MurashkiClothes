@@ -10,6 +10,7 @@ import {
   RemoveCartItem,
   UpdateCartItemQuantity,
   EmptyCart,
+  ClearUserError,
   LOG_USER_OUT,
   REQUEST_READ_USER_INFO,
   SUCCESS_READ_USER_INFO,
@@ -17,7 +18,8 @@ import {
   ADD_CART_ITEM,
   REMOVE_CART_ITEM,
   UPDATE_CART_ITEM_QUANTITY,
-  EMPTY_CART
+  EMPTY_CART,
+  CLEAR_USER_ERROR
 } from '../user.types';
 
 export const logUserIn = ({ username, password }: { username: string; password: string }) => async (
@@ -97,3 +99,7 @@ export const logUserOut = (): LogUserOut => {
 
   return { type: LOG_USER_OUT };
 };
+
+export const clearUserError = (): ClearUserError => ({
+  type: CLEAR_USER_ERROR
+});
