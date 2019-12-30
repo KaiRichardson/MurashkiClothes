@@ -3,7 +3,7 @@ import styled, { css } from 'styled-components';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
-import { spacing, transition, white, black, grey, lightGrey, red } from 'utils';
+import { spacing, transition, white, black, grey, lightGrey, red, darkerRed } from 'utils';
 
 /*
     @desc Button component.
@@ -44,11 +44,11 @@ export const Button = styled.button<{ dark?: boolean; trans?: boolean; brand?: b
     ${props =>
       props.brand &&
       css`
-        --bg: ${black};
+        --bg: ${red};
         --txtColor: ${white};
 
         &:hover {
-          --bg: ${red};
+          --bg: ${darkerRed};
         }
       `}
 
@@ -110,11 +110,11 @@ export const ButtonLink = styled(({ dark, trans, brand, ...rest }) => <Link {...
     ${props =>
       props.brand &&
       css`
-        --bg: ${black};
+        --bg: ${red};
         --txtColor: ${white};
 
         &:hover {
-          --bg: ${red};
+          --bg: ${darkerRed};
         }
       `}
 
@@ -134,10 +134,12 @@ export const ButtonLink = styled(({ dark, trans, brand, ...rest }) => <Link {...
 
 Button.propTypes = {
   dark: PropTypes.bool,
-  trans: PropTypes.bool
+  trans: PropTypes.bool,
+  brand: PropTypes.bool
 };
 
 ButtonLink.propTypes = {
   dark: PropTypes.bool,
-  trans: PropTypes.bool
+  trans: PropTypes.bool,
+  brand: PropTypes.bool
 };
