@@ -31,6 +31,11 @@ const initialState: UserState = {
   }
 };
 
+/*
+  The rule `no-fallthrough` has been disabled
+  because the ability to fall through to the next case is intentional
+*/
+/* eslint no-fallthrough: 0 */
 export default (state: UserState = initialState, action: UserActions): UserState => {
   switch (state._status) {
     case 'LOGGED_OUT':
@@ -78,8 +83,16 @@ export default (state: UserState = initialState, action: UserActions): UserState
           break;
       }
 
+    /* 
+      The following section excluded from eslint to ignore `no-duplicate-case` rule.
+      This is intentional behavior because the block contains actions which apply
+      to both `LOGGED_OUT` and `LOGGED_IN` states
+    */
+    /* eslint-disable */
     case 'LOGGED_OUT':
     case 'LOGGED_IN':
+      /* eslint-enable */
+
       switch (action.type) {
         case CLEAR_USER_ERROR:
           /*
