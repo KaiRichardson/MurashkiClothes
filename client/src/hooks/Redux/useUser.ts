@@ -43,11 +43,12 @@ export const useUserState = () => {
   const numberOfItemsInCart = cart.length;
 
   /*
-    Creates a reference to the loading state of the user login action
+    Creates a reference to the _status attribute of the user
+    returns 'LOGGED_OUT', 'LOGGED_IN', or 'LOADING'
   */
-  const loginIsLoading = useSelector((store: StoreState) => store.user.loading.login);
+  const userStatus = useSelector((store: StoreState) => store.user._status);
 
-  return { accountInfo, cart, numberOfItemsInCart, loginIsLoading };
+  return { accountInfo, cart, numberOfItemsInCart, userStatus };
 };
 
 /*
