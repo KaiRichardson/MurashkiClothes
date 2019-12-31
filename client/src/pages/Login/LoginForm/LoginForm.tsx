@@ -7,7 +7,7 @@ import { LoadingSpinner, Form, Input, Button } from 'elements';
 interface Props {}
 
 const LoginForm: React.FC<Props> = () => {
-  const { logUserIn, loginIsLoading } = useUser();
+  const { logUserIn, userStatus } = useUser();
 
   const fields: { name: 'username' | 'password'; icon: string; placeholder: string; type?: string }[] = [
     {
@@ -25,7 +25,7 @@ const LoginForm: React.FC<Props> = () => {
 
   return (
     <>
-      {loginIsLoading ? (
+      {userStatus === 'LOADING' ? (
         <LoadingSpinner />
       ) : (
         <Formik
