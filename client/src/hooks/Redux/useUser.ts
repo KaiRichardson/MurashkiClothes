@@ -10,7 +10,8 @@ import {
   addCartItem as aCI,
   removeCartItem as rCI,
   updateCartItemQuantity as uCIQ,
-  emptyCart as eC
+  emptyCart as eC,
+  clearUserError as cUE
 } from 'Store';
 
 /*
@@ -102,7 +103,22 @@ export const useUserActions = () => {
   */
   const emptyCart = () => dispatch(eC());
 
-  return { readUserInfo, logUserIn, logUserOut, addCartItem, removeCartItem, updateCartItemQuantity, emptyCart };
+  /*
+    Disptaches an action to clear the error field from the user object
+    (Use when exiting pages that may create an error so errors do not persist unintentionally)
+  */
+  const clearUserError = () => dispatch(cUE());
+
+  return {
+    readUserInfo,
+    logUserIn,
+    logUserOut,
+    addCartItem,
+    removeCartItem,
+    updateCartItemQuantity,
+    emptyCart,
+    clearUserError
+  };
 };
 
 /*
