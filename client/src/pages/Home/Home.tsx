@@ -6,7 +6,7 @@ import { useUserActions } from 'hooks';
 interface Props {}
 
 const Home: React.FC<Props> = () => {
-  const { addCartItem } = useUserActions();
+  const { addCartItem, emptyCart } = useUserActions();
   return (
     <>
       <Button
@@ -40,7 +40,9 @@ const Home: React.FC<Props> = () => {
       >
         TEST add white shirt
       </Button>
-      <Button trans>Click to get products from API</Button>
+      <Button trans onClick={() => emptyCart()}>
+        TEST empty cart
+      </Button>
       <Link to='/cart'>I am a link</Link>
       <Link dark to='/cart'>
         I am a dark link
