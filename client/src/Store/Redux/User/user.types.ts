@@ -12,6 +12,8 @@ export const EMPTY_CART = 'User/EMPTY_CART';
 
 export const LOG_USER_OUT = 'User/LOG_USER_OUT';
 
+export const CLEAR_USER_ERROR = 'User/CLEAR_USER_ERROR';
+
 //* User Actions
 export interface RequestReadUserInfo extends Action {
   type: typeof REQUEST_READ_USER_INFO;
@@ -51,6 +53,10 @@ export interface LogUserOut extends Action {
   type: typeof LOG_USER_OUT;
 }
 
+export interface ClearUserError extends Action {
+  type: typeof CLEAR_USER_ERROR;
+}
+
 export type UserActions =
   | RequestReadUserInfo
   | SuccessReadUserInfo
@@ -59,4 +65,5 @@ export type UserActions =
   | RemoveCartItem
   | UpdateCartItemQuantity
   | EmptyCart
-  | LogUserOut;
+  | LogUserOut
+  | ClearUserError;

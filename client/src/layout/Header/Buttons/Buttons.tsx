@@ -9,7 +9,7 @@ import { useUserState } from 'hooks';
 interface Props {}
 
 const Buttons: React.FC<Props> = () => {
-  const { accountInfo, numberOfItemsInCart } = useUserState();
+  const { userStatus, numberOfItemsInCart } = useUserState();
 
   const items = [
     {
@@ -17,9 +17,8 @@ const Buttons: React.FC<Props> = () => {
       link: '/search',
       icon: 'fas fa-search'
     },
-    // If there is no user id, the user is not signed in,
-    // so the sign in button is displayed instead of the favorites button
-    !accountInfo._id
+    // If the user is not logged in display login button instead of favorites
+    userStatus !== 'LOGGED_IN'
       ? {
           name: 'sign in',
           link: '/login',

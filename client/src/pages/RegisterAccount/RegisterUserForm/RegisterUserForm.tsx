@@ -7,7 +7,7 @@ import { Input, Form, Button, LoadingSpinner } from 'elements';
 interface Props {}
 
 const RegisterUserForm: React.FC<Props> = () => {
-  const { loginIsLoading } = useUser();
+  const { userStatus } = useUser();
 
   const fields: {
     name: 'username' | 'email' | 'password' | 'passwordConfirm';
@@ -57,7 +57,7 @@ const RegisterUserForm: React.FC<Props> = () => {
 
   return (
     <>
-      {loginIsLoading ? (
+      {userStatus === 'LOADING' ? (
         <LoadingSpinner />
       ) : (
         <Formik

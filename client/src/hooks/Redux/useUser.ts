@@ -10,7 +10,8 @@ import {
   addCartItem as aCI,
   removeCartItem as rCI,
   updateCartItemQuantity as uCIQ,
-  emptyCart as eC
+  emptyCart as eC,
+  clearUserError as cUE
 } from 'Store';
 
 /*
@@ -43,11 +44,12 @@ export const useUserState = () => {
   const numberOfItemsInCart = cart.length;
 
   /*
-    Creates a reference to the loading state of the user login action
+    Creates a reference to the _status attribute of the user
+    returns 'LOGGED_OUT', 'LOGGED_IN', or 'LOADING'
   */
-  const loginIsLoading = useSelector((store: StoreState) => store.user.loading.login);
+  const userStatus = useSelector((store: StoreState) => store.user._status);
 
-  return { accountInfo, cart, numberOfItemsInCart, loginIsLoading };
+  return { accountInfo, cart, numberOfItemsInCart, userStatus };
 };
 
 /*
@@ -101,7 +103,22 @@ export const useUserActions = () => {
   */
   const emptyCart = () => dispatch(eC());
 
-  return { readUserInfo, logUserIn, logUserOut, addCartItem, removeCartItem, updateCartItemQuantity, emptyCart };
+  /*
+    Disptaches an action to clear the error field from the user object
+    (Use when exiting pages that may create an error so errors do not persist unintentionally)
+  */
+  const clearUserError = () => dispatch(cUE());
+
+  return {
+    readUserInfo,
+    logUserIn,
+    logUserOut,
+    addCartItem,
+    removeCartItem,
+    updateCartItemQuantity,
+    emptyCart,
+    clearUserError
+  };
 };
 
 /*
