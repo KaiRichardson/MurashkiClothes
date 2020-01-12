@@ -18,7 +18,7 @@ export const RadioGroup: React.FC<Props> = ({ errorText, touched, options, name 
     <Buttons>
       {options.map(o => (
         <RadioItem key={o}>
-          <RadioButton name={name} id={o} value={o} label={o} />
+          <RadioButton name={name} value={o} label={o} />
           <RadioLabel htmlFor={o}>{o}</RadioLabel>
         </RadioItem>
       ))}

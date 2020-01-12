@@ -11,17 +11,17 @@ exports[`<Button /> tests renders a brand color button 1`] = `
   transition: all 250ms ease-in;
   background: var(--bg);
   color: var(--txtColor);
-  --bg: #000;
-  --txtColor: #fff;
-}
-
-.c0:hover {
-  --bg: #000;
-  --txtColor: #fff;
-}
-
-.c0:hover {
   --bg: #ee4266;
+  --txtColor: #fff;
+}
+
+.c0:hover {
+  --bg: #000;
+  --txtColor: #fff;
+}
+
+.c0:hover {
+  --bg: #D5294D;
 }
 
 <button
@@ -138,17 +138,17 @@ exports[`<ButtonLink /> tests renders a brand color button link 1`] = `
   transition: all 250ms ease-in;
   cursor: pointer;
   padding: 0.5rem 1rem;
-  --bg: #000;
-  --txtColor: #fff;
-}
-
-.c0:hover {
-  --bg: #000;
-  --txtColor: #fff;
-}
-
-.c0:hover {
   --bg: #ee4266;
+  --txtColor: #fff;
+}
+
+.c0:hover {
+  --bg: #000;
+  --txtColor: #fff;
+}
+
+.c0:hover {
+  --bg: #D5294D;
 }
 
 <a

@@ -4,7 +4,7 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import 'jest-styled-components';
 
 import { Button, ButtonLink } from './Button';
-import { red } from 'utils';
+import { red, darkerRed } from 'utils';
 
 describe('<Button /> tests', () => {
   it('renders a default button', () => {
@@ -72,9 +72,9 @@ describe('<Button /> tests', () => {
 
     // Color rules tests
     expect(testButton).toHaveStyleRule('--txtColor', '#fff');
-    expect(testButton).toHaveStyleRule('--bg', '#000');
+    expect(testButton).toHaveStyleRule('--bg', red);
     // Hover test
-    expect(testButton).toHaveStyleRule('--bg', red, {
+    expect(testButton).toHaveStyleRule('--bg', darkerRed, {
       modifier: ':hover'
     });
   });
@@ -187,9 +187,9 @@ describe('<ButtonLink /> tests', () => {
 
     // Color rules tests
     expect(testButton).toHaveStyleRule('--txtColor', '#fff');
-    expect(testButton).toHaveStyleRule('--bg', '#000');
+    expect(testButton).toHaveStyleRule('--bg', red);
     // Hover test
-    expect(testButton).toHaveStyleRule('--bg', red, {
+    expect(testButton).toHaveStyleRule('--bg', darkerRed, {
       modifier: ':hover'
     });
   });

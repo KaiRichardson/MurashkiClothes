@@ -75,7 +75,7 @@ describe('Redux User Action Creator tests', () => {
   it('should create an action to add an item to the users cart', () => {
     //* Arrange
     const testData: Variant = {
-      variant_id: 'test_variant_id',
+      variant_id: 335510,
       name: 'test product',
       color: 'blue',
       size: 'medium'
@@ -94,7 +94,7 @@ describe('Redux User Action Creator tests', () => {
 
   it('should create an action to remove an item from the users cart', () => {
     //* Arrange
-    const testData = 'test_variant_id';
+    const testData = 33;
     const expectedAction: types.RemoveCartItem = {
       type: types.REMOVE_CART_ITEM,
       payload: testData
@@ -108,7 +108,7 @@ describe('Redux User Action Creator tests', () => {
     //* Arrange
     const testData = {
       newQuantity: 33,
-      variant_id: 'test_product_id'
+      variant_id: 5510
     };
     const expectedAction: types.UpdateCartItemQuantity = {
       type: types.UPDATE_CART_ITEM_QUANTITY,

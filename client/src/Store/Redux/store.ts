@@ -8,7 +8,7 @@ import admin, { AdminState } from './Admin';
 import user, { UserState } from './User';
 
 const rLSConfig: RLSOptions = {
-  states: ['user.cart', 'user.account.id']
+  states: ['user']
 };
 
 const loadOptions: LoadOptions = {

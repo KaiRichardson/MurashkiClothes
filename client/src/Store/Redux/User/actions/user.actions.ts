@@ -69,7 +69,7 @@ export const addCartItem = ({ quantity, product }: { quantity: number; product: 
   }
 });
 
-export const removeCartItem = (variant_id: string): RemoveCartItem => ({
+export const removeCartItem = (variant_id: number): RemoveCartItem => ({
   type: REMOVE_CART_ITEM,
   payload: variant_id
 });
@@ -79,7 +79,7 @@ export const updateCartItemQuantity = ({
   variant_id
 }: {
   newQuantity: number;
-  variant_id: string;
+  variant_id: number;
 }): UpdateCartItemQuantity => ({
   type: UPDATE_CART_ITEM_QUANTITY,
   payload: {

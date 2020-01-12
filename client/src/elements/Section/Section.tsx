@@ -14,11 +14,11 @@ interface Props {
 const Section: React.FC<Props> = ({ title, titleTag = 'h2', children }) => (
   <Wrapper data-testid='section'>
     {title && (
-      <Title2 as={titleTag} data-testid='sectionTitle'>
+      <Title2 as={titleTag} data-testid='sectionTitle' style={{ marginBottom: spacing.md }}>
         {title}
       </Title2>
     )}
-    {children}
+    <InnerWrapper>{children}</InnerWrapper>
   </Wrapper>
 );
 
@@ -26,6 +26,11 @@ export default Section;
 
 const Wrapper = styled.section`
   margin-bottom: ${spacing.xxl};
+`;
+
+const InnerWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
 `;
 
 Section.propTypes = {

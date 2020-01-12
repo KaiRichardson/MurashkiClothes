@@ -97,10 +97,6 @@ const FormInput = styled.input`
   padding: ${spacing.xs} ${spacing.sm};
   border: 1px solid ${lightGrey};
   color: ${black};
-
-  &:focus {
-    outline-color: ${red};
-  }
 `;
 
 const TextArea = styled.textarea`

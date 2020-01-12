@@ -55,9 +55,25 @@ export default (state: UserState = initialState, action: UserActions): UserState
 
     case ADD_CART_ITEM:
       /*
-        Add item to front of cart list
+        Add item to front of cart list,
+        if the item is already present in the cart its quantity is incremented instead
       */
-      return { ...state, account: { ...state.account, cart: [action.payload, ...state.account.cart] } };
+      return {
+        ...state,
+        account: {
+          ...state.account,
+          cart:
+            // If the returned index is -1 then the payload does not exist in the cart and should be added
+            state.account.cart.findIndex(item => item.product.variant_id === action.payload.product.variant_id) !== -1
+              ? state.account.cart.map(item =>
+                  // If the current item matches the payload variant_id then its quantity should be incremented
+                  item.product.variant_id === action.payload.product.variant_id
+                    ? { ...item, quantity: item.quantity + 1 }
+                    : item
+                )
+              : [action.payload, ...state.account.cart]
+        }
+      };
     case REMOVE_CART_ITEM:
       /*
         Removes an item from the cart based on the passed in variant_id
