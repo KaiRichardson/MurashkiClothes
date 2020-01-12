@@ -62,7 +62,7 @@ export interface User {
   stripeToken?: string;
   orders: string[];
   address?: Address;
-  cart: Variant[];
+  cart: { quantity: number; product: Variant }[];
 }
 
 export interface Address {
