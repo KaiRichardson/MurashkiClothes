@@ -65,9 +65,27 @@ router
       return res.status(400).send('There were no products to add in this request!')
     }
 
-    const _ids = productsToUpdate.map((p) => p._id);
+    //function to feed to bulkWrite map function
+    const toUpdate = product => ({
+      updateOne: { 
+          "filter": { "_id": product._id }, 
+          "update": { "$set": { category: product.category, name: product.name, price: product.price }  }   
+      }
+  })
 
-    return res.sendStatus(200);
+    try {
+
+      const updates = await Products.bulkWrite(productsToUpdate.map(toUpdate));
+
+      console.log(updates);
+
+      return res.sendStatus(200);
+
+    } catch (err) {
+      console.log(err);
+
+      return res.status(500).send(`Error updating products: ${err}`);
+    }
   });
 
 module.exports = router;

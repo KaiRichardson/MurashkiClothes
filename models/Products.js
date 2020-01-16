@@ -9,7 +9,7 @@ const productSchema = new Schema({
     base: [String],
     side: [String]
   },
-  price: Number
+  price: Number,
 });
 
 const Products = mongoose.model('Product', productSchema);
