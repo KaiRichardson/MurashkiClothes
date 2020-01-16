@@ -13,11 +13,12 @@ interface Props {
 }
 
 const UpdateProductForm: React.FC<Props> = ({ saveFunction, product }) => {
-  const productCategories: ProductCategories[] = ['men', 'women', 'children'];
+  const productCategories: ProductCategories[] = ['MENS', 'WOMENS', 'CHILDRENS'];
 
   return (
     <Formik
-      //@ts-ignore
+      // @desc next line is ignored because the price and category only exisit on type Product
+      // @ts-ignore
       initialValues={{ price: product.price || 0, category: product.category || undefined }}
       validate={values => {
         const errors: any = {};

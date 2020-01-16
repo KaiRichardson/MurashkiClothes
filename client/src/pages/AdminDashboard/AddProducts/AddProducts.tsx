@@ -26,7 +26,10 @@ const AddProducts: React.FC<Props> = () => {
             Save {numberOfProductsToAdd} Product{numberOfProductsToAdd !== 1 && 's'}
           </Button>
           {newProducts.map(p => (
-            <NewProductItem key={p.id} {...p} />
+            // TODO: No key in map function to work around current null issue.
+            // TODO: Should be readded once issue is resolved
+            // eslint-disable-next-line
+            <NewProductItem {...p} />
           ))}
         </>
       )}

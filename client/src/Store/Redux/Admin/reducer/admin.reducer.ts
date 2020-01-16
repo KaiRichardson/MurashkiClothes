@@ -13,92 +13,202 @@ import {
 } from '../admin.types';
 
 export interface AdminState {
-  newProducts: PrintfulProduct[];
-  productsToAdd: ConvertedProduct[];
-  existingProducts: Product[];
-  productsToUpdate: Product[];
-  loading: {
-    newProducts: boolean;
-    existingProducts: boolean;
+  newProducts: {
+    _status: 'IDLE' | 'LOADING' | 'SUCCESS' | 'ERROR';
+    _error?: string;
+    newProducts: PrintfulProduct[];
+    productsToAdd: ConvertedProduct[];
   };
-  errorMessage: {
-    newProducts?: string;
-    existingProducts?: string;
+  existingProducts: {
+    _status: 'IDLE' | 'LOADING' | 'SUCCESS' | 'ERROR';
+    _error?: string;
+    existingProducts: Product[];
+    productsToUpdate: Product[];
   };
 }
 export const initialState: AdminState = {
-  newProducts: [],
-  productsToAdd: [],
-  existingProducts: [],
-  productsToUpdate: [],
-  loading: {
-    newProducts: false,
-    existingProducts: false
+  newProducts: {
+    _status: 'IDLE',
+    _error: undefined,
+    newProducts: [],
+    productsToAdd: []
   },
-  errorMessage: {}
+  existingProducts: {
+    _status: 'IDLE',
+    _error: undefined,
+    existingProducts: [],
+    productsToUpdate: []
+  }
 };
 
+/*
+  The rule `no-fallthrough` has been disabled
+  because the ability to fall through to the next case is intentional
+*/
+/* eslint no-fallthrough: 0 */
 export default (state = initialState, action: AdminActions): AdminState => {
-  switch (action.type) {
-    //* New Products
-    case REQUEST_READ_NEW_PRODUCTS:
-      /*
-      Remove any currently saved newProducts
-      Set loading.newProducts => true
-      */
-      return { ...state, newProducts: [], loading: { ...state.loading, newProducts: true } };
-    case SUCCESS_READ_NEW_PRODUCTS:
-      /*
-      Set newProducts to payload
-      Set loading.newProducts => false
-      */
-      return { ...state, newProducts: action.payload, loading: { ...state.loading, newProducts: false } };
-    case FAIL_READ_NEW_PRODUCTS:
-      /*
-      Set errorMessage.newProducts to payload
-      Set loading.newProducts => false
-      */
-      return {
-        ...state,
-        errorMessage: { ...state.errorMessage, newProducts: action.payload },
-        loading: { ...state.loading, newProducts: false }
-      };
+  //* New Products
+  switch (state.newProducts._status) {
+    case 'IDLE':
+    case 'ERROR':
+      switch (action.type) {
+        case REQUEST_READ_NEW_PRODUCTS:
+          /*
+            Set _status => 'LOADING'
+            Remove any currently saved newProducts
+            Remove any existing error message
+          */
+          return {
+            ...state,
+            newProducts: {
+              ...state.newProducts,
+              _status: 'LOADING',
+              _error: undefined,
+              newProducts: []
+            }
+          };
 
-    //* Existing Products
-    case REQUEST_READ_EXISTING_PRODUCTS:
-      /*
-      Remove any currently saved existingProducts
-      Set loading.exsitingProducts => false
-      */
-      return { ...state, existingProducts: [], loading: { ...state.loading, existingProducts: true } };
-    case SUCCESS_READ_EXISTING_PRODUCTS:
-      /*
-      Set existingProducts to payload
-      Set loading.existingProducts => false
-      */
-      return { ...state, existingProducts: action.payload, loading: { ...state.loading, existingProducts: false } };
-    case FAIL_READ_EXISTING_PRODUCTS:
-      /*
-      Set errorMessage.existingProducts to payload
-      Set loading.existingProducts => false
-      */
-      return {
-        ...state,
-        errorMessage: { ...state.errorMessage, existingProducts: action.payload },
-        loading: { ...state.loading, existingProducts: false }
-      };
+        default:
+          break;
+      }
 
-    //* Stage Changes
-    case ADD_PRODUCT:
-      /*
-      Adds payload to array of products to add to database
-      */
-      return { ...state, productsToAdd: [...state.productsToAdd, action.payload] };
-    case UPDATE_PRODUCT:
-      /*
-      Adds payload to array of products to update in database
-      */
-      return { ...state, productsToUpdate: [...state.productsToUpdate, action.payload] };
+    case 'LOADING':
+      switch (action.type) {
+        case SUCCESS_READ_NEW_PRODUCTS:
+          /*
+            Set _status => 'SUCCESS'
+            Set newProducts to payload
+         */
+          return {
+            ...state,
+            newProducts: {
+              ...state.newProducts,
+              _status: 'SUCCESS',
+              newProducts: action.payload
+            }
+          };
+
+        case FAIL_READ_NEW_PRODUCTS:
+          /*
+            Set _status => 'ERROR'
+            Set _error to payload
+          */
+          return {
+            ...state,
+            newProducts: {
+              ...state.newProducts,
+              _status: 'ERROR',
+              _error: action.payload
+            }
+          };
+
+        default:
+          break;
+      }
+
+    case 'SUCCESS':
+      switch (action.type) {
+        case ADD_PRODUCT:
+          /*
+            Adds payload to array of products to add to database
+          */
+          return {
+            ...state,
+            newProducts: {
+              ...state.newProducts,
+              productsToAdd: [...state.newProducts.productsToAdd, action.payload]
+            }
+          };
+
+        default:
+          break;
+      }
+
+    /*
+      Default case breaks instead of returning state 
+      to allow actions to fall into Existing Products switch
+    */
+    default:
+      break;
+  }
+
+  //* Existing Products
+  switch (state.existingProducts._status) {
+    case 'IDLE':
+    case 'ERROR':
+      switch (action.type) {
+        case REQUEST_READ_EXISTING_PRODUCTS:
+          /*
+            Set _status => 'LOADING' 
+            Remove any currently saved existingProducts
+            Remove any existing error message
+          */
+          return {
+            ...state,
+            existingProducts: {
+              ...state.existingProducts,
+              _status: 'LOADING',
+              _error: undefined,
+              existingProducts: []
+            }
+          };
+
+        default:
+          break;
+      }
+
+    case 'LOADING':
+      switch (action.type) {
+        case SUCCESS_READ_EXISTING_PRODUCTS:
+          /*
+            Set _status => 'SUCCESS' 
+            Set existingProducts to payload
+          */
+          return {
+            ...state,
+            existingProducts: {
+              ...state.existingProducts,
+              _status: 'SUCCESS',
+              existingProducts: action.payload
+            }
+          };
+
+        case FAIL_READ_EXISTING_PRODUCTS:
+          /*
+            Set _status => 'ERROR'
+            Set _error to payload
+          */
+          return {
+            ...state,
+            existingProducts: {
+              ...state.existingProducts,
+              _status: 'ERROR',
+              _error: action.payload
+            }
+          };
+
+        default:
+          break;
+      }
+
+    case 'SUCCESS':
+      switch (action.type) {
+        case UPDATE_PRODUCT:
+          /*
+            Adds payload to array of products to update in database
+          */
+          return {
+            ...state,
+            existingProducts: {
+              ...state.existingProducts,
+              productsToUpdate: [...state.existingProducts.productsToUpdate, action.payload]
+            }
+          };
+
+        default:
+          break;
+      }
+
     default:
       return state;
   }

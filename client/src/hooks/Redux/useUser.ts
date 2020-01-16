@@ -1,7 +1,18 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { StoreState, readUserInfo as rUI, logUserIn as lUI, logUserOut as lUO } from 'Store';
+import {
+  StoreState,
+  Variant,
+  readUserInfo as rUI,
+  logUserIn as lUI,
+  logUserOut as lUO,
+  addCartItem as aCI,
+  removeCartItem as rCI,
+  updateCartItemQuantity as uCIQ,
+  emptyCart as eC,
+  clearUserError as cUE
+} from 'Store';
 
 /*
   Combines useUserActions and useUserState for components that need to subscribe to data
@@ -22,16 +33,23 @@ export const useUser = () => {
 */
 export const useUserState = () => {
   /*
-    Returns store.user object
+    Returns store.user.account object
   */
-  const userInfo = useSelector((store: StoreState) => store.user);
+  const accountInfo = useSelector((store: StoreState) => store.user.account);
 
   /*
-    Creates a reference to the loading state of the user login action
+    Returns store.user.account.cart
   */
-  const loginIsLoading = useSelector((store: StoreState) => store.user.loading.login);
+  const cart = useSelector((store: StoreState) => store.user.account.cart);
+  const numberOfItemsInCart = cart.length;
 
-  return { userInfo, loginIsLoading };
+  /*
+    Creates a reference to the _status attribute of the user
+    returns 'LOGGED_OUT', 'LOGGED_IN', or 'LOADING'
+  */
+  const userStatus = useSelector((store: StoreState) => store.user._status);
+
+  return { accountInfo, cart, numberOfItemsInCart, userStatus };
 };
 
 /*
@@ -61,15 +79,54 @@ export const useUserActions = () => {
   */
   const logUserOut = () => dispatch(lUO());
 
-  return { readUserInfo, logUserIn, logUserOut };
+  /*
+    Dispatches an action to add a product to the users cart
+  */
+  const addCartItem = ({ quantity = 1, product }: { quantity: number; product: Variant }) =>
+    dispatch(aCI({ quantity, product }));
+
+  /*
+    Dispatches an action to remove an item from the users cart
+    based on a passed in variant_id
+  */
+  const removeCartItem = (variant_id: number) => dispatch(rCI(variant_id));
+
+  /*
+    Dispatches an action to set a cart items quantity to a new quantity
+    based on a passed in variant_id
+  */
+  const updateCartItemQuantity = ({ newQuantity, variant_id }: { newQuantity: number; variant_id: number }) =>
+    dispatch(uCIQ({ newQuantity, variant_id }));
+
+  /*
+    Dispatches an action to remove all items from the users cart
+  */
+  const emptyCart = () => dispatch(eC());
+
+  /*
+    Disptaches an action to clear the error field from the user object
+    (Use when exiting pages that may create an error so errors do not persist unintentionally)
+  */
+  const clearUserError = () => dispatch(cUE());
+
+  return {
+    readUserInfo,
+    logUserIn,
+    logUserOut,
+    addCartItem,
+    removeCartItem,
+    updateCartItemQuantity,
+    emptyCart,
+    clearUserError
+  };
 };
 
 /*
   Uses readUserInfo effect when components mounts to the DOM
 */
 export const useReadUserInfoOnMount = () => {
-  const { userInfo, readUserInfo } = useUser();
+  const { accountInfo, readUserInfo } = useUser();
   useEffect(() => {
-    readUserInfo(userInfo._id);
-  }, [readUserInfo, userInfo._id]);
+    readUserInfo(accountInfo._id);
+  }, [readUserInfo, accountInfo._id]);
 };

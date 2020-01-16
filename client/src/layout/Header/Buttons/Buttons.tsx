@@ -4,13 +4,12 @@ import styled from 'styled-components';
 import { spacing } from 'utils';
 import { ButtonLink, Badge } from 'elements';
 import ToggleNavButton from './ToggleNavButton';
-import { useCartState, useUserState } from 'hooks';
+import { useUserState } from 'hooks';
 
 interface Props {}
 
 const Buttons: React.FC<Props> = () => {
-  const { numberOfItemsInCart } = useCartState();
-  const { userInfo } = useUserState();
+  const { userStatus, numberOfItemsInCart } = useUserState();
 
   const items = [
     {
@@ -18,9 +17,8 @@ const Buttons: React.FC<Props> = () => {
       link: '/search',
       icon: 'fas fa-search'
     },
-    // If there is no user id, the user is not signed in,
-    // so the sign in button is displayed instead of the favorites button
-    !userInfo._id
+    // If the user is not logged in display login button instead of favorites
+    userStatus !== 'LOGGED_IN'
       ? {
           name: 'sign in',
           link: '/login',
@@ -47,7 +45,7 @@ const Buttons: React.FC<Props> = () => {
         </Item>
       ))}
 
-      <ToggleNavButton />
+      {window.innerWidth < 768 && <ToggleNavButton />}
     </Wrapper>
   );
 };

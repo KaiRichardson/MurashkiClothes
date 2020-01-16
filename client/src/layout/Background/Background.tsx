@@ -10,5 +10,5 @@ export const Background = styled.div<{ colorOnLeft: boolean }>`
   min-height: 100vh;
   width: 100%;
   ${absolute({})};
-  ${transition({ prop: 'clip-path' })};
+  ${transition({})};
 `;

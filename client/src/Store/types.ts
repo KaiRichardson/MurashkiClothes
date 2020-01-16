@@ -20,7 +20,7 @@ export interface Action<T = any> {
 }
 
 /* Product Data Types */
-export type ProductCategories = 'men' | 'women' | 'children';
+export type ProductCategories = 'MENS' | 'WOMENS' | 'CHILDRENS';
 
 // Product in Murashki Database
 export interface Product {
@@ -37,7 +37,7 @@ export interface Product {
 
 // Product in Printful Database
 export interface Variant {
-  variant_id: string;
+  variant_id: number;
   name: string;
   color: string;
   size: string;
@@ -62,7 +62,7 @@ export interface User {
   stripeToken?: string;
   orders: string[];
   address?: Address;
-  cart: Variant[];
+  cart: { quantity: number; product: Variant }[];
 }
 
 export interface Address {

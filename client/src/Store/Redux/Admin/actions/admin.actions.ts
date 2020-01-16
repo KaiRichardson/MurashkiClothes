@@ -44,7 +44,7 @@ export const readExistingProducts = () => async (
   dispatch({ type: REQUEST_READ_EXISTING_PRODUCTS });
 
   try {
-    const response: Response = await fetch('/api/products/admin/edit', {
+    const response: Response = await fetch('/api/products', {
       method: 'GET'
     });
     const data: Product[] = await response.json();

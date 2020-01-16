@@ -1,15 +1,20 @@
 import React, { useContext, useRef } from 'react';
 import styled from 'styled-components';
+import { useSpring, animated } from 'react-spring';
 
 import { MobileNavContext } from '../MobileNav.context';
 import { useEventListener } from 'hooks';
-import { absolute, fadeIn, fadeOut, white } from 'utils';
+import { absolute, white } from 'utils';
 import NavItem from './NavItem';
 
 interface Props {}
 
 const Nav: React.FC<Props> = () => {
   const { navIsOpen, toggleNavIsOpen } = useContext(MobileNavContext);
+  const navAnimation = useSpring({
+    opacity: window.innerWidth > 768 ? 1 : navIsOpen ? 1 : 0,
+    transform: `translateY(${window.innerWidth > 768 ? 'initial' : navIsOpen ? 0 : '-100%'})`
+  });
 
   const navListRef = useRef<any>();
   const handleNavItemClick = (e: any) => {
@@ -50,7 +55,7 @@ const Nav: React.FC<Props> = () => {
 
   return (
     <Wrapper>
-      <NavList ref={navListRef} toggle={navIsOpen}>
+      <NavList ref={navListRef} style={navAnimation}>
         {items.map(item => (
           <NavItem name={item.name} link={item.link} key={item.name} dropdownOptions={item.dropdownOptions} />
         ))}
@@ -65,15 +70,14 @@ const Wrapper = styled.nav`
   text-transform: uppercase;
 `;
 
-const NavList = styled.ul<{ toggle: boolean }>`
+const NavList = styled(animated.ul)`
   ${absolute({})}
   height: 100vh;
   width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
-  visibility: ${props => (props.toggle ? 'visable' : 'hidden')};
-  animation: 100ms linear ${props => (props.toggle ? fadeIn : fadeOut)};
+
   background: ${white};
   z-index: 2;
   list-style: none;
@@ -86,6 +90,4 @@ const NavList = styled.ul<{ toggle: boolean }>`
     position: initial;
     background: initial;
   }
-
-  ${props => (props.toggle ? (document.body.style.overflow = 'hidden') : (document.body.style.overflow = 'initial'))};
 `;

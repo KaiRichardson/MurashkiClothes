@@ -59,22 +59,23 @@ export const useAdminNewProductsState = () => {
   /*
     Selects products that exist in Printful but not Murashki
   */
-  const newProducts = useSelector((state: StoreState) => state.admin.newProducts);
+  const newProducts = useSelector((state: StoreState) => state.admin.newProducts.newProducts);
 
   /*
     Selects products that have been updated and are ready to be saved to Murashki
   */
-  const productsToAdd = useSelector((state: StoreState) => state.admin.productsToAdd);
+  const productsToAdd = useSelector((state: StoreState) => state.admin.newProducts.productsToAdd);
 
   /*
-    Selects loading state of new products
+    Selects the _status of the newProducts
+    Returns 'IDLE', 'LOADING', 'SUCCESS', or 'ERROR'
   */
-  const newProductsLoading = useSelector((state: StoreState) => state.admin.loading.newProducts);
+  const newProductsLoading = useSelector((state: StoreState) => state.admin.newProducts._status);
 
   /*
     Selects error message relating to loading of new products (if one exists)
   */
-  const newProductsErrorMessage = useSelector((store: StoreState) => store.admin.errorMessage.newProducts);
+  const newProductsErrorMessage = useSelector((store: StoreState) => store.admin.newProducts._error);
 
   return {
     newProducts,
@@ -91,22 +92,24 @@ export const useAdminExistingProductsState = () => {
   /*
     Selects products that exist in Murashki
   */
-  const existingProducts = useSelector((state: StoreState) => state.admin.existingProducts);
+  const existingProducts = useSelector((state: StoreState) => state.admin.existingProducts.existingProducts);
 
   /*
     Selects products that have been changed and are ready to be resaved
   */
-  const productsToUpdate = useSelector((state: StoreState) => state.admin.productsToUpdate);
+  const productsToUpdate = useSelector((state: StoreState) => state.admin.existingProducts.productsToUpdate);
 
   /*
-    Selects loading state of existing products
+    Selects _status of existingProducts
+    Returns 'IDLE', 'LOADING', 'SUCCESS', or 'ERROR'
+
   */
-  const existingProductsLoading = useSelector((state: StoreState) => state.admin.loading.existingProducts);
+  const existingProductsLoading = useSelector((state: StoreState) => state.admin.existingProducts._status);
 
   /*
     Selects error message relating to loading of existing products (if one exists)
   */
-  const existingProductsErrorMessage = useSelector((store: StoreState) => store.admin.errorMessage.existingProducts);
+  const existingProductsErrorMessage = useSelector((store: StoreState) => store.admin.existingProducts._error);
 
   return {
     existingProducts,
@@ -121,7 +124,7 @@ export const useAdminExistingProductsState = () => {
 */
 export const useAdminNewProductsActions = () => {
   const dispatch = useDispatch();
-  const productsToAdd = useSelector((state: StoreState) => state.admin.productsToAdd);
+  const productsToAdd = useSelector((state: StoreState) => state.admin.newProducts.productsToAdd);
 
   /*
     Dispatches an action to read new products from Printful
@@ -175,7 +178,7 @@ export const useAdminNewProductsActions = () => {
 */
 export const useAdminExistingProductsActions = () => {
   const dispatch = useDispatch();
-  const { productsToUpdate } = useAdminExistingProductsState();
+  const productsToUpdate = useSelector((store: StoreState) => store.admin.existingProducts.productsToUpdate);
 
   /*
     Dispatches an action to read existing products from Murashki's DB

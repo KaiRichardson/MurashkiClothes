@@ -2,7 +2,7 @@ import configureMockStore from 'redux-mock-store';
 import fetchMock from 'fetch-mock';
 import thunk from 'redux-thunk';
 
-import { User } from 'Store/types';
+import { User, Variant } from 'Store/types';
 import * as actions from './user.actions';
 import * as types from '../user.types';
 
@@ -72,6 +72,63 @@ describe('Redux User Action Creator tests', () => {
     });
   });
 
+  it('should create an action to add an item to the users cart', () => {
+    //* Arrange
+    const testData: Variant = {
+      variant_id: 335510,
+      name: 'test product',
+      color: 'blue',
+      size: 'medium'
+    };
+    const expectedAction: types.AddCartItem = {
+      type: types.ADD_CART_ITEM,
+      payload: {
+        quantity: 1,
+        product: testData
+      }
+    };
+
+    //* Assert
+    expect(actions.addCartItem({ quantity: 1, product: testData })).toEqual(expectedAction);
+  });
+
+  it('should create an action to remove an item from the users cart', () => {
+    //* Arrange
+    const testData = 33;
+    const expectedAction: types.RemoveCartItem = {
+      type: types.REMOVE_CART_ITEM,
+      payload: testData
+    };
+
+    //* Assert
+    expect(actions.removeCartItem(testData)).toEqual(expectedAction);
+  });
+
+  it('should create an action to update the quantity of an item in the users cart', () => {
+    //* Arrange
+    const testData = {
+      newQuantity: 33,
+      variant_id: 5510
+    };
+    const expectedAction: types.UpdateCartItemQuantity = {
+      type: types.UPDATE_CART_ITEM_QUANTITY,
+      payload: testData
+    };
+
+    //* Assert
+    expect(actions.updateCartItemQuantity(testData)).toEqual(expectedAction);
+  });
+
+  it('should create an action to empty the users cart', () => {
+    //* Arrange
+    const expectedAction: types.EmptyCart = {
+      type: types.EMPTY_CART
+    };
+
+    //* Assert
+    expect(actions.emptyCart()).toEqual(expectedAction);
+  });
+
   it('should create an action to log a user out', () => {
     //* Arrange
     const expectedAction: types.LogUserOut = {
@@ -80,5 +137,15 @@ describe('Redux User Action Creator tests', () => {
 
     //* Assert
     expect(actions.logUserOut()).toEqual(expectedAction);
+  });
+
+  it('should create an action to clear out the user._error field', () => {
+    //* Arrange
+    const expectedAction: types.ClearUserError = {
+      type: types.CLEAR_USER_ERROR
+    };
+
+    //* Assert
+    expect(actions.clearUserError()).toEqual(expectedAction);
   });
 });

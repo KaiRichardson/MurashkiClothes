@@ -6,7 +6,10 @@ describe('adminReducer tests', () => {
   it(`should handle ${types.REQUEST_READ_NEW_PRODUCTS}`, () => {
     //* Arrange
     const initialState: AdminState = reducerInitialState;
-    const expectedState: AdminState = { ...initialState, loading: { ...initialState.loading, newProducts: true } };
+    const expectedState: AdminState = {
+      ...initialState,
+      newProducts: { ...initialState.newProducts, _status: 'LOADING' }
+    };
 
     //* Act
     const result = reducer(initialState, { type: types.REQUEST_READ_NEW_PRODUCTS });
@@ -29,12 +32,15 @@ describe('adminReducer tests', () => {
     ];
     const initialState: AdminState = {
       ...reducerInitialState,
-      loading: { ...reducerInitialState.loading, newProducts: true }
+      newProducts: { ...reducerInitialState.newProducts, _status: 'LOADING' }
     };
     const expectedState: AdminState = {
       ...initialState,
-      newProducts: testData,
-      loading: { ...initialState.loading, newProducts: false }
+      newProducts: {
+        ...reducerInitialState.newProducts,
+        _status: 'SUCCESS',
+        newProducts: testData
+      }
     };
 
     //* Act
@@ -49,12 +55,15 @@ describe('adminReducer tests', () => {
     const testData = 'Oops, something went wrong';
     const initialState: AdminState = {
       ...reducerInitialState,
-      loading: { ...reducerInitialState.loading, newProducts: true }
+      newProducts: { ...reducerInitialState.newProducts, _status: 'LOADING' }
     };
     const expectedState: AdminState = {
       ...initialState,
-      loading: { ...initialState.loading, newProducts: false },
-      errorMessage: { ...initialState.errorMessage, newProducts: testData }
+      newProducts: {
+        ...reducerInitialState.newProducts,
+        _status: 'ERROR',
+        _error: testData
+      }
     };
 
     //* Act
@@ -69,9 +78,9 @@ describe('adminReducer tests', () => {
     const initialState: AdminState = reducerInitialState;
     const expectedState: AdminState = {
       ...initialState,
-      loading: {
-        ...initialState.loading,
-        existingProducts: true
+      existingProducts: {
+        ...initialState.existingProducts,
+        _status: 'LOADING'
       }
     };
 
@@ -89,7 +98,7 @@ describe('adminReducer tests', () => {
     const testData: Product[] = [
       {
         _extID: 142621663,
-        category: 'men',
+        category: 'MENS',
         name: 'JavaScript is !Cool',
         imgUrls: {
           base: ['https://files.cdn.printful.com/files/ba1/ba13faa1332b7f18ec847cb9f4d79868_preview.png'],
@@ -100,12 +109,18 @@ describe('adminReducer tests', () => {
     ];
     const initialState: AdminState = {
       ...reducerInitialState,
-      loading: { ...reducerInitialState.loading, existingProducts: true }
+      existingProducts: {
+        ...reducerInitialState.existingProducts,
+        _status: 'LOADING'
+      }
     };
     const expectedState: AdminState = {
       ...initialState,
-      existingProducts: testData,
-      loading: { ...reducerInitialState.loading, existingProducts: false }
+      existingProducts: {
+        ...initialState.existingProducts,
+        _status: 'SUCCESS',
+        existingProducts: testData
+      }
     };
 
     //* Act
@@ -120,12 +135,18 @@ describe('adminReducer tests', () => {
     const testData = 'Oops, something went wrong';
     const initialState: AdminState = {
       ...reducerInitialState,
-      loading: { ...reducerInitialState.loading, existingProducts: true }
+      existingProducts: {
+        ...reducerInitialState.existingProducts,
+        _status: 'LOADING'
+      }
     };
     const expectedState: AdminState = {
       ...initialState,
-      loading: { ...initialState.loading, existingProducts: false },
-      errorMessage: { ...initialState.errorMessage, existingProducts: testData }
+      existingProducts: {
+        ...initialState.existingProducts,
+        _status: 'ERROR',
+        _error: testData
+      }
     };
 
     //* Act
@@ -137,18 +158,27 @@ describe('adminReducer tests', () => {
 
   it(`should handle ${types.ADD_PRODUCT}`, () => {
     //* Arrange
-    const testData: Product = {
-      _extID: 142621663,
-      category: 'men',
-      name: 'JavaScript is !Cool',
-      imgUrls: {
-        base: ['https://files.cdn.printful.com/files/ba1/ba13faa1332b7f18ec847cb9f4d79868_preview.png'],
-        side: []
+
+    const testData = new types.ConvertedProduct(
+      {
+        external_id: '142621663',
+        name: 'JavaScript is !Cool',
+        thumbnail_url: 'https://files.cdn.printful.com/files/ba1/ba13faa1332b7f18ec847cb9f4d79868_preview.png',
+        id: 33,
+        variants: 5510,
+        synced: 5510
       },
-      price: 33
-    };
+      'MENS',
+      33
+    );
     const initialState: AdminState = reducerInitialState;
-    const expectedState: AdminState = { ...initialState, productsToAdd: [...initialState.productsToAdd, testData] };
+    const expectedState: AdminState = {
+      ...initialState,
+      newProducts: {
+        ...initialState.newProducts,
+        productsToAdd: [...initialState.newProducts.productsToAdd, testData]
+      }
+    };
 
     //* Act
     const result = reducer(initialState, { type: types.ADD_PRODUCT, payload: testData });
@@ -162,7 +192,7 @@ describe('adminReducer tests', () => {
     const testData: { product: Product; category: ProductCategories } = {
       product: {
         _extID: 142621663,
-        category: 'men',
+        category: 'MENS',
         name: 'JavaScript is !Cool',
         imgUrls: {
           base: ['https://files.cdn.printful.com/files/ba1/ba13faa1332b7f18ec847cb9f4d79868_preview.png'],
@@ -170,12 +200,24 @@ describe('adminReducer tests', () => {
         },
         price: 33
       },
-      category: 'women'
+      category: 'WOMENS'
     };
-    const initialState: AdminState = { ...reducerInitialState, existingProducts: [testData.product] };
+    const initialState: AdminState = {
+      ...reducerInitialState,
+      existingProducts: {
+        ...reducerInitialState.existingProducts,
+        existingProducts: [testData.product]
+      }
+    };
     const expectedState: AdminState = {
       ...initialState,
-      productsToUpdate: [...initialState.productsToUpdate, { ...testData.product, category: testData.category }]
+      existingProducts: {
+        ...initialState.existingProducts,
+        productsToUpdate: [
+          ...initialState.existingProducts.productsToUpdate,
+          { ...testData.product, category: testData.category }
+        ]
+      }
     };
 
     //* Act
