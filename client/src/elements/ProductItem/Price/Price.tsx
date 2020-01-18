@@ -7,19 +7,11 @@ import { spacing, lightGrey } from 'utils';
 interface Props {
   id: string;
   price: number;
-  discount?: number;
 }
 
-const Price: React.FC<Props> = ({ id, price, discount }) => (
+const Price: React.FC<Props> = ({ id, price }) => (
   <Wrapper data-testid={`price-${id}`}>
-    {discount ? (
-      <>
-        <OldPrice data-testid={`price--default-${id}`}>{price}</OldPrice>
-        <NewPrice data-testid={`price--discount-${id}`}>{discount}</NewPrice>
-      </>
-    ) : (
-      <DefaultPrice data-testid={`price--default-${id}`}>{price}</DefaultPrice>
-    )}
+    <DefaultPrice data-testid={`price--default-${id}`}>{price}</DefaultPrice>
   </Wrapper>
 );
 
@@ -49,6 +41,5 @@ const Wrapper = styled.p`
 
 Price.propTypes = {
   id: PropTypes.string.isRequired,
-  price: PropTypes.number.isRequired,
-  discount: PropTypes.number
+  price: PropTypes.number.isRequired
 };

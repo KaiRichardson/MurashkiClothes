@@ -1,13 +1,19 @@
 import React from 'react';
 
-import { Breadcrumbs } from 'elements';
+import { Breadcrumbs, Section } from 'elements';
+import Collections from './Collections';
 
 interface Props {}
 
 const Shop: React.FC<Props> = () => (
   <>
     <Breadcrumbs />
-    Shop
+
+    <Collections />
+
+    <Section title='Featured'>
+      <p>featured items here</p>
+    </Section>
   </>
 );
 

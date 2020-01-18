@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Button, Link, ButtonLink, ProductList, ProductItem, Section, Badge } from 'elements';
+import { Button, Link, ButtonLink, ProductList, Section, Badge } from 'elements';
 import { useUserActions } from 'hooks';
 
 interface Props {}
@@ -73,7 +73,7 @@ const Home: React.FC<Props> = () => {
       <Section title='this is also a section'>
         <p>this sections title is a string</p>
         <ProductList>
-          <ProductItem
+          {/* <ProductItem
             {...{
               id: 'abc123',
               title: 'denim jacket',
@@ -106,7 +106,7 @@ const Home: React.FC<Props> = () => {
               discount: 28.5,
               img: 'https://via.placeholder.com/330x400'
             }}
-          />
+          /> */}
         </ProductList>
       </Section>
     </>

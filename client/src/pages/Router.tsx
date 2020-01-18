@@ -10,11 +10,12 @@ import AdminDashboard from './AdminDashboard';
 import Login from './Login';
 import RegisterAccount from './RegisterAccount';
 import Contact from './Contact';
-import Shop, { Children, Men, Women } from './Shop';
+import Shop from './Shop';
 import Cart from './Cart';
 import Favorites from './Favorites';
 import Search from './Search';
 import Product from './Product';
+import SingleCollection from './SingleCollection';
 
 interface Props {}
 
@@ -50,15 +51,15 @@ const Router: React.FC<Props> = () => {
         </Route>
 
         <Route exact path='/shop/childrens'>
-          <Children />
+          <SingleCollection category='CHILDRENS' />
         </Route>
 
         <Route exact path='/shop/mens'>
-          <Men />
+          <SingleCollection category='MENS' />
         </Route>
 
         <Route exact path='/shop/womens'>
-          <Women />
+          <SingleCollection category='WOMENS' />
         </Route>
 
         <Route exact path='/shop/:category/:productid'>

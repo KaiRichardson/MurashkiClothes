@@ -4,6 +4,7 @@ import { ProductCategories, Product } from 'Store';
 
 export const useProductCategory = (category: ProductCategories) => {
   const [products, setProducts] = useState<Product[]>([]);
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -15,12 +16,12 @@ export const useProductCategory = (category: ProductCategories) => {
 
         setProducts(data);
       } catch (err) {
-        console.log(err);
+        setErrorMessage(err.message);
       }
     };
 
     fetchProducts();
   }, [category]);
 
-  return products;
+  return { products, errorMessage };
 };
