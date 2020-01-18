@@ -49,15 +49,15 @@ const Router: React.FC<Props> = () => {
           <Shop />
         </Route>
 
-        <Route exact path='/shop/children'>
+        <Route exact path='/shop/childrens'>
           <Children />
         </Route>
 
-        <Route exact path='/shop/men'>
+        <Route exact path='/shop/mens'>
           <Men />
         </Route>
 
-        <Route exact path='/shop/women'>
+        <Route exact path='/shop/womens'>
           <Women />
         </Route>
 
