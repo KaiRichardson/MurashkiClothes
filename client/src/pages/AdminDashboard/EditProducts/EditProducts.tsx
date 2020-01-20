@@ -8,7 +8,7 @@ import ExistingProductItem from './ExistingProductItem';
 interface Props {}
 
 const EditProducts: React.FC<Props> = () => {
-  // TODO: Fetch Products from DB, be able to edit price, category, and be able to remove from DB
+  // TODO: be able to remove from DB
   useReadExistingProductsOnMount();
   const { existingProducts, existingProductsLoading, productsToUpdate } = useAdminExistingProductsState();
   const { saveUpdatedProductsToDatabase } = useAdminExistingProductsActions();
@@ -17,7 +17,7 @@ const EditProducts: React.FC<Props> = () => {
 
   return (
     <Section title='Edit existing products'>
-      {existingProductsLoading ? (
+      {existingProductsLoading === 'LOADING' ? (
         <LoadingSpinner />
       ) : numberOfExistingProducts === 0 ? (
         <p>No products found in database, please add a product.</p>

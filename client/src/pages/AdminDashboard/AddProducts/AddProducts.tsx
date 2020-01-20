@@ -16,7 +16,7 @@ const AddProducts: React.FC<Props> = () => {
 
   return (
     <Section title='Add new products'>
-      {newProductsLoading ? (
+      {newProductsLoading === 'LOADING' ? (
         <LoadingSpinner />
       ) : numberOfNewProducts === 0 ? (
         <p>No new products from Printful. Please add a product in Printful to see it here.</p>
