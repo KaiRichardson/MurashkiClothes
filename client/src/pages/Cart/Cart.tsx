@@ -1,13 +1,15 @@
 import React from 'react';
 
-import { useUserState } from 'hooks';
-import { Section, ButtonLink, Link } from 'elements';
+import { useUserState, useUserActions } from 'hooks';
+import { spacing } from 'utils';
+import { Section, ButtonLink, Link, Button } from 'elements';
 import CartItem from './CartItem';
 
 interface Props {}
 
 const Cart: React.FC<Props> = () => {
   const { cart, numberOfItemsInCart } = useUserState();
+  const { emptyCart } = useUserActions();
 
   return (
     <Section title='Cart'>
@@ -33,6 +35,12 @@ const Cart: React.FC<Props> = () => {
       <ButtonLink brand to='/checkout' style={{ alignSelf: 'flex-end' }}>
         Proceed to Checkout
       </ButtonLink>
+
+      <div>
+        <Button trans style={{ margin: `${spacing.lg} auto`, display: 'block' }} onClick={emptyCart}>
+          Empty Cart
+        </Button>
+      </div>
     </Section>
   );
 };
