@@ -24,7 +24,7 @@ const Nav: React.FC<Props> = () => {
   };
   useEventListener('click', handleNavItemClick, navListRef.current);
 
-  const items = [
+  const items: { name: string; link: string; dropdownOptions?: { name: string; link: string }[] }[] = [
     {
       name: 'home',
       link: '/'
@@ -35,15 +35,15 @@ const Nav: React.FC<Props> = () => {
       dropdownOptions: [
         {
           name: 'men',
-          link: '/shop/men'
+          link: '/shop/mens'
         },
         {
           name: 'women',
-          link: '/shop/women'
+          link: '/shop/womens'
         },
         {
           name: 'children',
-          link: '/shop/children'
+          link: '/shop/childrens'
         }
       ]
     },
