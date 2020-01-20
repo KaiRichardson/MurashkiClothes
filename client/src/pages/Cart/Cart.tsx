@@ -36,11 +36,9 @@ const Cart: React.FC<Props> = () => {
         Proceed to Checkout
       </ButtonLink>
 
-      <div>
-        <Button trans style={{ margin: `${spacing.lg} auto`, display: 'block' }} onClick={emptyCart}>
-          Empty Cart
-        </Button>
-      </div>
+      <Button trans style={{ margin: `${spacing.lg} auto`, display: 'block' }} onClick={emptyCart}>
+        Empty Cart
+      </Button>
     </Section>
   );
 };
